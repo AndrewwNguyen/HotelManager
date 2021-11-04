@@ -1,4 +1,5 @@
-﻿using HotelManager.DAO;
+﻿
+using HotelManager.Class;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,24 +15,12 @@ namespace HotelManager
     public partial class fReceiveRoomDetails : Form
     {
         int idReceiveRoom;
+        Class.Functions dtBase = new Class.Functions();
         public fReceiveRoomDetails(int _idReceiRoom)
         {
-            InitializeComponent();
             idReceiveRoom = _idReceiRoom;
-            ShowReceiveRoom(_idReceiRoom);
-            ShowCustomers(_idReceiRoom);
-        }
-        public void ShowReceiveRoom(int idReceiveRoom)
-        {
-            DataRow data = ReceiveRoomDAO.Instance.ShowReceiveRoom(idReceiveRoom).Rows[0];
-            txbIDReceiveRoom.Text = ((int)data["Mã nhận phòng"]).ToString();
-            txbRoomName.Text = data["Tên phòng"].ToString();
-            txbDateCheckIn.Text = ((DateTime)data["Ngày nhận"]).ToString().Split(' ')[0];
-            txbDateCheckOut.Text= ((DateTime)data["Ngày trả"]).ToString().Split(' ')[0];
-        }
-        public void ShowCustomers(int idReceiveRoom)
-        {
-            dataGridView.DataSource = ReceiveRoomDAO.Instance.ShowCusomers(idReceiveRoom);
+            InitializeComponent();
+
         }
         private void btnClose_Click(object sender, EventArgs e)
         {
@@ -45,47 +34,67 @@ namespace HotelManager
 
         private void bunifuThinButton21_Click(object sender, EventArgs e)
         {
-            fAddCustomerInfo f = new fAddCustomerInfo();
+            int a = Int32.Parse(txbIDReceiveRoom.Text);
+            fAddCustomerInfo f = new fAddCustomerInfo(a);
             f.ShowDialog();
             Show();
-            if(fAddCustomerInfo.ListIdCustomer.Count>0)
-                foreach (var item in fAddCustomerInfo.ListIdCustomer)
-                {
-                    ReceiveRoomDetailsDAO.Instance.InsertReceiveRoomDetails(idReceiveRoom, item);
-                }
-            ShowCustomers(idReceiveRoom);
+            LoadReceiveRoomDetails();
         }
 
         private void bunifuThinButton22_Click(object sender, EventArgs e)
         {
-            string idCard =dataGridView.SelectedRows[0].Cells[1].Value.ToString();
-            int idCustomer = CustomerDAO.Instance.GetInfoByIdCard(idCard).Id;
-            if (idCustomer != CustomerDAO.Instance.GetIDCustomerFromBookRoom(idReceiveRoom))
+            string idCard = dataGridView.SelectedRows[0].Cells[1].Value.ToString();
+            string sql1 = "select IDcard from Customer where IDCard = '"+idCard+"' and IDCard not in(select IDCard from Customer join BookRoom on Customer.ID = BookRoom.IDCustomer join ReceiveRoom on ReceiveRoom.IDBookRoom = BookRoom.ID)";
+            if(Functions.ktra(sql1))
             {
-                ReceiveRoomDetailsDAO.Instance.DeleteReceiveRoomDetails(idReceiveRoom, idCustomer);
+                string sql;
+                sql = "Delete ReceiveRoomDetails from ReceiveRoomDetails join Customer on ReceiveRoomDetails.IDCustomerOther = Customer.ID where Customer.IDCard= '" + idCard + "' ";
+                Functions.Chaysql(sql);
                 MessageBox.Show("Xóa khách hàng thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                ShowCustomers(idReceiveRoom);
+                LoadReceiveRoomDetails();
             }
             else
-                MessageBox.Show("Không thể xóa!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            {
+                   MessageBox.Show("Không thể xóa người đặt phòng!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         private void bunifuThinButton23_Click(object sender, EventArgs e)
         {
             string idCard = dataGridView.SelectedRows[0].Cells[1].Value.ToString();
-            int idCustomer = CustomerDAO.Instance.GetInfoByIdCard(idCard).Id;
             fUpdateCustomerInfo f = new fUpdateCustomerInfo(idCard);
             f.ShowDialog();
             Show();
-            ShowCustomers(idReceiveRoom);
+            LoadReceiveRoomDetails();
         }
 
         private void btnAddCustomer_Click(object sender, EventArgs e)
         {
-            fChangeRoom f = new fChangeRoom(RoomDAO.Instance.GetIdRoomFromReceiveRoom(idReceiveRoom),idReceiveRoom);
-            f.ShowDialog();
-            Show();
-            ShowReceiveRoom(idReceiveRoom);
+
+            //fChangeRoom f = new fChangeRoom();
+            //f.ShowDialog();
+        }
+
+        private void fReceiveRoomDetails_Load(object sender, EventArgs e)
+        {
+            txbIDReceiveRoom.Text = idReceiveRoom.ToString();
+            string str;
+            str = "SELECT Room.Name from ReceiveRoom join Room on ReceiveRoom.IDRoom = Room.ID where ReceiveRoom.ID ='" + txbIDReceiveRoom.Text+ "'";
+            txbRoomName.Text = Functions.laygiatri(str);
+            str = "SELECT DateCheckIn from ReceiveRoom join BookRoom on ReceiveRoom.IDBookRoom = BookRoom.ID where ReceiveRoom.ID='" + txbIDReceiveRoom.Text + "'";
+            txbDateCheckIn.Text = Functions.laygiatri(str);
+            str = "SELECT DateCheckOut from ReceiveRoom join BookRoom on ReceiveRoom.IDBookRoom = BookRoom.ID where ReceiveRoom.ID='" + txbIDReceiveRoom.Text + "'";
+            txbDateCheckOut.Text = Functions.laygiatri(str);
+            LoadReceiveRoomDetails();
+        }
+        public void LoadReceiveRoomDetails()
+        {
+            dataGridView.DataSource = dtBase.DataReader("SELECT Customer.Name,Customer.IDCard,Customer.Address,PhoneNumber,Nationality from ReceiveRoom join ReceiveRoomDetails on ReceiveRoom.ID = ReceiveRoomDetails.IDReceiveRoom join Customer on ReceiveRoomDetails.IDCustomerOther = Customer.ID where ReceiveRoom.ID = '"+idReceiveRoom+"'");
+            dataGridView.Columns[0].HeaderText = "Tên Khách Hàng";
+            dataGridView.Columns[1].HeaderText = "CMND";
+            dataGridView.Columns[2].HeaderText = "Địa Chỉ";
+            dataGridView.Columns[3].HeaderText = "Số điện thoại";
+            dataGridView.Columns[4].HeaderText = "Quốc Tịch";
         }
     }
 }

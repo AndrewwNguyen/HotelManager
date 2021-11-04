@@ -34,12 +34,23 @@
             this.label2 = new System.Windows.Forms.Label();
             this.bunifuDragControl1 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.bunifuThinButton22 = new Bunifu.Framework.UI.BunifuThinButton2();
+            this.txbDays = new Bunifu.Framework.UI.BunifuMetroTextbox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.cbRoomType = new MetroFramework.Controls.MetroComboBox();
+            this.dpkDateCheckOut = new Bunifu.Framework.UI.BunifuDatepicker();
             this.label15 = new System.Windows.Forms.Label();
+            this.dpkDateCheckIn = new Bunifu.Framework.UI.BunifuDatepicker();
             this.txbIDBookRoom = new Bunifu.Framework.UI.BunifuMetroTextbox();
             this.label16 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
             this.btnClose = new Bunifu.Framework.UI.BunifuImageButton();
             this.btnClose_ = new Bunifu.Framework.UI.BunifuThinButton2();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.bunifuThinButton23 = new Bunifu.Framework.UI.BunifuThinButton2();
+            this.bunifuThinButton21 = new Bunifu.Framework.UI.BunifuThinButton2();
+            this.dpkDateOfBirth = new Bunifu.Framework.UI.BunifuDatepicker();
             this.cbNationality = new MetroFramework.Controls.MetroComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.cbCustomerType = new MetroFramework.Controls.MetroComboBox();
@@ -56,17 +67,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txbFullName = new Bunifu.Framework.UI.BunifuMetroTextbox();
             this.label3 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
-            this.dpkDateCheckOut = new Bunifu.Framework.UI.BunifuDatepicker();
-            this.dpkDateCheckIn = new Bunifu.Framework.UI.BunifuDatepicker();
-            this.dpkDateOfBirth = new Bunifu.Framework.UI.BunifuDatepicker();
-            this.cbRoomType = new MetroFramework.Controls.MetroComboBox();
-            this.bunifuThinButton21 = new Bunifu.Framework.UI.BunifuThinButton2();
-            this.txbDays = new Bunifu.Framework.UI.BunifuMetroTextbox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.bunifuThinButton22 = new Bunifu.Framework.UI.BunifuThinButton2();
-            this.bunifuThinButton23 = new Bunifu.Framework.UI.BunifuThinButton2();
             this.groupBox6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -124,6 +124,91 @@
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Thông tin nhận phòng";
             // 
+            // bunifuThinButton22
+            // 
+            this.bunifuThinButton22.ActiveBorderThickness = 1;
+            this.bunifuThinButton22.ActiveCornerRadius = 20;
+            this.bunifuThinButton22.ActiveFillColor = System.Drawing.Color.SeaGreen;
+            this.bunifuThinButton22.ActiveForecolor = System.Drawing.Color.White;
+            this.bunifuThinButton22.ActiveLineColor = System.Drawing.Color.SeaGreen;
+            this.bunifuThinButton22.BackColor = System.Drawing.Color.White;
+            this.bunifuThinButton22.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuThinButton22.BackgroundImage")));
+            this.bunifuThinButton22.ButtonText = "Lưu Thay Đổi";
+            this.bunifuThinButton22.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bunifuThinButton22.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuThinButton22.ForeColor = System.Drawing.Color.SeaGreen;
+            this.bunifuThinButton22.IdleBorderThickness = 1;
+            this.bunifuThinButton22.IdleCornerRadius = 20;
+            this.bunifuThinButton22.IdleFillColor = System.Drawing.Color.White;
+            this.bunifuThinButton22.IdleForecolor = System.Drawing.Color.SeaGreen;
+            this.bunifuThinButton22.IdleLineColor = System.Drawing.Color.SeaGreen;
+            this.bunifuThinButton22.Location = new System.Drawing.Point(18, 304);
+            this.bunifuThinButton22.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.bunifuThinButton22.Name = "bunifuThinButton22";
+            this.bunifuThinButton22.Size = new System.Drawing.Size(203, 40);
+            this.bunifuThinButton22.TabIndex = 58;
+            this.bunifuThinButton22.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.bunifuThinButton22.Click += new System.EventHandler(this.bunifuThinButton22_Click);
+            // 
+            // txbDays
+            // 
+            this.txbDays.BorderColorFocused = System.Drawing.Color.SeaGreen;
+            this.txbDays.BorderColorIdle = System.Drawing.Color.SeaGreen;
+            this.txbDays.BorderColorMouseHover = System.Drawing.Color.SeaGreen;
+            this.txbDays.BorderThickness = 1;
+            this.txbDays.characterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.txbDays.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txbDays.Enabled = false;
+            this.txbDays.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.txbDays.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txbDays.isPassword = false;
+            this.txbDays.Location = new System.Drawing.Point(18, 263);
+            this.txbDays.Margin = new System.Windows.Forms.Padding(4);
+            this.txbDays.MaxLength = 32767;
+            this.txbDays.Name = "txbDays";
+            this.txbDays.Size = new System.Drawing.Size(203, 29);
+            this.txbDays.TabIndex = 57;
+            this.txbDays.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.SeaGreen;
+            this.label4.Location = new System.Drawing.Point(15, 239);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(63, 20);
+            this.label4.TabIndex = 56;
+            this.label4.Text = "Số đêm:";
+            // 
+            // cbRoomType
+            // 
+            this.cbRoomType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.cbRoomType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbRoomType.FormattingEnabled = true;
+            this.cbRoomType.ItemHeight = 23;
+            this.cbRoomType.Location = new System.Drawing.Point(18, 101);
+            this.cbRoomType.Name = "cbRoomType";
+            this.cbRoomType.Size = new System.Drawing.Size(203, 29);
+            this.cbRoomType.Style = MetroFramework.MetroColorStyle.Green;
+            this.cbRoomType.TabIndex = 55;
+            // 
+            // dpkDateCheckOut
+            // 
+            this.dpkDateCheckOut.BackColor = System.Drawing.Color.SeaGreen;
+            this.dpkDateCheckOut.BorderRadius = 0;
+            this.dpkDateCheckOut.ForeColor = System.Drawing.Color.White;
+            this.dpkDateCheckOut.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dpkDateCheckOut.FormatCustom = null;
+            this.dpkDateCheckOut.Location = new System.Drawing.Point(19, 207);
+            this.dpkDateCheckOut.Margin = new System.Windows.Forms.Padding(14, 21, 14, 21);
+            this.dpkDateCheckOut.Name = "dpkDateCheckOut";
+            this.dpkDateCheckOut.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.dpkDateCheckOut.Size = new System.Drawing.Size(202, 29);
+            this.dpkDateCheckOut.TabIndex = 54;
+            this.dpkDateCheckOut.Value = new System.DateTime(2018, 2, 23, 23, 29, 57, 962);
+            this.dpkDateCheckOut.onValueChanged += new System.EventHandler(this.dpkDateCheckOut_onValueChanged);
+            // 
             // label15
             // 
             this.label15.AutoSize = true;
@@ -135,12 +220,29 @@
             this.label15.TabIndex = 52;
             this.label15.Text = "Tên loại phòng:";
             // 
+            // dpkDateCheckIn
+            // 
+            this.dpkDateCheckIn.BackColor = System.Drawing.Color.SeaGreen;
+            this.dpkDateCheckIn.BorderRadius = 0;
+            this.dpkDateCheckIn.ForeColor = System.Drawing.Color.White;
+            this.dpkDateCheckIn.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dpkDateCheckIn.FormatCustom = null;
+            this.dpkDateCheckIn.Location = new System.Drawing.Point(19, 155);
+            this.dpkDateCheckIn.Margin = new System.Windows.Forms.Padding(9, 13, 9, 13);
+            this.dpkDateCheckIn.Name = "dpkDateCheckIn";
+            this.dpkDateCheckIn.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.dpkDateCheckIn.Size = new System.Drawing.Size(202, 29);
+            this.dpkDateCheckIn.TabIndex = 53;
+            this.dpkDateCheckIn.Value = new System.DateTime(2018, 2, 23, 23, 29, 57, 962);
+            this.dpkDateCheckIn.onValueChanged += new System.EventHandler(this.dpkDateCheckIn_onValueChanged);
+            // 
             // txbIDBookRoom
             // 
             this.txbIDBookRoom.BorderColorFocused = System.Drawing.Color.SeaGreen;
             this.txbIDBookRoom.BorderColorIdle = System.Drawing.Color.SeaGreen;
             this.txbIDBookRoom.BorderColorMouseHover = System.Drawing.Color.SeaGreen;
             this.txbIDBookRoom.BorderThickness = 1;
+            this.txbIDBookRoom.characterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txbIDBookRoom.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txbIDBookRoom.Enabled = false;
             this.txbIDBookRoom.Font = new System.Drawing.Font("Century Gothic", 9.75F);
@@ -148,6 +250,7 @@
             this.txbIDBookRoom.isPassword = false;
             this.txbIDBookRoom.Location = new System.Drawing.Point(18, 49);
             this.txbIDBookRoom.Margin = new System.Windows.Forms.Padding(4);
+            this.txbIDBookRoom.MaxLength = 32767;
             this.txbIDBookRoom.Name = "txbIDBookRoom";
             this.txbIDBookRoom.Size = new System.Drawing.Size(203, 29);
             this.txbIDBookRoom.TabIndex = 49;
@@ -163,6 +266,28 @@
             this.label16.Size = new System.Drawing.Size(106, 20);
             this.label16.TabIndex = 51;
             this.label16.Text = "Mã đặt phòng:";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.ForeColor = System.Drawing.Color.SeaGreen;
+            this.label19.Location = new System.Drawing.Point(14, 188);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(69, 20);
+            this.label19.TabIndex = 34;
+            this.label19.Text = "Ngày trả:";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.ForeColor = System.Drawing.Color.SeaGreen;
+            this.label21.Location = new System.Drawing.Point(14, 134);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(83, 20);
+            this.label21.TabIndex = 32;
+            this.label21.Text = "Ngày nhận:";
             // 
             // btnClose
             // 
@@ -236,9 +361,76 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Thông tin khách hàng";
             // 
+            // bunifuThinButton23
+            // 
+            this.bunifuThinButton23.ActiveBorderThickness = 1;
+            this.bunifuThinButton23.ActiveCornerRadius = 20;
+            this.bunifuThinButton23.ActiveFillColor = System.Drawing.Color.SeaGreen;
+            this.bunifuThinButton23.ActiveForecolor = System.Drawing.Color.White;
+            this.bunifuThinButton23.ActiveLineColor = System.Drawing.Color.SeaGreen;
+            this.bunifuThinButton23.BackColor = System.Drawing.Color.White;
+            this.bunifuThinButton23.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuThinButton23.BackgroundImage")));
+            this.bunifuThinButton23.ButtonText = "Xóa Khách Hàng";
+            this.bunifuThinButton23.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bunifuThinButton23.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuThinButton23.ForeColor = System.Drawing.Color.SeaGreen;
+            this.bunifuThinButton23.IdleBorderThickness = 1;
+            this.bunifuThinButton23.IdleCornerRadius = 20;
+            this.bunifuThinButton23.IdleFillColor = System.Drawing.Color.White;
+            this.bunifuThinButton23.IdleForecolor = System.Drawing.Color.SeaGreen;
+            this.bunifuThinButton23.IdleLineColor = System.Drawing.Color.SeaGreen;
+            this.bunifuThinButton23.Location = new System.Drawing.Point(240, 263);
+            this.bunifuThinButton23.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.bunifuThinButton23.Name = "bunifuThinButton23";
+            this.bunifuThinButton23.Size = new System.Drawing.Size(203, 40);
+            this.bunifuThinButton23.TabIndex = 52;
+            this.bunifuThinButton23.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.bunifuThinButton23.Click += new System.EventHandler(this.bunifuThinButton23_Click);
+            // 
+            // bunifuThinButton21
+            // 
+            this.bunifuThinButton21.ActiveBorderThickness = 1;
+            this.bunifuThinButton21.ActiveCornerRadius = 20;
+            this.bunifuThinButton21.ActiveFillColor = System.Drawing.Color.SeaGreen;
+            this.bunifuThinButton21.ActiveForecolor = System.Drawing.Color.White;
+            this.bunifuThinButton21.ActiveLineColor = System.Drawing.Color.SeaGreen;
+            this.bunifuThinButton21.BackColor = System.Drawing.Color.White;
+            this.bunifuThinButton21.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuThinButton21.BackgroundImage")));
+            this.bunifuThinButton21.ButtonText = "Cập Nhật Khách Hàng";
+            this.bunifuThinButton21.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bunifuThinButton21.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuThinButton21.ForeColor = System.Drawing.Color.SeaGreen;
+            this.bunifuThinButton21.IdleBorderThickness = 1;
+            this.bunifuThinButton21.IdleCornerRadius = 20;
+            this.bunifuThinButton21.IdleFillColor = System.Drawing.Color.White;
+            this.bunifuThinButton21.IdleForecolor = System.Drawing.Color.SeaGreen;
+            this.bunifuThinButton21.IdleLineColor = System.Drawing.Color.SeaGreen;
+            this.bunifuThinButton21.Location = new System.Drawing.Point(10, 263);
+            this.bunifuThinButton21.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.bunifuThinButton21.Name = "bunifuThinButton21";
+            this.bunifuThinButton21.Size = new System.Drawing.Size(203, 40);
+            this.bunifuThinButton21.TabIndex = 51;
+            this.bunifuThinButton21.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.bunifuThinButton21.Click += new System.EventHandler(this.bunifuThinButton21_Click);
+            // 
+            // dpkDateOfBirth
+            // 
+            this.dpkDateOfBirth.BackColor = System.Drawing.Color.SeaGreen;
+            this.dpkDateOfBirth.BorderRadius = 0;
+            this.dpkDateOfBirth.ForeColor = System.Drawing.Color.White;
+            this.dpkDateOfBirth.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dpkDateOfBirth.FormatCustom = null;
+            this.dpkDateOfBirth.Location = new System.Drawing.Point(241, 46);
+            this.dpkDateOfBirth.Margin = new System.Windows.Forms.Padding(21, 34, 21, 34);
+            this.dpkDateOfBirth.Name = "dpkDateOfBirth";
+            this.dpkDateOfBirth.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.dpkDateOfBirth.Size = new System.Drawing.Size(202, 29);
+            this.dpkDateOfBirth.TabIndex = 50;
+            this.dpkDateOfBirth.Value = new System.DateTime(2018, 2, 23, 23, 29, 57, 962);
+            // 
             // cbNationality
             // 
-            this.cbNationality.BackColor = System.Drawing.Color.White;
+            this.cbNationality.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.cbNationality.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbNationality.FormattingEnabled = true;
             this.cbNationality.ItemHeight = 23;
@@ -264,10 +456,6 @@
             this.cbNationality.Size = new System.Drawing.Size(203, 29);
             this.cbNationality.Style = MetroFramework.MetroColorStyle.Green;
             this.cbNationality.TabIndex = 49;
-            //this.cbNationality.UseCustomBackColor = true;
-            //this.cbNationality.UseCustomForeColor = true;
-            //this.cbNationality.UseSelectable = true;
-            //this.cbNationality.UseStyleColors = true;
             // 
             // label6
             // 
@@ -282,7 +470,7 @@
             // 
             // cbCustomerType
             // 
-            this.cbCustomerType.BackColor = System.Drawing.Color.White;
+            this.cbCustomerType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.cbCustomerType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbCustomerType.FormattingEnabled = true;
             this.cbCustomerType.ItemHeight = 23;
@@ -291,10 +479,6 @@
             this.cbCustomerType.Size = new System.Drawing.Size(203, 29);
             this.cbCustomerType.Style = MetroFramework.MetroColorStyle.Green;
             this.cbCustomerType.TabIndex = 42;
-            //this.cbCustomerType.UseCustomBackColor = true;
-            //this.cbCustomerType.UseCustomForeColor = true;
-            //this.cbCustomerType.UseSelectable = true;
-            //this.cbCustomerType.UseStyleColors = true;
             // 
             // label20
             // 
@@ -327,12 +511,14 @@
             this.txbAddress.BorderColorIdle = System.Drawing.Color.SeaGreen;
             this.txbAddress.BorderColorMouseHover = System.Drawing.Color.SeaGreen;
             this.txbAddress.BorderThickness = 1;
+            this.txbAddress.characterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txbAddress.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txbAddress.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.txbAddress.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txbAddress.isPassword = false;
             this.txbAddress.Location = new System.Drawing.Point(240, 101);
             this.txbAddress.Margin = new System.Windows.Forms.Padding(4);
+            this.txbAddress.MaxLength = 32767;
             this.txbAddress.Name = "txbAddress";
             this.txbAddress.Size = new System.Drawing.Size(203, 29);
             this.txbAddress.TabIndex = 25;
@@ -351,7 +537,7 @@
             // 
             // cbSex
             // 
-            this.cbSex.BackColor = System.Drawing.Color.White;
+            this.cbSex.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.cbSex.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbSex.FormattingEnabled = true;
             this.cbSex.ItemHeight = 23;
@@ -364,10 +550,6 @@
             this.cbSex.Size = new System.Drawing.Size(203, 29);
             this.cbSex.Style = MetroFramework.MetroColorStyle.Green;
             this.cbSex.TabIndex = 26;
-            //this.cbSex.UseCustomBackColor = true;
-            //this.cbSex.UseCustomForeColor = true;
-            //this.cbSex.UseSelectable = true;
-            //this.cbSex.UseStyleColors = true;
             // 
             // label12
             // 
@@ -397,12 +579,14 @@
             this.txbPhoneNumber.BorderColorIdle = System.Drawing.Color.SeaGreen;
             this.txbPhoneNumber.BorderColorMouseHover = System.Drawing.Color.SeaGreen;
             this.txbPhoneNumber.BorderThickness = 1;
+            this.txbPhoneNumber.characterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txbPhoneNumber.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txbPhoneNumber.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.txbPhoneNumber.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txbPhoneNumber.isPassword = false;
             this.txbPhoneNumber.Location = new System.Drawing.Point(10, 207);
             this.txbPhoneNumber.Margin = new System.Windows.Forms.Padding(4);
+            this.txbPhoneNumber.MaxLength = 32767;
             this.txbPhoneNumber.Name = "txbPhoneNumber";
             this.txbPhoneNumber.Size = new System.Drawing.Size(203, 29);
             this.txbPhoneNumber.TabIndex = 24;
@@ -426,12 +610,14 @@
             this.txbIDCard.BorderColorIdle = System.Drawing.Color.SeaGreen;
             this.txbIDCard.BorderColorMouseHover = System.Drawing.Color.SeaGreen;
             this.txbIDCard.BorderThickness = 1;
+            this.txbIDCard.characterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txbIDCard.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txbIDCard.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.txbIDCard.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txbIDCard.isPassword = false;
             this.txbIDCard.Location = new System.Drawing.Point(10, 99);
             this.txbIDCard.Margin = new System.Windows.Forms.Padding(4);
+            this.txbIDCard.MaxLength = 32767;
             this.txbIDCard.Name = "txbIDCard";
             this.txbIDCard.Size = new System.Drawing.Size(203, 29);
             this.txbIDCard.TabIndex = 22;
@@ -454,12 +640,14 @@
             this.txbFullName.BorderColorIdle = System.Drawing.Color.SeaGreen;
             this.txbFullName.BorderColorMouseHover = System.Drawing.Color.SeaGreen;
             this.txbFullName.BorderThickness = 1;
+            this.txbFullName.characterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txbFullName.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txbFullName.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.txbFullName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txbFullName.isPassword = false;
             this.txbFullName.Location = new System.Drawing.Point(10, 46);
             this.txbFullName.Margin = new System.Windows.Forms.Padding(4);
+            this.txbFullName.MaxLength = 32767;
             this.txbFullName.Name = "txbFullName";
             this.txbFullName.Size = new System.Drawing.Size(203, 29);
             this.txbFullName.TabIndex = 21;
@@ -475,198 +663,6 @@
             this.label3.Size = new System.Drawing.Size(76, 20);
             this.label3.TabIndex = 22;
             this.label3.Text = "Họ và tên:";
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.ForeColor = System.Drawing.Color.SeaGreen;
-            this.label19.Location = new System.Drawing.Point(14, 188);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(69, 20);
-            this.label19.TabIndex = 34;
-            this.label19.Text = "Ngày trả:";
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.ForeColor = System.Drawing.Color.SeaGreen;
-            this.label21.Location = new System.Drawing.Point(14, 134);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(83, 20);
-            this.label21.TabIndex = 32;
-            this.label21.Text = "Ngày nhận:";
-            // 
-            // dpkDateCheckOut
-            // 
-            this.dpkDateCheckOut.BackColor = System.Drawing.Color.SeaGreen;
-            this.dpkDateCheckOut.BorderRadius = 0;
-            this.dpkDateCheckOut.ForeColor = System.Drawing.Color.White;
-            this.dpkDateCheckOut.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dpkDateCheckOut.FormatCustom = null;
-            this.dpkDateCheckOut.Location = new System.Drawing.Point(19, 207);
-            this.dpkDateCheckOut.Margin = new System.Windows.Forms.Padding(14, 21, 14, 21);
-            this.dpkDateCheckOut.Name = "dpkDateCheckOut";
-            this.dpkDateCheckOut.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.dpkDateCheckOut.Size = new System.Drawing.Size(202, 29);
-            this.dpkDateCheckOut.TabIndex = 54;
-            this.dpkDateCheckOut.Value = new System.DateTime(2018, 2, 23, 23, 29, 57, 962);
-            this.dpkDateCheckOut.onValueChanged += new System.EventHandler(this.dpkDateCheckOut_onValueChanged);
-            // 
-            // dpkDateCheckIn
-            // 
-            this.dpkDateCheckIn.BackColor = System.Drawing.Color.SeaGreen;
-            this.dpkDateCheckIn.BorderRadius = 0;
-            this.dpkDateCheckIn.ForeColor = System.Drawing.Color.White;
-            this.dpkDateCheckIn.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dpkDateCheckIn.FormatCustom = null;
-            this.dpkDateCheckIn.Location = new System.Drawing.Point(19, 155);
-            this.dpkDateCheckIn.Margin = new System.Windows.Forms.Padding(9, 13, 9, 13);
-            this.dpkDateCheckIn.Name = "dpkDateCheckIn";
-            this.dpkDateCheckIn.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.dpkDateCheckIn.Size = new System.Drawing.Size(202, 29);
-            this.dpkDateCheckIn.TabIndex = 53;
-            this.dpkDateCheckIn.Value = new System.DateTime(2018, 2, 23, 23, 29, 57, 962);
-            this.dpkDateCheckIn.onValueChanged += new System.EventHandler(this.dpkDateCheckIn_onValueChanged);
-            // 
-            // dpkDateOfBirth
-            // 
-            this.dpkDateOfBirth.BackColor = System.Drawing.Color.SeaGreen;
-            this.dpkDateOfBirth.BorderRadius = 0;
-            this.dpkDateOfBirth.ForeColor = System.Drawing.Color.White;
-            this.dpkDateOfBirth.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dpkDateOfBirth.FormatCustom = null;
-            this.dpkDateOfBirth.Location = new System.Drawing.Point(241, 46);
-            this.dpkDateOfBirth.Margin = new System.Windows.Forms.Padding(21, 34, 21, 34);
-            this.dpkDateOfBirth.Name = "dpkDateOfBirth";
-            this.dpkDateOfBirth.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.dpkDateOfBirth.Size = new System.Drawing.Size(202, 29);
-            this.dpkDateOfBirth.TabIndex = 50;
-            this.dpkDateOfBirth.Value = new System.DateTime(2018, 2, 23, 23, 29, 57, 962);
-            // 
-            // cbRoomType
-            // 
-            this.cbRoomType.BackColor = System.Drawing.Color.White;
-            this.cbRoomType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cbRoomType.FormattingEnabled = true;
-            this.cbRoomType.ItemHeight = 23;
-            this.cbRoomType.Location = new System.Drawing.Point(18, 101);
-            this.cbRoomType.Name = "cbRoomType";
-            this.cbRoomType.Size = new System.Drawing.Size(203, 29);
-            this.cbRoomType.Style = MetroFramework.MetroColorStyle.Green;
-            this.cbRoomType.TabIndex = 55;
-            //this.cbRoomType.UseCustomBackColor = true;
-            //this.cbRoomType.UseCustomForeColor = true;
-            //this.cbRoomType.UseSelectable = true;
-            //this.cbRoomType.UseStyleColors = true;
-            // 
-            // bunifuThinButton21
-            // 
-            this.bunifuThinButton21.ActiveBorderThickness = 1;
-            this.bunifuThinButton21.ActiveCornerRadius = 20;
-            this.bunifuThinButton21.ActiveFillColor = System.Drawing.Color.SeaGreen;
-            this.bunifuThinButton21.ActiveForecolor = System.Drawing.Color.White;
-            this.bunifuThinButton21.ActiveLineColor = System.Drawing.Color.SeaGreen;
-            this.bunifuThinButton21.BackColor = System.Drawing.Color.White;
-            this.bunifuThinButton21.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuThinButton21.BackgroundImage")));
-            this.bunifuThinButton21.ButtonText = "Cập Nhật Khách Hàng";
-            this.bunifuThinButton21.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuThinButton21.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuThinButton21.ForeColor = System.Drawing.Color.SeaGreen;
-            this.bunifuThinButton21.IdleBorderThickness = 1;
-            this.bunifuThinButton21.IdleCornerRadius = 20;
-            this.bunifuThinButton21.IdleFillColor = System.Drawing.Color.White;
-            this.bunifuThinButton21.IdleForecolor = System.Drawing.Color.SeaGreen;
-            this.bunifuThinButton21.IdleLineColor = System.Drawing.Color.SeaGreen;
-            this.bunifuThinButton21.Location = new System.Drawing.Point(10, 263);
-            this.bunifuThinButton21.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.bunifuThinButton21.Name = "bunifuThinButton21";
-            this.bunifuThinButton21.Size = new System.Drawing.Size(203, 40);
-            this.bunifuThinButton21.TabIndex = 51;
-            this.bunifuThinButton21.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.bunifuThinButton21.Click += new System.EventHandler(this.bunifuThinButton21_Click);
-            // 
-            // txbDays
-            // 
-            this.txbDays.BorderColorFocused = System.Drawing.Color.SeaGreen;
-            this.txbDays.BorderColorIdle = System.Drawing.Color.SeaGreen;
-            this.txbDays.BorderColorMouseHover = System.Drawing.Color.SeaGreen;
-            this.txbDays.BorderThickness = 1;
-            this.txbDays.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txbDays.Enabled = false;
-            this.txbDays.Font = new System.Drawing.Font("Century Gothic", 9.75F);
-            this.txbDays.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txbDays.isPassword = false;
-            this.txbDays.Location = new System.Drawing.Point(18, 263);
-            this.txbDays.Margin = new System.Windows.Forms.Padding(4);
-            this.txbDays.Name = "txbDays";
-            this.txbDays.Size = new System.Drawing.Size(203, 29);
-            this.txbDays.TabIndex = 57;
-            this.txbDays.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.SeaGreen;
-            this.label4.Location = new System.Drawing.Point(15, 239);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(63, 20);
-            this.label4.TabIndex = 56;
-            this.label4.Text = "Số đêm:";
-            // 
-            // bunifuThinButton22
-            // 
-            this.bunifuThinButton22.ActiveBorderThickness = 1;
-            this.bunifuThinButton22.ActiveCornerRadius = 20;
-            this.bunifuThinButton22.ActiveFillColor = System.Drawing.Color.SeaGreen;
-            this.bunifuThinButton22.ActiveForecolor = System.Drawing.Color.White;
-            this.bunifuThinButton22.ActiveLineColor = System.Drawing.Color.SeaGreen;
-            this.bunifuThinButton22.BackColor = System.Drawing.Color.White;
-            this.bunifuThinButton22.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuThinButton22.BackgroundImage")));
-            this.bunifuThinButton22.ButtonText = "Lưu Thay Đổi";
-            this.bunifuThinButton22.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuThinButton22.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuThinButton22.ForeColor = System.Drawing.Color.SeaGreen;
-            this.bunifuThinButton22.IdleBorderThickness = 1;
-            this.bunifuThinButton22.IdleCornerRadius = 20;
-            this.bunifuThinButton22.IdleFillColor = System.Drawing.Color.White;
-            this.bunifuThinButton22.IdleForecolor = System.Drawing.Color.SeaGreen;
-            this.bunifuThinButton22.IdleLineColor = System.Drawing.Color.SeaGreen;
-            this.bunifuThinButton22.Location = new System.Drawing.Point(18, 304);
-            this.bunifuThinButton22.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.bunifuThinButton22.Name = "bunifuThinButton22";
-            this.bunifuThinButton22.Size = new System.Drawing.Size(203, 40);
-            this.bunifuThinButton22.TabIndex = 58;
-            this.bunifuThinButton22.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.bunifuThinButton22.Click += new System.EventHandler(this.bunifuThinButton22_Click);
-            // 
-            // bunifuThinButton23
-            // 
-            this.bunifuThinButton23.ActiveBorderThickness = 1;
-            this.bunifuThinButton23.ActiveCornerRadius = 20;
-            this.bunifuThinButton23.ActiveFillColor = System.Drawing.Color.SeaGreen;
-            this.bunifuThinButton23.ActiveForecolor = System.Drawing.Color.White;
-            this.bunifuThinButton23.ActiveLineColor = System.Drawing.Color.SeaGreen;
-            this.bunifuThinButton23.BackColor = System.Drawing.Color.White;
-            this.bunifuThinButton23.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuThinButton23.BackgroundImage")));
-            this.bunifuThinButton23.ButtonText = "Xóa Khách Hàng";
-            this.bunifuThinButton23.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuThinButton23.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuThinButton23.ForeColor = System.Drawing.Color.SeaGreen;
-            this.bunifuThinButton23.IdleBorderThickness = 1;
-            this.bunifuThinButton23.IdleCornerRadius = 20;
-            this.bunifuThinButton23.IdleFillColor = System.Drawing.Color.White;
-            this.bunifuThinButton23.IdleForecolor = System.Drawing.Color.SeaGreen;
-            this.bunifuThinButton23.IdleLineColor = System.Drawing.Color.SeaGreen;
-            this.bunifuThinButton23.Location = new System.Drawing.Point(240, 263);
-            this.bunifuThinButton23.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.bunifuThinButton23.Name = "bunifuThinButton23";
-            this.bunifuThinButton23.Size = new System.Drawing.Size(203, 40);
-            this.bunifuThinButton23.TabIndex = 52;
-            this.bunifuThinButton23.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.bunifuThinButton23.Click += new System.EventHandler(this.bunifuThinButton23_Click);
             // 
             // fBookRoomDetails
             // 
@@ -685,6 +681,7 @@
             this.Name = "fBookRoomDetails";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "fReceiveRoomDetails";
+            this.Load += new System.EventHandler(this.fBookRoomDetails_Load);
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).EndInit();

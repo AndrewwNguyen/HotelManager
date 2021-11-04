@@ -11,21 +11,15 @@ namespace HotelManager.DAO
     public class DataProvider
     {
         private static DataProvider instance;
-        private string connectionStr = @"Data Source=DESKTOP-V56RKEE;Initial Catalog=HotelManagement;Integrated Security=True";
-        //private string connectionStr = @"Data Source=THIEN-AI\THIENAI;Initial Catalog=HotelManagement;Integrated Security=True";
-        //private string connectionStr = @"Data Source=.\sqlexpress;Initial Catalog=HotelManagement;Integrated Security=True";
-        public DataTable ExecuteQuery(string query, object[] parameter = null)
+        private string connectionStr = @"Data Source=DESKTOP-V56RKEE;Initial Catalog=KS6;Integrated Security=True";
+        public DataTable ExecuteQuery(string sql, object[] parameter = null)
         {
             DataTable data = new DataTable();
-            using (SqlConnection connection = new SqlConnection(connectionStr))
-            {
-                connection.Open();
-                SqlCommand command = new SqlCommand(query, connection);
-                AddParameter(query, parameter, command);
-                SqlDataAdapter adapter = new SqlDataAdapter(command);
-                adapter.Fill(data);
-                connection.Close();
-            }
+            SqlConnection connection = new SqlConnection(connectionStr);
+            SqlCommand command = new SqlCommand(sql, connection);
+            AddParameter(sql, parameter, command);
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            adapter.Fill(data);
             return data;
         }
         public int ExecuteNoneQuery(string query, object[] parameter = null)

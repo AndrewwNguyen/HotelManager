@@ -39,8 +39,11 @@ namespace HotelManager.DAO
             return DataProvider.Instance.ExecuteQuery("USP_LoadFullCustomerType");
         }
         #endregion
-        public static CustomerTypeDAO Instance { get { if (instance == null) instance = new CustomerTypeDAO();return instance; }
-            private set => instance = value; }
-        
+        public static CustomerTypeDAO Instance
+        {
+            get { if (instance == null) instance = new CustomerTypeDAO(); return instance; }
+            private set => instance = value;
+        }
+
     }
 }

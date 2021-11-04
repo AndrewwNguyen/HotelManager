@@ -1,5 +1,5 @@
-﻿using HotelManager.DAO;
-using HotelManager.DTO;
+﻿
+using HotelManager.Class;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,79 +15,67 @@ namespace HotelManager
 {
     public partial class fAddRoom : Form
     {
+        Class.Functions dtBase = new Class.Functions();
         public fAddRoom()
         {
             InitializeComponent();
-            LoadFullRoomType();
         }
-
-        private void LoadFullRoomType()
-        {
-            DataTable table = GetFullRoomType();
-            ChangePrice(table);
-            comboBoxRoomType.DataSource = table;
-            comboBoxRoomType.DisplayMember = "Name";
-            if (table.Rows.Count > 0)
-                comboBoxRoomType.SelectedIndex = 0;
-            txbPrice.DataBindings.Add("Text", comboBoxRoomType.DataSource, "price_New");
-            txbLimitPerson.DataBindings.Add(new Binding("Text", comboBoxRoomType.DataSource, "limitPerson"));
-        }
-        private DataTable GetFullRoomType()
-        {
-            return RoomTypeDAO.Instance.LoadFullRoomType();
-        }
-        private Room GetRoomNow()
-        {
-            Room room = new Room();
-            fStaff.Trim(new Bunifu.Framework.UI.BunifuMetroTextbox[] { txbNameRoom });
-            room.Name = txbNameRoom.Text;
-            int index = comboBoxRoomType.SelectedIndex;
-            room.IdStatusRoom = 1;
-            room.IdRoomType = (int)((DataTable)comboBoxRoomType.DataSource).Rows[index]["id"];
-            return room;
-        }
-        private void InsertRoom()
-        {
-            if (!fCustomer.CheckFillInText(new Control[] { txbNameRoom, comboBoxRoomType }))
-            {
-                MessageBox.Show("Không được để trống", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            try
-            {
-                Room roomNow = GetRoomNow();
-                if (RoomDAO.Instance.InsertRoom(roomNow))
-                {
-                    txbNameRoom.Text = string.Empty;
-                    MessageBox.Show("Thêm Thành Công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                    MessageBox.Show("Phòng này đã tồn tại(Trùng mã số phòng)", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-            }
-            catch
-            {
-                MessageBox.Show("Lỗi không thêm được phòng này", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
+ 
         private void btnAddCustomer_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Bạn có muốn thêm phòng mới?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
-            if (result == DialogResult.OK)
-                InsertRoom();
-
-        }
-        private void ChangePrice(DataTable table)
-        {
-            table.Columns.Add("price_New", typeof(string));
-            for (int i = 0; i < table.Rows.Count; i++)
+            if (txbNameRoom.Text == "")
             {
-                table.Rows[i]["price_New"] = ((int)table.Rows[i]["price"]).ToString("C0", CultureInfo.CreateSpecificCulture("vi-VN"));
+                MessageBox.Show("Bạn phải tên phòng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            table.Columns.Remove("price");
+            if (txbNameRoom.Text != "")
+            {
+                string ktra;
+                ktra = "SELECT Name FROM Room WHERE Name=N'" + txbNameRoom.Text + "'";
+                if (Functions.ktra(ktra))
+                {
+                    MessageBox.Show("Tên phòng đã tồn tại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    DialogResult result = MessageBox.Show("Bạn có muốn thêm phòng mới?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
+                    if (result == DialogResult.OK)
+                    {
+                        int a;
+                        string sql;
+                        a = Functions.key();
+                        sql = "INSERT INTO Room (ID,Name,IDRoomType,IDStatusRoom) VALUES ('" + a + "','" + txbNameRoom.Text + "',N'" + comboBoxRoomType.SelectedValue + "'," + 1 + ")";
+                        Functions.Chaysql(sql);
+                        txbNameRoom.Text = string.Empty;
+                        MessageBox.Show("Thêm Thành Công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            }
         }
         private void btnClose__Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void fAddRoom_Load(object sender, EventArgs e)
+        {
+            comboBoxRoomType.DataSource = dtBase.DataReader("SELECT ID,Name FROM RoomType");
+            comboBoxRoomType.DisplayMember = "Name";
+            comboBoxRoomType.ValueMember = "ID";
+            comboBoxRoomType.SelectedIndex = -1;
+        }
+
+        private void comboBoxRoomType_SelectedValueChanged(object sender, EventArgs e)
+        {
+            string str, str1;
+            if (comboBoxRoomType.Text == "")
+            {
+                txbPrice.Text = "";
+                txbLimitPerson.Text = "";
+            }
+            str = "SELECT Price FROM RoomType WHERE ID =N'" + comboBoxRoomType.SelectedIndex + "'";
+            str1 = "SELECT LimitPerson FROM RoomType WHERE ID =N'" + comboBoxRoomType.SelectedIndex + "'";
+            txbPrice.Text = Functions.laygiatri(str);
+            txbLimitPerson.Text = Functions.laygiatri(str1);
         }
     }
 }

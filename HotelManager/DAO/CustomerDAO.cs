@@ -19,15 +19,15 @@ namespace HotelManager.DAO
             int count = DataProvider.Instance.ExecuteQuery(query, new object[] { idCard }).Rows.Count;
             return count > 0;
         }
-        public bool InsertCustomer(string idCard, string name,int idCustomerType,DateTime dateofBirth,string address,int phonenumber,string sex,string nationality)
+        public bool InsertCustomer(string idCard, string name, int idCustomerType, DateTime dateofBirth, string address, int phonenumber, string sex, string nationality)
         {
             string query = "USP_InsertCustomer_ @idCard , @name , @idCustomerType , @dateOfBirth , @address , @phoneNumber , @sex , @nationality";
-            return DataProvider.Instance.ExecuteNoneQuery(query,new object[] { idCard, name, idCustomerType, dateofBirth, address, phonenumber, sex, nationality })>0;
+            return DataProvider.Instance.ExecuteNoneQuery(query, new object[] { idCard, name, idCustomerType, dateofBirth, address, phonenumber, sex, nationality }) > 0;
         }
         public Customer GetInfoByIdCard(string idCard)
         {
             string query = "USP_IsIdCardExists @idCard";
-            Customer customer =new Customer(DataProvider.Instance.ExecuteQuery(query, new object[] { idCard }).Rows[0]);
+            Customer customer = new Customer(DataProvider.Instance.ExecuteQuery(query, new object[] { idCard }).Rows[0]);
             return customer;
 
         }
@@ -55,10 +55,10 @@ namespace HotelManager.DAO
                                     customerNow.Sex, customerNow.Nationality, customerPre.IdCard};
             return DataProvider.Instance.ExecuteNoneQuery(query, parameter) > 0;
         }
-        public bool UpdateCustomer(int id,string name,string idCard,int idCustomerType, int phoneNumber,DateTime dateOfBirth,string address,string sex,string nationality)
+        public bool UpdateCustomer(int id, string name, string idCard, int idCustomerType, int phoneNumber, DateTime dateOfBirth, string address, string sex, string nationality)
         {
             string query = "USP_UpdateCustomer_ @id , @name , @idCard , @idCustomerType , @phoneNumber , @dateOfBirth , @address , @sex , @nationality";
-            return DataProvider.Instance.ExecuteNoneQuery(query, new object[] { id,name,idCard,idCustomerType,phoneNumber,dateOfBirth,address,sex,nationality})>0;
+            return DataProvider.Instance.ExecuteNoneQuery(query, new object[] { id, name, idCard, idCustomerType, phoneNumber, dateOfBirth, address, sex, nationality }) > 0;
         }
 
         internal DataTable LoadFullCustomer()
@@ -77,8 +77,11 @@ namespace HotelManager.DAO
             return (int)DataProvider.Instance.ExecuteScalar(query, new object[] { idReceiveRoom });
         }
         #endregion
-        public static CustomerDAO Instance { get { if (instance == null) instance = new CustomerDAO();return instance; }
-            private set => instance = value; }
-        
+        public static CustomerDAO Instance
+        {
+            get { if (instance == null) instance = new CustomerDAO(); return instance; }
+            private set => instance = value;
+        }
+
     }
 }

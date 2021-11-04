@@ -31,8 +31,6 @@ namespace HotelManager.DAO
         }
         internal Account LoadStaffInforByUserName(string username)
         {
-            //string query = "USP_GetNameStaffTypeByUserName @username";
-            //DataTable dataTable = DataProvider.Instance.ExecuteQuery(query, new object[] { username });
             string query = "select * from Staff where UserName='" + username + "'";
             DataTable dataTable = DataProvider.Instance.ExecuteQuery(query);
             Account account = new Account(dataTable.Rows[0]);

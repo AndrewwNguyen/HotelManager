@@ -120,6 +120,7 @@
             this.txbRoomName.BorderColorIdle = System.Drawing.Color.SeaGreen;
             this.txbRoomName.BorderColorMouseHover = System.Drawing.Color.SeaGreen;
             this.txbRoomName.BorderThickness = 1;
+            this.txbRoomName.characterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txbRoomName.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txbRoomName.Enabled = false;
             this.txbRoomName.Font = new System.Drawing.Font("Century Gothic", 9.75F);
@@ -127,6 +128,7 @@
             this.txbRoomName.isPassword = false;
             this.txbRoomName.Location = new System.Drawing.Point(19, 104);
             this.txbRoomName.Margin = new System.Windows.Forms.Padding(4);
+            this.txbRoomName.MaxLength = 32767;
             this.txbRoomName.Name = "txbRoomName";
             this.txbRoomName.Size = new System.Drawing.Size(203, 29);
             this.txbRoomName.TabIndex = 50;
@@ -149,6 +151,7 @@
             this.txbIDReceiveRoom.BorderColorIdle = System.Drawing.Color.SeaGreen;
             this.txbIDReceiveRoom.BorderColorMouseHover = System.Drawing.Color.SeaGreen;
             this.txbIDReceiveRoom.BorderThickness = 1;
+            this.txbIDReceiveRoom.characterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txbIDReceiveRoom.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txbIDReceiveRoom.Enabled = false;
             this.txbIDReceiveRoom.Font = new System.Drawing.Font("Century Gothic", 9.75F);
@@ -156,6 +159,7 @@
             this.txbIDReceiveRoom.isPassword = false;
             this.txbIDReceiveRoom.Location = new System.Drawing.Point(18, 49);
             this.txbIDReceiveRoom.Margin = new System.Windows.Forms.Padding(4);
+            this.txbIDReceiveRoom.MaxLength = 32767;
             this.txbIDReceiveRoom.Name = "txbIDReceiveRoom";
             this.txbIDReceiveRoom.Size = new System.Drawing.Size(203, 29);
             this.txbIDReceiveRoom.TabIndex = 49;
@@ -178,6 +182,7 @@
             this.txbDateCheckOut.BorderColorIdle = System.Drawing.Color.SeaGreen;
             this.txbDateCheckOut.BorderColorMouseHover = System.Drawing.Color.SeaGreen;
             this.txbDateCheckOut.BorderThickness = 1;
+            this.txbDateCheckOut.characterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txbDateCheckOut.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txbDateCheckOut.Enabled = false;
             this.txbDateCheckOut.Font = new System.Drawing.Font("Century Gothic", 9.75F);
@@ -185,6 +190,7 @@
             this.txbDateCheckOut.isPassword = false;
             this.txbDateCheckOut.Location = new System.Drawing.Point(18, 212);
             this.txbDateCheckOut.Margin = new System.Windows.Forms.Padding(4);
+            this.txbDateCheckOut.MaxLength = 32767;
             this.txbDateCheckOut.Name = "txbDateCheckOut";
             this.txbDateCheckOut.Size = new System.Drawing.Size(203, 29);
             this.txbDateCheckOut.TabIndex = 40;
@@ -196,6 +202,7 @@
             this.txbDateCheckIn.BorderColorIdle = System.Drawing.Color.SeaGreen;
             this.txbDateCheckIn.BorderColorMouseHover = System.Drawing.Color.SeaGreen;
             this.txbDateCheckIn.BorderThickness = 1;
+            this.txbDateCheckIn.characterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txbDateCheckIn.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txbDateCheckIn.Enabled = false;
             this.txbDateCheckIn.Font = new System.Drawing.Font("Century Gothic", 9.75F);
@@ -203,6 +210,7 @@
             this.txbDateCheckIn.isPassword = false;
             this.txbDateCheckIn.Location = new System.Drawing.Point(18, 158);
             this.txbDateCheckIn.Margin = new System.Windows.Forms.Padding(4);
+            this.txbDateCheckIn.MaxLength = 32767;
             this.txbDateCheckIn.Name = "txbDateCheckIn";
             this.txbDateCheckIn.Size = new System.Drawing.Size(203, 29);
             this.txbDateCheckIn.TabIndex = 36;
@@ -488,6 +496,7 @@
             this.Name = "fReceiveRoomDetails";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "fReceiveRoomDetails";
+            this.Load += new System.EventHandler(this.fReceiveRoomDetails_Load);
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
             this.groupBox5.ResumeLayout(false);

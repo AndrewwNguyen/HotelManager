@@ -1,5 +1,4 @@
-﻿using HotelManager.DAO;
-using HotelManager.DTO;
+﻿using HotelManager.Class;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,6 +14,7 @@ namespace HotelManager
 {
     public partial class fUseService : Form
     {
+        Class.Functions dtBase = new Class.Functions();
         string staffSetUp;
         public fUseService(string userName)
         {
@@ -24,22 +24,25 @@ namespace HotelManager
         }
         private void LoadData()
         {
-            LoadListServiceType();
             LoadListRoomType();
             LoadListFullRoom();
-            ShowSurcharge();
         }
-        public void Pay(int idBill, int discount)
+        public List<RoomType> LoadListRoomType8()
         {
-            BillDAO.Instance.UpdateRoomPrice(idBill);
-            BillDAO.Instance.UpdateServicePrice(idBill);
-            BillDAO.Instance.UpdateOther(idBill, discount);
-
+            string sql = "select * from RoomType";
+            DataTable data = dtBase.DataReader(sql); 
+            List<RoomType> listRoomType = new List<RoomType>();
+            foreach (DataRow item in data.Rows)
+            {
+                RoomType roomType = new RoomType(item);
+                listRoomType.Add(roomType);
+            }
+            return listRoomType;
         }
         public void LoadListRoomType()
         {
-            List<RoomType> roomTypes = RoomTypeDAO.Instance.LoadListRoomType();
-            switch(roomTypes.Count)
+            List<RoomType> roomTypes = LoadListRoomType8();
+            switch (roomTypes.Count)
             {
                 case 0:
                     {
@@ -57,7 +60,7 @@ namespace HotelManager
                 case 2:
                     {
                         lblRoomType1.Text = roomTypes[0].Name;
-                        lblRoomType2.Text= roomTypes[1].Name;
+                        lblRoomType2.Text = roomTypes[1].Name;
                         color3.Visible = color4.Visible = color5.Visible = false;
                         lblRoomType3.Visible = lblRoomType4.Visible = lblRoomType5.Visible = false;
                         break;
@@ -83,19 +86,9 @@ namespace HotelManager
                     }
             }
         }
-        public void LoadListServiceType()
+        public void DrawControl(Room1 room, Bunifu.Framework.UI.BunifuTileButton button)
         {
-            cbServiceType.DataSource = ServiceTypeDAO.Instance.GetServiceTypes();
-            cbServiceType.DisplayMember = "Name";
-        }
-        public void LoadListService(int idServiceType)
-        {
-            cbService.DataSource = ServiceDAO.Instance.GetServices(idServiceType);
-            cbService.DisplayMember = "Name";
-        }
-        public void DrawControl(Room room, Bunifu.Framework.UI.BunifuTileButton button)
-        {
-            int idRoomTypeName = RoomTypeDAO.Instance.GetRoomTypeByIdRoom(room.Id).Id;
+            int idRoomTypeName = Int32.Parse(Functions.laygiatri("	select B.* from Room A, RoomType B where A.IDRoomType = B.ID and A.ID ='" + room.Id + "'"));
             switch (idRoomTypeName)
             {
                 case 1:
@@ -135,34 +128,42 @@ namespace HotelManager
                     }
             }
         }
+        public List<Room1> LoadListFullRoom1()
+        {
+            string sql = "	select distinct A.*from Room A,ReceiveRoom B, BookRoom C where A.IDStatusRoom = 2 and A.ID = B.IDRoom and B.IDBookRoom = C.ID and C.DateCheckOut >= '" + DateTime.Now.Date + "' order by A.ID asc";
+            List<Room1> rooms = new List<Room1>();
+            DataTable data = dtBase.DataReader(sql);
+            foreach (DataRow item in data.Rows)
+            {
+                Room1 room = new Room1(item);
+                rooms.Add(room);
+            }
+            return rooms;
+        }
         public void LoadListFullRoom()
         {
             flowLayoutRooms.Controls.Clear();
             listViewBillRoom.Items.Clear();
             listViewUseService.Items.Clear();
-            List<Room> rooms = RoomDAO.Instance.LoadListFullRoom();
-            foreach (Room item in rooms)
+            List<Room1> rooms =LoadListFullRoom1();
+            foreach (Room1 item in rooms)
             {
                 Bunifu.Framework.UI.BunifuTileButton button = new Bunifu.Framework.UI.BunifuTileButton();
                 button.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
                 button.ForeColor = System.Drawing.Color.White;
                 button.Image = global::HotelManager.Properties.Resources.Room;
                 button.ImagePosition = 14;
-                button.ImageZoom =36;
+                button.ImageZoom = 36;
                 button.LabelPosition = 29;
-                button.Size = new System.Drawing.Size(110,95);
-                button.Margin= new System.Windows.Forms.Padding(1,1,1,1);
-
+                button.Size = new System.Drawing.Size(110, 95);
+                button.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
                 button.Tag = item;
-                button.LabelText =item.Name;
+                button.LabelText = item.Name;
                 button.Click += Button_Click;
-
                 DrawControl(item, button);
-                
                 flowLayoutRooms.Controls.Add(button);
-
-                //BillDAO.Instance.UpdateRoomPrice(item.Id);
             }
+
         }
 
         private void Button_Click(object sender, EventArgs e)
@@ -177,84 +178,55 @@ namespace HotelManager
             foreach (var item in flowLayoutRooms.Controls)
             {
                 if (item != button)
-                    DrawControl((item as Bunifu.Framework.UI.BunifuTileButton).Tag as Room, item as Bunifu.Framework.UI.BunifuTileButton);
+                    DrawControl((item as Bunifu.Framework.UI.BunifuTileButton).Tag as Room1, item as Bunifu.Framework.UI.BunifuTileButton); //Trả về màu cũ
             }
-            Room room = button.Tag as Room;
+            Room1 room = button.Tag as Room1;
             ShowBill(room.Id);
-            if (!BillDAO.Instance.IsExistsBill(room.Id))
+            string sql = "select * from Bill A, ReceiveRoom B where A.IDStatusBill = 1 and A.IDReceiveRoom = B.ID and B.IDRoom = '"+room.Id+"'";
+            if(!Functions.ktra(sql))
             {
-                int idReceiveRoom = ReceiveRoomDAO.Instance.GetIdReceiveRoomFromIdRoom(room.Id);
-                InsertBill(idReceiveRoom, staffSetUp);
+                int a = Functions.key();
+                int idReceiveRoom =Int32.Parse( Functions.laygiatri("select *from ReceiveRoom where IDRoom = '"+room.Id+"' order by ID desc")) ;
+                int price = Int32.Parse(Functions.laygiatri("select Price from Room join RoomType on Room.IDRoomType = RoomType.ID where Room.ID ='"+room.Id+"'"))+2500000;
+                string sql2;
+                sql2 = "INSERT [Bill] ([ID], [IDReceiveRoom], [StaffSetUp], [DateOfCreate], [RoomPrice], [ServicePrice], [TotalPrice], [Discount], [IDStatusBill], [Surcharge]) VALUES ('"+a+"', '"+idReceiveRoom+"',N'"+staffSetUp+"', 0,'"+price+"', 0, '"+ price + "', 0, 1, 2500000)";
+                Functions.Chaysql(sql2);
             }
-            BillDAO.Instance.UpdateRoomPrice(BillDAO.Instance.GetIdBillFromIdRoom(room.Id));
             ShowBillRoom(room.Id);
-
-            txbTotalPrice.Text = totalPrice.ToString("c0",new CultureInfo("vi-vn"));
+            txbTotalPrice.Text = totalPrice.ToString("c0", new CultureInfo("vi-vn"));
         }
 
-        public bool IsExistsBill(int idRoom)
+        public void ShowBillRoom(int idRoom)
         {
-            return BillDAO.Instance.IsExistsBill(idRoom);
-        }
-        public bool IsExistsBillDetails(int idRoom, int idService)
-        {
-            return BillDetailsDAO.Instance.IsExistsBillDetails(idRoom, idService);
-        }
-        public bool InsertBill(int idReceiveRoom, string staffSetUp)
-        {
-            return BillDAO.Instance.InsertBill(idReceiveRoom, staffSetUp);
-        }
-        public bool InsertBillDetails(int idBill, int idService, int count)
-        {
-            return BillDetailsDAO.Instance.InsertBillDetails(idBill, idService, count);
-        }
-        public bool UpdateBillDetails(int idBill, int idService, int _count)
-        {
-            return BillDetailsDAO.Instance.UpdateBillDetails(idBill, idService, _count);
-        }
-        public void AddBill(int idRoom,int idService,int count)
-        {
-            if(IsExistsBill(idRoom))
+            CultureInfo cultureInfo = new CultureInfo("vi-vn");
+            listViewBillRoom.Items.Clear();
+            DataTable data = dtBase.DataReader("select A.Name [Tên phòng],D.Price[Đơn giá] ,C.DateCheckIn [Ngày nhận],C.DateCheckOut[Ngày trả] ,E.RoomPrice[Tiền phòng],E.Surcharge[Phụ thu] from Room A, ReceiveRoom B, BookRoom C, RoomType D, Bill E where E.IDReceiveRoom = B.ID and IDStatusRoom = 2 and A.ID = B.IDRoom and B.IDBookRoom = C.ID and A.IDRoomType = D.ID and C.DateCheckOut >= '"+DateTime.Now +"' and B.IDRoom = '"+idRoom+"' and E.IDStatusBill = 1");
+            foreach (DataRow item in data.Rows)
             {
-                //Đã tồn tại Bill
-                if(!IsExistsBillDetails(idRoom,idService))
-                {
-                    //Chưa tồn tại BillDetails
-                    if (count > 0)
-                    {
-                        int idBill = BillDAO.Instance.GetIdBillFromIdRoom(idRoom);
-                        InsertBillDetails(idBill, idService, count);
-                    }
-                    else
-                       MessageBox.Show(this, "Số lượng không hợp lệ.\nVui lòng nhập lại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else
-                {
-                    //ĐÃ tồn tại BillDetails
-                    int idBill = BillDAO.Instance.GetIdBillFromIdRoom(idRoom);
-                    UpdateBillDetails(idBill, idService, count);
-                }
-            }
-            else
-            {
-                //Chưa tồn tại Bill
-                if (count > 0)
-                {
-                    int idReceiveRoom = ReceiveRoomDAO.Instance.GetIdReceiveRoomFromIdRoom(idRoom);
-                    InsertBill(idReceiveRoom, staffSetUp);
-                    int idBill = BillDAO.Instance.GetIdBillMax();
-                    InsertBillDetails(idBill, idService, count);
-                }
-                else
-                  MessageBox.Show(this, "Số lượng không hợp lệ.\nVui lòng nhập lại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ListViewItem listViewItem = new ListViewItem(item["Tên Phòng"].ToString());
+                ListViewItem.ListViewSubItem subItem1 = new ListViewItem.ListViewSubItem(listViewItem, ((int)item["Đơn giá"]).ToString("c0", cultureInfo));
+                ListViewItem.ListViewSubItem subItem2 = new ListViewItem.ListViewSubItem(listViewItem, ((DateTime)item["Ngày nhận"]).ToString().Split(' ')[0]);
+                ListViewItem.ListViewSubItem subItem3 = new ListViewItem.ListViewSubItem(listViewItem, ((DateTime)item["Ngày trả"]).ToString().Split(' ')[0]);
+                ListViewItem.ListViewSubItem subItem4 = new ListViewItem.ListViewSubItem(listViewItem, ((int)item["Tiền phòng"]).ToString("c0", cultureInfo));
+                ListViewItem.ListViewSubItem subItem5 = new ListViewItem.ListViewSubItem(listViewItem, ((int)item["Phụ thu"]).ToString("c0", cultureInfo));
+                int roomPrice = (int)item["Tiền phòng"] + (int)item["Phụ thu"];
+                ListViewItem.ListViewSubItem subItem6 = new ListViewItem.ListViewSubItem(listViewItem, roomPrice.ToString("c0", cultureInfo));
+                totalPrice += roomPrice;
+                listViewItem.SubItems.Add(subItem1);
+                listViewItem.SubItems.Add(subItem2);
+                listViewItem.SubItems.Add(subItem3);
+                listViewItem.SubItems.Add(subItem4);
+                listViewItem.SubItems.Add(subItem5);
+                listViewItem.SubItems.Add(subItem6);
+                listViewBillRoom.Items.Add(listViewItem);
             }
         }
         int id = 1;
         int totalPrice = 0;
         public void ShowSurcharge()
         {
-            string query = "select * from Parameter";
-            DataTable data = DataProvider.Instance.ExecuteQuery(query);
+            string sql = "select * from Parameter";
+            DataTable data = dtBase.DataReader(sql);
             foreach (DataRow item in data.Rows)
             {
                 ListViewItem listViewItem = new ListViewItem(id.ToString());
@@ -275,21 +247,19 @@ namespace HotelManager
         public void ShowBill(int idRoom)
         {
             listViewUseService.Items.Clear();
-            DataTable dataTable = BillDAO.Instance.ShowBill(idRoom);
+            DataTable dataTable = dtBase.DataReader("select D.Name [Tên dịch vụ],D.Price[Đơn giá],B.Count[Số lượng],B.TotalPrice[Thành tiền] from Bill A, BillDetails B, ReceiveRoom C, Service D where A.IDStatusBill = 1 and A.ID = b.IDBill and A.IDReceiveRoom = C.ID and C.IDRoom = '"+idRoom+"' and B.IDService = D.ID");
             CultureInfo cultureInfo = new CultureInfo("vi-vn");
             int _totalPrice = 0;
             foreach (DataRow item in dataTable.Rows)
             {
                 ListViewItem listViewItem = new ListViewItem(id.ToString());
                 id++;
-
                 ListViewItem.ListViewSubItem subItem1 = new ListViewItem.ListViewSubItem(listViewItem, item["Tên dịch vụ"].ToString());
                 ListViewItem.ListViewSubItem subItem2 = new ListViewItem.ListViewSubItem(listViewItem, ((int)item["Đơn giá"]).ToString("c0", cultureInfo));
                 ListViewItem.ListViewSubItem subItem3 = new ListViewItem.ListViewSubItem(listViewItem, ((int)item["Số lượng"]).ToString());
                 ListViewItem.ListViewSubItem subItem4 = new ListViewItem.ListViewSubItem(listViewItem, ((int)item["Thành tiền"]).ToString("c0", cultureInfo));
 
-                
-                _totalPrice+= (int)item["Thành tiền"];
+                _totalPrice += (int)item["Thành tiền"];
 
                 listViewItem.SubItems.Add(subItem1);
                 listViewItem.SubItems.Add(subItem2);
@@ -313,62 +283,39 @@ namespace HotelManager
 
             id = 1;
         }
-        public void ShowBillRoom(int idRoom)
-        {
-            CultureInfo cultureInfo = new CultureInfo("vi-vn");
-            listViewBillRoom.Items.Clear();
-            if (IsExistsBill(idRoom))
-            {
-                DataRow data = BillDAO.Instance.ShowBillRoom(idRoom);
-
-                ListViewItem listViewItem = new ListViewItem(data["Tên phòng"].ToString());
-
-                ListViewItem.ListViewSubItem subItem1 = new ListViewItem.ListViewSubItem(listViewItem, ((int)data["Đơn giá"]).ToString("c0", cultureInfo));
-                ListViewItem.ListViewSubItem subItem2 = new ListViewItem.ListViewSubItem(listViewItem, ((DateTime)data["Ngày nhận"]).ToString().Split(' ')[0]);
-                ListViewItem.ListViewSubItem subItem3 = new ListViewItem.ListViewSubItem(listViewItem, ((DateTime)data["Ngày trả"]).ToString().Split(' ')[0]);
-                ListViewItem.ListViewSubItem subItem4 = new ListViewItem.ListViewSubItem(listViewItem, ((int)data["Tiền phòng"]).ToString("c0", cultureInfo));
-                ListViewItem.ListViewSubItem subItem5 = new ListViewItem.ListViewSubItem(listViewItem, ((int)data["Phụ thu"]).ToString("c0", cultureInfo));
-                int roomPrice = (int)data["Tiền phòng"] + (int)data["Phụ thu"];
-                ListViewItem.ListViewSubItem subItem6 = new ListViewItem.ListViewSubItem(listViewItem, roomPrice.ToString("c0", cultureInfo));
-
-                totalPrice += roomPrice;
-
-                listViewItem.SubItems.Add(subItem1);
-                listViewItem.SubItems.Add(subItem2);
-                listViewItem.SubItems.Add(subItem3);
-                listViewItem.SubItems.Add(subItem4);
-                listViewItem.SubItems.Add(subItem5);
-                listViewItem.SubItems.Add(subItem6);
-
-                listViewBillRoom.Items.Add(listViewItem);
-            }
-        }
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
-        private void cbServiceType_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            LoadListService((cbServiceType.SelectedItem as ServiceType).Id);
-        }
         private void cbService_SelectedIndexChanged(object sender, EventArgs e)
         {
-            CultureInfo cultureInfo = new CultureInfo("vi-vn");
-            if (cbService.SelectedItem != null)
-                txbPrice.Text = (cbService.SelectedItem as Service).Price.ToString("c0", cultureInfo);
+            string sql = "Select Price From Service Where ID = '"+cbService.SelectedIndex.ToString()+"'";
+            txbPrice.Text = Functions.laygiatri(sql);
         }
-
         private void btnAdd_Click(object sender, EventArgs e)
         {
             totalPrice = 0;
-            Room room = flowLayoutRooms.Tag as Room;
-            AddBill(room.Id, (cbService.SelectedItem as Service).Id, int.Parse(numericUpDownCount.Value.ToString()));
-            ShowBill(room.Id);
-            numericUpDownCount.Value = 1;
+            Room1 room = flowLayoutRooms.Tag as Room1;
 
-            ShowBillRoom(room.Id);
-            txbTotalPrice.Text = totalPrice.ToString("c0", new CultureInfo("vi-vn"));
+            string sql1 = "select Bill.ID from Bill join ReceiveRoom on Bill.IDReceiveRoom = ReceiveRoom.ID join Room on Room.ID = ReceiveRoom.IDRoom where Room.ID = '"+room.Id+"'";
+            int price = Int32.Parse(Functions.laygiatri("select Price from Service where ID ='" + cbService.SelectedValue.ToString() +"' ")) ;
+            string sql2 = "	select * from Bill A,BillDetails B, ReceiveRoom C where A.IDStatusBill = 1 and A.ID = B.IDBill and C.ID = A.IDReceiveRoom and C.IDRoom = '"+room.Id+"' and B.IDService = '"+cbService.SelectedValue.ToString()+"'";
+            if(!Functions.ktra(sql2))
+            {
+                string sql = "INSERT BillDetails(IDBill,IDService,Count,TotalPrice)VALUES('" + Functions.laygiatri(sql1) + "','" + cbService.SelectedValue.ToString() + "','" + numericUpDownCount.Value + "','" + price* numericUpDownCount.Value + "')";
+                Functions.Chaysql(sql);
+                txbTotalPrice.Text = totalPrice.ToString("c0", new CultureInfo("vi-vn"));
+                ShowBill(room.Id);
+
+            }
+            else
+            {
+                string sql10= "	select Count from Bill A,BillDetails B, ReceiveRoom C where A.IDStatusBill = 1 and A.ID = B.IDBill and C.ID = A.IDReceiveRoom and C.IDRoom = '" + room.Id + "' and B.IDService = '" + cbService.SelectedValue.ToString() + "'";
+                string sql = "UPDATE BillDetails SET Count ='"+numericUpDownCount.Value+ Int32.Parse(Functions.laygiatri(sql10))+"',TotalPrice = '"+ price*(numericUpDownCount.Value + Int32.Parse(Functions.laygiatri(sql10))) + "' where IDService = '"+Functions.laygiatri(sql1)+"'";
+                Functions.Chaysql(sql);
+                txbTotalPrice.Text = totalPrice.ToString("c0", new CultureInfo("vi-vn"));
+                ShowBill(room.Id);
+            }
         }
 
 
@@ -385,21 +332,37 @@ namespace HotelManager
 
         private void btnAddCustomer_Click(object sender, EventArgs e)
         {
-            Room room = flowLayoutRooms.Tag as Room;
-            if (MessageBox.Show("Bạn có chắc chắn thanh toán cho "  +room.Name+ " không?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
-            {
-                int idBill = BillDAO.Instance.GetIdBillFromIdRoom(room.Id);
-                Pay(idBill,int.Parse(numericUpDown1.Value.ToString()));
-                ReportDAO.Instance.InsertReport(idBill);
-                MessageBox.Show( "Thanh toán thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.Hide();
-                fPrintBill fPrintBill = new fPrintBill(room.Id,idBill);
-                fPrintBill.ShowDialog();
-                this.Show();              
-                LoadListFullRoom();
-                listViewBillRoom.Items.Clear();
-                listViewUseService.Items.Clear();
-            }
+            //Room1 room = flowLayoutRooms.Tag as Room1;
+            //if (MessageBox.Show("Bạn có chắc chắn thanh toán cho " + room.Name + " không?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            //{
+            //    int idBill = BillDAO.Instance.GetIdBillFromIdRoom(room.Id);
+            //    Pay(idBill, int.Parse(numericUpDown1.Value.ToString()));
+            //    ReportDAO.Instance.InsertReport(idBill);
+            //    MessageBox.Show("Thanh toán thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //    this.Hide();
+            //    fPrintBill fPrintBill = new fPrintBill(/*room.Id, idBill*/);
+            //    fPrintBill.ShowDialog();
+            //    this.Show();
+            //    LoadListFullRoom();
+            //    listViewBillRoom.Items.Clear();
+            //    listViewUseService.Items.Clear();
+            //}
+        }
+
+        private void fUseService_Load(object sender, EventArgs e)
+        {
+            cbService.DataSource = dtBase.DataReader("SELECT Name,ID FROM Service");
+            cbService.DisplayMember = "Name";
+            cbService.ValueMember = "ID";
+            cbServiceType.DataSource = dtBase.DataReader("SELECT Name,ID FROM ServiceType");
+            cbServiceType.DisplayMember = "Name";
+            cbServiceType.ValueMember = "ID";
+        }
+        private void cbService_DropDown(object sender, EventArgs e)
+        {
+            cbService.DataSource = dtBase.DataReader("select Service.ID,Service.Name from Service join ServiceType on ServiceType.ID= Service.IDServiceType where ServiceType.ID= '" + cbServiceType.SelectedValue + "'");
+            cbService.DisplayMember = "Service.Name";
+            cbService.ValueMember = "Service.ID";
         }
     }
 }

@@ -195,6 +195,7 @@
             this.txbLimitPerson.BorderColorIdle = System.Drawing.Color.SeaGreen;
             this.txbLimitPerson.BorderColorMouseHover = System.Drawing.Color.SeaGreen;
             this.txbLimitPerson.BorderThickness = 1;
+            this.txbLimitPerson.characterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txbLimitPerson.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txbLimitPerson.Enabled = false;
             this.txbLimitPerson.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -202,6 +203,7 @@
             this.txbLimitPerson.isPassword = false;
             this.txbLimitPerson.Location = new System.Drawing.Point(247, 100);
             this.txbLimitPerson.Margin = new System.Windows.Forms.Padding(0);
+            this.txbLimitPerson.MaxLength = 32767;
             this.txbLimitPerson.Name = "txbLimitPerson";
             this.txbLimitPerson.Size = new System.Drawing.Size(175, 29);
             this.txbLimitPerson.TabIndex = 44;
@@ -235,12 +237,14 @@
             this.txbNameRoom.BorderColorIdle = System.Drawing.Color.SeaGreen;
             this.txbNameRoom.BorderColorMouseHover = System.Drawing.Color.SeaGreen;
             this.txbNameRoom.BorderThickness = 1;
+            this.txbNameRoom.characterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txbNameRoom.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txbNameRoom.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbNameRoom.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txbNameRoom.isPassword = false;
             this.txbNameRoom.Location = new System.Drawing.Point(22, 44);
             this.txbNameRoom.Margin = new System.Windows.Forms.Padding(0);
+            this.txbNameRoom.MaxLength = 32767;
             this.txbNameRoom.Name = "txbNameRoom";
             this.txbNameRoom.Size = new System.Drawing.Size(175, 29);
             this.txbNameRoom.TabIndex = 0;
@@ -253,6 +257,7 @@
             this.txbPrice.BorderColorIdle = System.Drawing.Color.SeaGreen;
             this.txbPrice.BorderColorMouseHover = System.Drawing.Color.SeaGreen;
             this.txbPrice.BorderThickness = 1;
+            this.txbPrice.characterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txbPrice.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txbPrice.Enabled = false;
             this.txbPrice.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -260,6 +265,7 @@
             this.txbPrice.isPassword = false;
             this.txbPrice.Location = new System.Drawing.Point(247, 44);
             this.txbPrice.Margin = new System.Windows.Forms.Padding(0);
+            this.txbPrice.MaxLength = 32767;
             this.txbPrice.Name = "txbPrice";
             this.txbPrice.Size = new System.Drawing.Size(175, 29);
             this.txbPrice.TabIndex = 42;
@@ -267,7 +273,7 @@
             // 
             // comboBoxRoomType
             // 
-            this.comboBoxRoomType.BackColor = System.Drawing.Color.White;
+            this.comboBoxRoomType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.comboBoxRoomType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboBoxRoomType.ForeColor = System.Drawing.Color.SeaGreen;
             this.comboBoxRoomType.FormattingEnabled = true;
@@ -277,10 +283,7 @@
             this.comboBoxRoomType.Size = new System.Drawing.Size(175, 29);
             this.comboBoxRoomType.Style = MetroFramework.MetroColorStyle.Green;
             this.comboBoxRoomType.TabIndex = 1;
-            //this.comboBoxRoomType.UseCustomBackColor = true;
-            //this.comboBoxRoomType.UseCustomForeColor = true;
-            //this.comboBoxRoomType.UseSelectable = true;
-            //this.comboBoxRoomType.UseStyleColors = true;
+            this.comboBoxRoomType.SelectedValueChanged += new System.EventHandler(this.comboBoxRoomType_SelectedValueChanged);
             // 
             // btnClose
             // 
@@ -313,6 +316,7 @@
             this.Name = "fAddRoom";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "fAddCustomerInfo";
+            this.Load += new System.EventHandler(this.fAddRoom_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupRoom.ResumeLayout(false);
             this.groupRoom.PerformLayout();

@@ -28,11 +28,6 @@ namespace HotelManager
                 this.Hide();
                 fManagement f = new fManagement(txbUserName.Text);
                 f.ShowDialog();
-
-                //txbUserName.Text = String.Empty;
-                //txbPassWord.Text = String.Empty;
-                //txbUserName.Focus();
-
             }
             else
             {
@@ -72,6 +67,16 @@ namespace HotelManager
 
             panel2.BackColor = Color.WhiteSmoke; ;
             txbPassWord.ForeColor = Color.WhiteSmoke;
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void fLogin_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

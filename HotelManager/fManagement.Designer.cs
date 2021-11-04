@@ -32,18 +32,19 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fManagement));
             this.bunifuDragControl1 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.panelRight = new System.Windows.Forms.Panel();
+            this.btnClose = new System.Windows.Forms.PictureBox();
+            this.btnQuydinh = new System.Windows.Forms.Button();
+            this.btnQLkhachhang = new System.Windows.Forms.Button();
+            this.btnThanhtoan = new System.Windows.Forms.Button();
+            this.btnQLdichvu = new System.Windows.Forms.Button();
+            this.btnQLhoadon = new System.Windows.Forms.Button();
+            this.btnQLnhanvien = new System.Windows.Forms.Button();
             this.btnQuanlyphong = new System.Windows.Forms.Button();
             this.btnThongkedt = new System.Windows.Forms.Button();
+            this.btnDatphong = new System.Windows.Forms.Button();
             this.btnNhanphong = new System.Windows.Forms.Button();
             this.bunifuSeparator1 = new Bunifu.Framework.UI.BunifuSeparator();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnQLnhanvien = new System.Windows.Forms.Button();
-            this.btnQLhoadon = new System.Windows.Forms.Button();
-            this.btnQLdichvu = new System.Windows.Forms.Button();
-            this.btnThanhtoan = new System.Windows.Forms.Button();
-            this.btnQLkhachhang = new System.Windows.Forms.Button();
-            this.btnQuydinh = new System.Windows.Forms.Button();
-            this.btnDatphong = new System.Windows.Forms.Button();
             this.bunifuFlatButton1 = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnHelp = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnLogOut = new Bunifu.Framework.UI.BunifuFlatButton();
@@ -51,10 +52,9 @@
             this.btnNavigationPanel = new Bunifu.Framework.UI.BunifuFlatButton();
             this.panelLeft = new Bunifu.Framework.UI.BunifuGradientPanel();
             this.btnAccountProfile = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.btnClose = new System.Windows.Forms.PictureBox();
             this.panelRight.SuspendLayout();
-            this.panelLeft.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
+            this.panelLeft.SuspendLayout();
             this.SuspendLayout();
             // 
             // bunifuDragControl1
@@ -66,7 +66,7 @@
             // 
             // panelRight
             // 
-            this.panelRight.BackColor = System.Drawing.Color.DarkGray;
+            this.panelRight.BackColor = System.Drawing.Color.White;
             this.panelRight.Controls.Add(this.btnClose);
             this.panelRight.Controls.Add(this.btnQuydinh);
             this.panelRight.Controls.Add(this.btnQLkhachhang);
@@ -81,15 +81,134 @@
             this.panelRight.Controls.Add(this.bunifuSeparator1);
             this.panelRight.Controls.Add(this.label2);
             this.panelRight.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelRight.Location = new System.Drawing.Point(174, 0);
+            this.panelRight.Location = new System.Drawing.Point(168, 0);
             this.panelRight.Name = "panelRight";
-            this.panelRight.Size = new System.Drawing.Size(942, 583);
+            this.panelRight.Size = new System.Drawing.Size(948, 583);
             this.panelRight.TabIndex = 1;
             this.panelRight.Paint += new System.Windows.Forms.PaintEventHandler(this.panelRight_Paint);
             // 
+            // btnClose
+            // 
+            this.btnClose.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnClose.BackgroundImage")));
+            this.btnClose.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnClose.Location = new System.Drawing.Point(898, 8);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(32, 32);
+            this.btnClose.TabIndex = 76;
+            this.btnClose.TabStop = false;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // btnQuydinh
+            // 
+            this.btnQuydinh.BackColor = System.Drawing.Color.SeaGreen;
+            this.btnQuydinh.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnQuydinh.BackgroundImage")));
+            this.btnQuydinh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnQuydinh.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnQuydinh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnQuydinh.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnQuydinh.ForeColor = System.Drawing.Color.Black;
+            this.btnQuydinh.Location = new System.Drawing.Point(632, 377);
+            this.btnQuydinh.Name = "btnQuydinh";
+            this.btnQuydinh.Size = new System.Drawing.Size(276, 135);
+            this.btnQuydinh.TabIndex = 75;
+            this.btnQuydinh.Text = "Quy Định";
+            this.btnQuydinh.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnQuydinh.UseVisualStyleBackColor = false;
+            this.btnQuydinh.Click += new System.EventHandler(this.btnQuydinh_Click);
+            // 
+            // btnQLkhachhang
+            // 
+            this.btnQLkhachhang.BackColor = System.Drawing.Color.SeaGreen;
+            this.btnQLkhachhang.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnQLkhachhang.BackgroundImage")));
+            this.btnQLkhachhang.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnQLkhachhang.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnQLkhachhang.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnQLkhachhang.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnQLkhachhang.ForeColor = System.Drawing.Color.Black;
+            this.btnQLkhachhang.Location = new System.Drawing.Point(331, 377);
+            this.btnQLkhachhang.Name = "btnQLkhachhang";
+            this.btnQLkhachhang.Size = new System.Drawing.Size(276, 135);
+            this.btnQLkhachhang.TabIndex = 73;
+            this.btnQLkhachhang.Text = "Quản Lý Khách Hàng";
+            this.btnQLkhachhang.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnQLkhachhang.UseVisualStyleBackColor = false;
+            this.btnQLkhachhang.Click += new System.EventHandler(this.btnQLkhachhang_Click);
+            // 
+            // btnThanhtoan
+            // 
+            this.btnThanhtoan.BackColor = System.Drawing.Color.SeaGreen;
+            this.btnThanhtoan.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnThanhtoan.BackgroundImage")));
+            this.btnThanhtoan.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnThanhtoan.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnThanhtoan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnThanhtoan.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnThanhtoan.ForeColor = System.Drawing.Color.Black;
+            this.btnThanhtoan.Location = new System.Drawing.Point(28, 377);
+            this.btnThanhtoan.Name = "btnThanhtoan";
+            this.btnThanhtoan.Size = new System.Drawing.Size(277, 135);
+            this.btnThanhtoan.TabIndex = 71;
+            this.btnThanhtoan.Text = "Sử Dụng Dịch Vụ Và Thanh Toán";
+            this.btnThanhtoan.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnThanhtoan.UseVisualStyleBackColor = false;
+            this.btnThanhtoan.Click += new System.EventHandler(this.btnThanhtoan_Click);
+            // 
+            // btnQLdichvu
+            // 
+            this.btnQLdichvu.BackColor = System.Drawing.Color.SeaGreen;
+            this.btnQLdichvu.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnQLdichvu.BackgroundImage")));
+            this.btnQLdichvu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnQLdichvu.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnQLdichvu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnQLdichvu.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnQLdichvu.ForeColor = System.Drawing.Color.Black;
+            this.btnQLdichvu.Location = new System.Drawing.Point(773, 73);
+            this.btnQLdichvu.Name = "btnQLdichvu";
+            this.btnQLdichvu.Size = new System.Drawing.Size(135, 276);
+            this.btnQLdichvu.TabIndex = 69;
+            this.btnQLdichvu.Text = "Quản Lý Dịch Vụ";
+            this.btnQLdichvu.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnQLdichvu.UseVisualStyleBackColor = false;
+            this.btnQLdichvu.Click += new System.EventHandler(this.btnQLdichvu_Click);
+            // 
+            // btnQLhoadon
+            // 
+            this.btnQLhoadon.BackColor = System.Drawing.Color.SeaGreen;
+            this.btnQLhoadon.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnQLhoadon.BackgroundImage")));
+            this.btnQLhoadon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnQLhoadon.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnQLhoadon.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnQLhoadon.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnQLhoadon.ForeColor = System.Drawing.Color.Black;
+            this.btnQLhoadon.Location = new System.Drawing.Point(632, 73);
+            this.btnQLhoadon.Name = "btnQLhoadon";
+            this.btnQLhoadon.Size = new System.Drawing.Size(135, 276);
+            this.btnQLhoadon.TabIndex = 67;
+            this.btnQLhoadon.Text = "Quản Lý Hóa Đơn";
+            this.btnQLhoadon.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnQLhoadon.UseVisualStyleBackColor = false;
+            this.btnQLhoadon.Click += new System.EventHandler(this.btnQLhoadon_Click);
+            // 
+            // btnQLnhanvien
+            // 
+            this.btnQLnhanvien.BackColor = System.Drawing.Color.SeaGreen;
+            this.btnQLnhanvien.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnQLnhanvien.BackgroundImage")));
+            this.btnQLnhanvien.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnQLnhanvien.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnQLnhanvien.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnQLnhanvien.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnQLnhanvien.ForeColor = System.Drawing.Color.Black;
+            this.btnQLnhanvien.Location = new System.Drawing.Point(471, 214);
+            this.btnQLnhanvien.Name = "btnQLnhanvien";
+            this.btnQLnhanvien.Size = new System.Drawing.Size(135, 135);
+            this.btnQLnhanvien.TabIndex = 65;
+            this.btnQLnhanvien.Text = "Nhân Viên";
+            this.btnQLnhanvien.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnQLnhanvien.UseVisualStyleBackColor = false;
+            this.btnQLnhanvien.Click += new System.EventHandler(this.btnQLnhanvien_Click);
+            // 
             // btnQuanlyphong
             // 
-            this.btnQuanlyphong.BackColor = System.Drawing.Color.LightGray;
+            this.btnQuanlyphong.BackColor = System.Drawing.Color.SeaGreen;
             this.btnQuanlyphong.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnQuanlyphong.BackgroundImage")));
             this.btnQuanlyphong.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnQuanlyphong.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -107,7 +226,7 @@
             // 
             // btnThongkedt
             // 
-            this.btnThongkedt.BackColor = System.Drawing.Color.LightGray;
+            this.btnThongkedt.BackColor = System.Drawing.Color.SeaGreen;
             this.btnThongkedt.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnThongkedt.BackgroundImage")));
             this.btnThongkedt.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnThongkedt.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -123,9 +242,27 @@
             this.btnThongkedt.UseVisualStyleBackColor = false;
             this.btnThongkedt.Click += new System.EventHandler(this.btnThongkedt_Click);
             // 
+            // btnDatphong
+            // 
+            this.btnDatphong.BackColor = System.Drawing.Color.SeaGreen;
+            this.btnDatphong.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnDatphong.BackgroundImage")));
+            this.btnDatphong.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnDatphong.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDatphong.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDatphong.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnDatphong.ForeColor = System.Drawing.Color.Black;
+            this.btnDatphong.Location = new System.Drawing.Point(28, 73);
+            this.btnDatphong.Name = "btnDatphong";
+            this.btnDatphong.Size = new System.Drawing.Size(135, 276);
+            this.btnDatphong.TabIndex = 59;
+            this.btnDatphong.Text = "Đặt Phòng";
+            this.btnDatphong.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnDatphong.UseVisualStyleBackColor = false;
+            this.btnDatphong.Click += new System.EventHandler(this.btnDatphong_Click);
+            // 
             // btnNhanphong
             // 
-            this.btnNhanphong.BackColor = System.Drawing.Color.LightGray;
+            this.btnNhanphong.BackColor = System.Drawing.Color.SeaGreen;
             this.btnNhanphong.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnNhanphong.BackgroundImage")));
             this.btnNhanphong.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnNhanphong.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -144,6 +281,7 @@
             // bunifuSeparator1
             // 
             this.bunifuSeparator1.BackColor = System.Drawing.Color.Transparent;
+            this.bunifuSeparator1.ForeColor = System.Drawing.Color.SeaGreen;
             this.bunifuSeparator1.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.bunifuSeparator1.LineThickness = 1;
             this.bunifuSeparator1.Location = new System.Drawing.Point(29, 42);
@@ -156,139 +294,14 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.White;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.Black;
+            this.label2.ForeColor = System.Drawing.Color.SeaGreen;
             this.label2.Location = new System.Drawing.Point(21, 7);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(237, 37);
             this.label2.TabIndex = 21;
             this.label2.Text = "Quản Lí Khách Sạn";
-            // 
-            // btnQLnhanvien
-            // 
-            this.btnQLnhanvien.BackColor = System.Drawing.Color.LightGray;
-            this.btnQLnhanvien.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnQLnhanvien.BackgroundImage")));
-            this.btnQLnhanvien.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnQLnhanvien.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnQLnhanvien.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnQLnhanvien.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btnQLnhanvien.ForeColor = System.Drawing.Color.Black;
-            this.btnQLnhanvien.Location = new System.Drawing.Point(471, 214);
-            this.btnQLnhanvien.Name = "btnQLnhanvien";
-            this.btnQLnhanvien.Size = new System.Drawing.Size(135, 135);
-            this.btnQLnhanvien.TabIndex = 65;
-            this.btnQLnhanvien.Text = "Nhân Viên";
-            this.btnQLnhanvien.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnQLnhanvien.UseVisualStyleBackColor = false;
-            this.btnQLnhanvien.Click += new System.EventHandler(this.btnQLnhanvien_Click);
-            // 
-            // btnQLhoadon
-            // 
-            this.btnQLhoadon.BackColor = System.Drawing.Color.LightGray;
-            this.btnQLhoadon.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnQLhoadon.BackgroundImage")));
-            this.btnQLhoadon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnQLhoadon.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnQLhoadon.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnQLhoadon.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btnQLhoadon.ForeColor = System.Drawing.Color.Black;
-            this.btnQLhoadon.Location = new System.Drawing.Point(632, 73);
-            this.btnQLhoadon.Name = "btnQLhoadon";
-            this.btnQLhoadon.Size = new System.Drawing.Size(135, 276);
-            this.btnQLhoadon.TabIndex = 67;
-            this.btnQLhoadon.Text = "Quản Lý Hóa Đơn";
-            this.btnQLhoadon.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnQLhoadon.UseVisualStyleBackColor = false;
-            this.btnQLhoadon.Click += new System.EventHandler(this.btnQLhoadon_Click);
-            // 
-            // btnQLdichvu
-            // 
-            this.btnQLdichvu.BackColor = System.Drawing.Color.LightGray;
-            this.btnQLdichvu.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnQLdichvu.BackgroundImage")));
-            this.btnQLdichvu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnQLdichvu.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnQLdichvu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnQLdichvu.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btnQLdichvu.ForeColor = System.Drawing.Color.Black;
-            this.btnQLdichvu.Location = new System.Drawing.Point(773, 73);
-            this.btnQLdichvu.Name = "btnQLdichvu";
-            this.btnQLdichvu.Size = new System.Drawing.Size(135, 276);
-            this.btnQLdichvu.TabIndex = 69;
-            this.btnQLdichvu.Text = "Quản Lý Dịch Vụ";
-            this.btnQLdichvu.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnQLdichvu.UseVisualStyleBackColor = false;
-            this.btnQLdichvu.Click += new System.EventHandler(this.btnQLdichvu_Click);
-            // 
-            // btnThanhtoan
-            // 
-            this.btnThanhtoan.BackColor = System.Drawing.Color.LightGray;
-            this.btnThanhtoan.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnThanhtoan.BackgroundImage")));
-            this.btnThanhtoan.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnThanhtoan.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnThanhtoan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnThanhtoan.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btnThanhtoan.ForeColor = System.Drawing.Color.Black;
-            this.btnThanhtoan.Location = new System.Drawing.Point(28, 377);
-            this.btnThanhtoan.Name = "btnThanhtoan";
-            this.btnThanhtoan.Size = new System.Drawing.Size(277, 135);
-            this.btnThanhtoan.TabIndex = 71;
-            this.btnThanhtoan.Text = "Sử Dụng Dịch Vụ Và Thanh Toán";
-            this.btnThanhtoan.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnThanhtoan.UseVisualStyleBackColor = false;
-            this.btnThanhtoan.Click += new System.EventHandler(this.btnThanhtoan_Click);
-            // 
-            // btnQLkhachhang
-            // 
-            this.btnQLkhachhang.BackColor = System.Drawing.Color.LightGray;
-            this.btnQLkhachhang.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnQLkhachhang.BackgroundImage")));
-            this.btnQLkhachhang.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnQLkhachhang.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnQLkhachhang.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnQLkhachhang.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btnQLkhachhang.ForeColor = System.Drawing.Color.Black;
-            this.btnQLkhachhang.Location = new System.Drawing.Point(331, 377);
-            this.btnQLkhachhang.Name = "btnQLkhachhang";
-            this.btnQLkhachhang.Size = new System.Drawing.Size(276, 135);
-            this.btnQLkhachhang.TabIndex = 73;
-            this.btnQLkhachhang.Text = "Quản Lý Khách Hàng";
-            this.btnQLkhachhang.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnQLkhachhang.UseVisualStyleBackColor = false;
-            this.btnQLkhachhang.Click += new System.EventHandler(this.btnQLkhachhang_Click);
-            // 
-            // btnQuydinh
-            // 
-            this.btnQuydinh.BackColor = System.Drawing.Color.LightGray;
-            this.btnQuydinh.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnQuydinh.BackgroundImage")));
-            this.btnQuydinh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnQuydinh.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnQuydinh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnQuydinh.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btnQuydinh.ForeColor = System.Drawing.Color.Black;
-            this.btnQuydinh.Location = new System.Drawing.Point(632, 377);
-            this.btnQuydinh.Name = "btnQuydinh";
-            this.btnQuydinh.Size = new System.Drawing.Size(276, 135);
-            this.btnQuydinh.TabIndex = 75;
-            this.btnQuydinh.Text = "Quy Định";
-            this.btnQuydinh.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnQuydinh.UseVisualStyleBackColor = false;
-            this.btnQuydinh.Click += new System.EventHandler(this.btnQuydinh_Click);
-            // 
-            // btnDatphong
-            // 
-            this.btnDatphong.BackColor = System.Drawing.Color.LightGray;
-            this.btnDatphong.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnDatphong.BackgroundImage")));
-            this.btnDatphong.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnDatphong.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnDatphong.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDatphong.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btnDatphong.ForeColor = System.Drawing.Color.Black;
-            this.btnDatphong.Location = new System.Drawing.Point(28, 73);
-            this.btnDatphong.Name = "btnDatphong";
-            this.btnDatphong.Size = new System.Drawing.Size(135, 276);
-            this.btnDatphong.TabIndex = 59;
-            this.btnDatphong.Text = "Đặt Phòng";
-            this.btnDatphong.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnDatphong.UseVisualStyleBackColor = false;
-            this.btnDatphong.Click += new System.EventHandler(this.btnDatphong_Click);
             // 
             // bunifuFlatButton1
             // 
@@ -330,7 +343,7 @@
             this.btnHelp.Active = false;
             this.btnHelp.Activecolor = System.Drawing.Color.SeaGreen;
             this.btnHelp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnHelp.BackColor = System.Drawing.Color.Gray;
+            this.btnHelp.BackColor = System.Drawing.Color.SeaGreen;
             this.btnHelp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnHelp.BorderRadius = 0;
             this.btnHelp.ButtonText = "    Trợ Giúp";
@@ -351,9 +364,9 @@
             this.btnHelp.IsTab = false;
             this.btnHelp.Location = new System.Drawing.Point(0, 486);
             this.btnHelp.Name = "btnHelp";
-            this.btnHelp.Normalcolor = System.Drawing.Color.Gray;
-            this.btnHelp.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(84)))), ((int)(((byte)(84)))));
-            this.btnHelp.OnHoverTextColor = System.Drawing.Color.White;
+            this.btnHelp.Normalcolor = System.Drawing.Color.SeaGreen;
+            this.btnHelp.OnHovercolor = System.Drawing.Color.SeaGreen;
+            this.btnHelp.OnHoverTextColor = System.Drawing.Color.SeaGreen;
             this.btnHelp.selected = false;
             this.btnHelp.Size = new System.Drawing.Size(206, 40);
             this.btnHelp.TabIndex = 3;
@@ -368,7 +381,7 @@
             this.btnLogOut.Active = false;
             this.btnLogOut.Activecolor = System.Drawing.Color.SeaGreen;
             this.btnLogOut.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnLogOut.BackColor = System.Drawing.Color.Gray;
+            this.btnLogOut.BackColor = System.Drawing.Color.SeaGreen;
             this.btnLogOut.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnLogOut.BorderRadius = 0;
             this.btnLogOut.ButtonText = "    Đăng Xuất";
@@ -389,9 +402,9 @@
             this.btnLogOut.IsTab = false;
             this.btnLogOut.Location = new System.Drawing.Point(0, 440);
             this.btnLogOut.Name = "btnLogOut";
-            this.btnLogOut.Normalcolor = System.Drawing.Color.Gray;
-            this.btnLogOut.OnHovercolor = System.Drawing.Color.DarkGray;
-            this.btnLogOut.OnHoverTextColor = System.Drawing.Color.White;
+            this.btnLogOut.Normalcolor = System.Drawing.Color.SeaGreen;
+            this.btnLogOut.OnHovercolor = System.Drawing.Color.SeaGreen;
+            this.btnLogOut.OnHoverTextColor = System.Drawing.Color.Black;
             this.btnLogOut.selected = false;
             this.btnLogOut.Size = new System.Drawing.Size(206, 40);
             this.btnLogOut.TabIndex = 4;
@@ -406,7 +419,7 @@
             this.btnIntroduce.Active = false;
             this.btnIntroduce.Activecolor = System.Drawing.Color.SeaGreen;
             this.btnIntroduce.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnIntroduce.BackColor = System.Drawing.Color.Gray;
+            this.btnIntroduce.BackColor = System.Drawing.Color.SeaGreen;
             this.btnIntroduce.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnIntroduce.BorderRadius = 0;
             this.btnIntroduce.ButtonText = "    Giới Thiệu";
@@ -427,9 +440,9 @@
             this.btnIntroduce.IsTab = false;
             this.btnIntroduce.Location = new System.Drawing.Point(0, 531);
             this.btnIntroduce.Name = "btnIntroduce";
-            this.btnIntroduce.Normalcolor = System.Drawing.Color.Gray;
-            this.btnIntroduce.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(84)))), ((int)(((byte)(84)))));
-            this.btnIntroduce.OnHoverTextColor = System.Drawing.Color.White;
+            this.btnIntroduce.Normalcolor = System.Drawing.Color.SeaGreen;
+            this.btnIntroduce.OnHovercolor = System.Drawing.Color.SeaGreen;
+            this.btnIntroduce.OnHoverTextColor = System.Drawing.Color.Black;
             this.btnIntroduce.selected = false;
             this.btnIntroduce.Size = new System.Drawing.Size(206, 40);
             this.btnIntroduce.TabIndex = 2;
@@ -443,7 +456,7 @@
             // 
             this.btnNavigationPanel.Active = false;
             this.btnNavigationPanel.Activecolor = System.Drawing.Color.Silver;
-            this.btnNavigationPanel.BackColor = System.Drawing.Color.Gray;
+            this.btnNavigationPanel.BackColor = System.Drawing.Color.SeaGreen;
             this.btnNavigationPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnNavigationPanel.BorderRadius = 0;
             this.btnNavigationPanel.ButtonText = "";
@@ -464,9 +477,9 @@
             this.btnNavigationPanel.IsTab = false;
             this.btnNavigationPanel.Location = new System.Drawing.Point(0, 0);
             this.btnNavigationPanel.Name = "btnNavigationPanel";
-            this.btnNavigationPanel.Normalcolor = System.Drawing.Color.Gray;
-            this.btnNavigationPanel.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(84)))), ((int)(((byte)(84)))));
-            this.btnNavigationPanel.OnHoverTextColor = System.Drawing.Color.White;
+            this.btnNavigationPanel.Normalcolor = System.Drawing.Color.SeaGreen;
+            this.btnNavigationPanel.OnHovercolor = System.Drawing.Color.SeaGreen;
+            this.btnNavigationPanel.OnHoverTextColor = System.Drawing.Color.Black;
             this.btnNavigationPanel.selected = false;
             this.btnNavigationPanel.Size = new System.Drawing.Size(206, 40);
             this.btnNavigationPanel.TabIndex = 6;
@@ -487,22 +500,23 @@
             this.panelLeft.Controls.Add(this.bunifuFlatButton1);
             this.panelLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelLeft.ForeColor = System.Drawing.Color.Black;
-            this.panelLeft.GradientBottomLeft = System.Drawing.Color.Gray;
-            this.panelLeft.GradientBottomRight = System.Drawing.Color.Gray;
-            this.panelLeft.GradientTopLeft = System.Drawing.Color.Gray;
-            this.panelLeft.GradientTopRight = System.Drawing.Color.Gray;
+            this.panelLeft.GradientBottomLeft = System.Drawing.Color.SeaGreen;
+            this.panelLeft.GradientBottomRight = System.Drawing.Color.SeaGreen;
+            this.panelLeft.GradientTopLeft = System.Drawing.Color.SeaGreen;
+            this.panelLeft.GradientTopRight = System.Drawing.Color.SeaGreen;
             this.panelLeft.Location = new System.Drawing.Point(0, 0);
             this.panelLeft.Name = "panelLeft";
             this.panelLeft.Quality = 10;
-            this.panelLeft.Size = new System.Drawing.Size(174, 583);
+            this.panelLeft.Size = new System.Drawing.Size(168, 583);
             this.panelLeft.TabIndex = 0;
+            this.panelLeft.Paint += new System.Windows.Forms.PaintEventHandler(this.panelLeft_Paint);
             // 
             // btnAccountProfile
             // 
             this.btnAccountProfile.Active = false;
             this.btnAccountProfile.Activecolor = System.Drawing.Color.SeaGreen;
             this.btnAccountProfile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnAccountProfile.BackColor = System.Drawing.Color.Gray;
+            this.btnAccountProfile.BackColor = System.Drawing.Color.SeaGreen;
             this.btnAccountProfile.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnAccountProfile.BorderRadius = 0;
             this.btnAccountProfile.ButtonText = "    Thông Tin Cá Nhân";
@@ -523,8 +537,8 @@
             this.btnAccountProfile.IsTab = false;
             this.btnAccountProfile.Location = new System.Drawing.Point(0, 394);
             this.btnAccountProfile.Name = "btnAccountProfile";
-            this.btnAccountProfile.Normalcolor = System.Drawing.Color.Gray;
-            this.btnAccountProfile.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(84)))), ((int)(((byte)(84)))));
+            this.btnAccountProfile.Normalcolor = System.Drawing.Color.SeaGreen;
+            this.btnAccountProfile.OnHovercolor = System.Drawing.Color.SeaGreen;
             this.btnAccountProfile.OnHoverTextColor = System.Drawing.Color.Black;
             this.btnAccountProfile.selected = false;
             this.btnAccountProfile.Size = new System.Drawing.Size(196, 40);
@@ -534,17 +548,6 @@
             this.btnAccountProfile.Textcolor = System.Drawing.Color.White;
             this.btnAccountProfile.TextFont = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAccountProfile.Click += new System.EventHandler(this.btnAccountProfile_Click);
-            // 
-            // btnClose
-            // 
-            this.btnClose.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnClose.BackgroundImage")));
-            this.btnClose.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnClose.Location = new System.Drawing.Point(898, 8);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(32, 32);
-            this.btnClose.TabIndex = 76;
-            this.btnClose.TabStop = false;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // fManagement
             // 
@@ -562,8 +565,8 @@
             this.Text = "Quản lí khách sạn";
             this.panelRight.ResumeLayout(false);
             this.panelRight.PerformLayout();
-            this.panelLeft.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).EndInit();
+            this.panelLeft.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

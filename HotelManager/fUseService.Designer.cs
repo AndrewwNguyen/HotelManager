@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fUseService));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.bunifuDragControl1 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.btnClose = new Bunifu.Framework.UI.BunifuImageButton();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -79,6 +79,12 @@
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.dataGridViewBookRoom = new System.Windows.Forms.DataGridView();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.listViewSurcharge = new System.Windows.Forms.ListView();
+            this.columnHeader16 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader12 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader15 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBillRoom = new System.Windows.Forms.GroupBox();
             this.listViewBillRoom = new System.Windows.Forms.ListView();
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -88,12 +94,7 @@
             this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader14 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.listViewSurcharge = new System.Windows.Forms.ListView();
-            this.columnHeader16 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader12 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader15 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
@@ -109,8 +110,8 @@
             this.groupBoxBill.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBookRoom)).BeginInit();
-            this.groupBillRoom.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBillRoom.SuspendLayout();
             this.SuspendLayout();
             // 
             // bunifuDragControl1
@@ -337,6 +338,7 @@
             this.txbPrice.BorderColorIdle = System.Drawing.Color.SeaGreen;
             this.txbPrice.BorderColorMouseHover = System.Drawing.Color.SeaGreen;
             this.txbPrice.BorderThickness = 1;
+            this.txbPrice.characterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txbPrice.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txbPrice.Enabled = false;
             this.txbPrice.Font = new System.Drawing.Font("Century Gothic", 9.75F);
@@ -344,6 +346,7 @@
             this.txbPrice.isPassword = false;
             this.txbPrice.Location = new System.Drawing.Point(17, 148);
             this.txbPrice.Margin = new System.Windows.Forms.Padding(4);
+            this.txbPrice.MaxLength = 32767;
             this.txbPrice.Name = "txbPrice";
             this.txbPrice.Size = new System.Drawing.Size(203, 29);
             this.txbPrice.TabIndex = 58;
@@ -394,7 +397,7 @@
             // 
             // cbService
             // 
-            this.cbService.BackColor = System.Drawing.Color.White;
+            this.cbService.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.cbService.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbService.FormattingEnabled = true;
             this.cbService.ItemHeight = 23;
@@ -403,10 +406,7 @@
             this.cbService.Size = new System.Drawing.Size(203, 29);
             this.cbService.Style = MetroFramework.MetroColorStyle.Green;
             this.cbService.TabIndex = 54;
-            //this.cbService.UseCustomBackColor = true;
-            //this.cbService.UseCustomForeColor = true;
-            //this.cbService.UseSelectable = true;
-            //this.cbService.UseStyleColors = true;
+            this.cbService.DropDown += new System.EventHandler(this.cbService_DropDown);
             this.cbService.SelectedIndexChanged += new System.EventHandler(this.cbService_SelectedIndexChanged);
             // 
             // btnAdd
@@ -448,7 +448,7 @@
             // 
             // cbServiceType
             // 
-            this.cbServiceType.BackColor = System.Drawing.Color.White;
+            this.cbServiceType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.cbServiceType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbServiceType.FormattingEnabled = true;
             this.cbServiceType.ItemHeight = 23;
@@ -457,11 +457,6 @@
             this.cbServiceType.Size = new System.Drawing.Size(203, 29);
             this.cbServiceType.Style = MetroFramework.MetroColorStyle.Green;
             this.cbServiceType.TabIndex = 52;
-            //this.cbServiceType.UseCustomBackColor = true;
-            //this.cbServiceType.UseCustomForeColor = true;
-            //this.cbServiceType.UseSelectable = true;
-            //this.cbServiceType.UseStyleColors = true;
-            this.cbServiceType.SelectedIndexChanged += new System.EventHandler(this.cbServiceType_SelectedIndexChanged);
             // 
             // label4
             // 
@@ -570,6 +565,7 @@
             this.txbTotalPrice.BorderColorIdle = System.Drawing.Color.SeaGreen;
             this.txbTotalPrice.BorderColorMouseHover = System.Drawing.Color.SeaGreen;
             this.txbTotalPrice.BorderThickness = 1;
+            this.txbTotalPrice.characterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txbTotalPrice.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txbTotalPrice.Enabled = false;
             this.txbTotalPrice.Font = new System.Drawing.Font("Century Gothic", 9.75F);
@@ -577,6 +573,7 @@
             this.txbTotalPrice.isPassword = false;
             this.txbTotalPrice.Location = new System.Drawing.Point(17, 44);
             this.txbTotalPrice.Margin = new System.Windows.Forms.Padding(4);
+            this.txbTotalPrice.MaxLength = 32767;
             this.txbTotalPrice.Name = "txbTotalPrice";
             this.txbTotalPrice.Size = new System.Drawing.Size(203, 29);
             this.txbTotalPrice.TabIndex = 58;
@@ -630,6 +627,7 @@
             this.listViewUseService.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.listViewUseService.FullRowSelect = true;
             this.listViewUseService.GridLines = true;
+            this.listViewUseService.HideSelection = false;
             this.listViewUseService.Location = new System.Drawing.Point(0, 0);
             this.listViewUseService.Name = "listViewUseService";
             this.listViewUseService.Size = new System.Drawing.Size(631, 320);
@@ -665,65 +663,119 @@
             // 
             this.dataGridViewBookRoom.AllowDrop = true;
             this.dataGridViewBookRoom.AllowUserToOrderColumns = true;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.SeaGreen;
-            this.dataGridViewBookRoom.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle16.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.SeaGreen;
+            this.dataGridViewBookRoom.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle16;
             this.dataGridViewBookRoom.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewBookRoom.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
             this.dataGridViewBookRoom.BackgroundColor = System.Drawing.Color.White;
             this.dataGridViewBookRoom.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.SeaGreen;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewBookRoom.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.Color.SeaGreen;
+            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewBookRoom.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
             this.dataGridViewBookRoom.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.SeaGreen;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.SeaGreen;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewBookRoom.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle18.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle18.ForeColor = System.Drawing.Color.SeaGreen;
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.SeaGreen;
+            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewBookRoom.DefaultCellStyle = dataGridViewCellStyle18;
             this.dataGridViewBookRoom.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewBookRoom.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.dataGridViewBookRoom.Location = new System.Drawing.Point(0, 0);
             this.dataGridViewBookRoom.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dataGridViewBookRoom.Name = "dataGridViewBookRoom";
             this.dataGridViewBookRoom.ReadOnly = true;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.SeaGreen;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewBookRoom.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle19.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle19.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.Color.SeaGreen;
+            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewBookRoom.RowHeadersDefaultCellStyle = dataGridViewCellStyle19;
             this.dataGridViewBookRoom.RowHeadersVisible = false;
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.SeaGreen;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewBookRoom.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.Color.SeaGreen;
+            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewBookRoom.RowsDefaultCellStyle = dataGridViewCellStyle20;
             this.dataGridViewBookRoom.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dataGridViewBookRoom.Size = new System.Drawing.Size(631, 320);
             this.dataGridViewBookRoom.StandardTab = true;
             this.dataGridViewBookRoom.TabIndex = 7;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.listViewSurcharge);
+            this.groupBox2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.ForeColor = System.Drawing.Color.SeaGreen;
+            this.groupBox2.Location = new System.Drawing.Point(611, 124);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(638, 135);
+            this.groupBox2.TabIndex = 54;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Chính sách phụ thu";
+            // 
+            // listViewSurcharge
+            // 
+            this.listViewSurcharge.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.listViewSurcharge.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listViewSurcharge.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader16,
+            this.columnHeader11,
+            this.columnHeader12,
+            this.columnHeader15});
+            this.listViewSurcharge.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listViewSurcharge.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.listViewSurcharge.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.listViewSurcharge.FullRowSelect = true;
+            this.listViewSurcharge.GridLines = true;
+            this.listViewSurcharge.HideSelection = false;
+            this.listViewSurcharge.Location = new System.Drawing.Point(3, 25);
+            this.listViewSurcharge.Name = "listViewSurcharge";
+            this.listViewSurcharge.Size = new System.Drawing.Size(632, 107);
+            this.listViewSurcharge.TabIndex = 9;
+            this.listViewSurcharge.UseCompatibleStateImageBehavior = false;
+            this.listViewSurcharge.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader16
+            // 
+            this.columnHeader16.Text = "STT";
+            this.columnHeader16.Width = 40;
+            // 
+            // columnHeader11
+            // 
+            this.columnHeader11.Text = "Tên quy định";
+            this.columnHeader11.Width = 100;
+            // 
+            // columnHeader12
+            // 
+            this.columnHeader12.Text = "Hệ số";
+            this.columnHeader12.Width = 42;
+            // 
+            // columnHeader15
+            // 
+            this.columnHeader15.Text = "Mô tả";
+            this.columnHeader15.Width = 430;
             // 
             // groupBillRoom
             // 
             this.groupBillRoom.Controls.Add(this.listViewBillRoom);
             this.groupBillRoom.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBillRoom.ForeColor = System.Drawing.Color.SeaGreen;
-            this.groupBillRoom.Location = new System.Drawing.Point(611, 51);
+            this.groupBillRoom.Location = new System.Drawing.Point(612, 58);
             this.groupBillRoom.Name = "groupBillRoom";
-            this.groupBillRoom.Size = new System.Drawing.Size(638, 70);
-            this.groupBillRoom.TabIndex = 53;
+            this.groupBillRoom.Size = new System.Drawing.Size(637, 70);
+            this.groupBillRoom.TabIndex = 60;
             this.groupBillRoom.TabStop = false;
             this.groupBillRoom.Text = "Hóa đơn tiền phòng";
             // 
@@ -744,9 +796,10 @@
             this.listViewBillRoom.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.listViewBillRoom.FullRowSelect = true;
             this.listViewBillRoom.GridLines = true;
+            this.listViewBillRoom.HideSelection = false;
             this.listViewBillRoom.Location = new System.Drawing.Point(3, 25);
             this.listViewBillRoom.Name = "listViewBillRoom";
-            this.listViewBillRoom.Size = new System.Drawing.Size(632, 42);
+            this.listViewBillRoom.Size = new System.Drawing.Size(631, 42);
             this.listViewBillRoom.TabIndex = 9;
             this.listViewBillRoom.UseCompatibleStateImageBehavior = false;
             this.listViewBillRoom.View = System.Windows.Forms.View.Details;
@@ -792,58 +845,10 @@
             this.columnHeader14.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.columnHeader14.Width = 100;
             // 
-            // groupBox2
+            // notifyIcon1
             // 
-            this.groupBox2.Controls.Add(this.listViewSurcharge);
-            this.groupBox2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.ForeColor = System.Drawing.Color.SeaGreen;
-            this.groupBox2.Location = new System.Drawing.Point(611, 124);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(638, 135);
-            this.groupBox2.TabIndex = 54;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Chính sách phụ thu";
-            // 
-            // listViewSurcharge
-            // 
-            this.listViewSurcharge.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.listViewSurcharge.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.listViewSurcharge.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader16,
-            this.columnHeader11,
-            this.columnHeader12,
-            this.columnHeader15});
-            this.listViewSurcharge.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listViewSurcharge.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.listViewSurcharge.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.listViewSurcharge.FullRowSelect = true;
-            this.listViewSurcharge.GridLines = true;
-            this.listViewSurcharge.Location = new System.Drawing.Point(3, 25);
-            this.listViewSurcharge.Name = "listViewSurcharge";
-            this.listViewSurcharge.Size = new System.Drawing.Size(632, 107);
-            this.listViewSurcharge.TabIndex = 9;
-            this.listViewSurcharge.UseCompatibleStateImageBehavior = false;
-            this.listViewSurcharge.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeader16
-            // 
-            this.columnHeader16.Text = "STT";
-            this.columnHeader16.Width = 40;
-            // 
-            // columnHeader11
-            // 
-            this.columnHeader11.Text = "Tên quy định";
-            this.columnHeader11.Width = 100;
-            // 
-            // columnHeader12
-            // 
-            this.columnHeader12.Text = "Hệ số";
-            this.columnHeader12.Width = 42;
-            // 
-            // columnHeader15
-            // 
-            this.columnHeader15.Text = "Mô tả";
-            this.columnHeader15.Width = 430;
+            this.notifyIcon1.Text = "notifyIcon1";
+            this.notifyIcon1.Visible = true;
             // 
             // fUseService
             // 
@@ -851,8 +856,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1255, 615);
-            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBillRoom);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBoxBill);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox1);
@@ -865,6 +870,7 @@
             this.Name = "fUseService";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "fUseService";
+            this.Load += new System.EventHandler(this.fUseService_Load);
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).EndInit();
             this.groupBox3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
@@ -882,8 +888,8 @@
             this.groupBoxBill.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBookRoom)).EndInit();
-            this.groupBillRoom.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
+            this.groupBillRoom.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -930,13 +936,6 @@
         private System.Windows.Forms.PictureBox color5;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.PictureBox pictureBox6;
-        private System.Windows.Forms.GroupBox groupBillRoom;
-        private System.Windows.Forms.ListView listViewBillRoom;
-        private System.Windows.Forms.ColumnHeader columnHeader6;
-        private System.Windows.Forms.ColumnHeader columnHeader7;
-        private System.Windows.Forms.ColumnHeader columnHeader8;
-        private System.Windows.Forms.ColumnHeader columnHeader9;
-        private System.Windows.Forms.ColumnHeader columnHeader10;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.Label label1;
         private Bunifu.Framework.UI.BunifuThinButton2 btnAddCustomer;
@@ -945,10 +944,18 @@
         private System.Windows.Forms.ColumnHeader columnHeader16;
         private System.Windows.Forms.ColumnHeader columnHeader11;
         private System.Windows.Forms.ColumnHeader columnHeader12;
-        private System.Windows.Forms.ColumnHeader columnHeader13;
-        private System.Windows.Forms.ColumnHeader columnHeader14;
         private System.Windows.Forms.Label lblRoomType5;
         private System.Windows.Forms.Label lblRoomType4;
         private System.Windows.Forms.ColumnHeader columnHeader15;
+        private System.Windows.Forms.GroupBox groupBillRoom;
+        private System.Windows.Forms.ListView listViewBillRoom;
+        private System.Windows.Forms.ColumnHeader columnHeader6;
+        private System.Windows.Forms.ColumnHeader columnHeader7;
+        private System.Windows.Forms.ColumnHeader columnHeader8;
+        private System.Windows.Forms.ColumnHeader columnHeader9;
+        private System.Windows.Forms.ColumnHeader columnHeader10;
+        private System.Windows.Forms.ColumnHeader columnHeader13;
+        private System.Windows.Forms.ColumnHeader columnHeader14;
+        private System.Windows.Forms.NotifyIcon notifyIcon1;
     }
 }

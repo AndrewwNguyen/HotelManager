@@ -169,25 +169,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class\Functions.cs" />
+    <Compile Include="Class\Room1.cs" />
+    <Compile Include="Class\RoomType.cs" />
     <Compile Include="DAO\AccessDAO.cs" />
     <Compile Include="DAO\AccountDAO.cs" />
+    <Compile Include="DAO\AccountTypeDAO.cs" />
     <Compile Include="DAO\BillDAO.cs" />
     <Compile Include="DAO\BillDetailsDAO.cs" />
     <Compile Include="DAO\BookRoomDAO.cs" />
     <Compile Include="DAO\CustomerDAO.cs" />
     <Compile Include="DAO\CustomerTypeDAO.cs" />
     <Compile Include="DAO\DataProvider.cs" />
+    <Compile Include="DAO\ExportToExcel.cs" />
     <Compile Include="DAO\ParameterDAO.cs" />
     <Compile Include="DAO\ReceiveRoomDAO.cs" />
     <Compile Include="DAO\ReceiveRoomDetailsDAO.cs" />
+    <Compile Include="DAO\ReceiveRoomInfoDAO.cs" />
     <Compile Include="DAO\ReportDAO.cs" />
     <Compile Include="DAO\RoomDAO.cs" />
     <Compile Include="DAO\RoomTypeDAO.cs" />
-    <Compile Include="DAO\AccountTypeDAO.cs" />
     <Compile Include="DAO\ServiceDAO.cs" />
     <Compile Include="DAO\ServiceTypeDAO.cs" />
     <Compile Include="DAO\StatusRoomDAO.cs" />
     <Compile Include="DTO\Account.cs" />
+    <Compile Include="DTO\AccountType.cs" />
     <Compile Include="DTO\Bill.cs" />
     <Compile Include="DTO\BillDetails.cs" />
     <Compile Include="DTO\BookRoom.cs" />
@@ -196,13 +202,12 @@
     <Compile Include="DTO\Parameter.cs" />
     <Compile Include="DTO\ReceiveRoom.cs" />
     <Compile Include="DTO\ReceiveRoomDetails.cs" />
+    <Compile Include="DTO\ReceiveRoomInfo.cs" />
     <Compile Include="DTO\Room.cs" />
     <Compile Include="DTO\RoomType.cs" />
-    <Compile Include="DTO\AccountType.cs" />
     <Compile Include="DTO\Service.cs" />
     <Compile Include="DTO\ServiceType.cs" />
     <Compile Include="DTO\StatusRoom.cs" />
-    <Compile Include="DAO\ExportToExcel.cs" />
     <Compile Include="fAbout.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -524,8 +529,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="MetroFramework.txt" />
-    <Content Include="Procs.sql" />
-    <Content Include="Tables.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

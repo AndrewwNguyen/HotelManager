@@ -88,8 +88,10 @@
             this.label21 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnSearch = new Bunifu.Framework.UI.BunifuThinButton2();
+            this.btnCancel2 = new Bunifu.Framework.UI.BunifuThinButton2();
             this.txbIDCardSearch = new Bunifu.Framework.UI.BunifuMetroTextbox();
             this.label9 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.groupBox5.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -268,7 +270,7 @@
             // 
             // cbNationality
             // 
-            this.cbNationality.BackColor = System.Drawing.Color.White;
+            this.cbNationality.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.cbNationality.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbNationality.FormattingEnabled = true;
             this.cbNationality.ItemHeight = 23;
@@ -295,10 +297,6 @@
             this.cbNationality.Size = new System.Drawing.Size(203, 29);
             this.cbNationality.Style = MetroFramework.MetroColorStyle.Green;
             this.cbNationality.TabIndex = 49;
-            //this.cbNationality.UseCustomBackColor = true;
-            //this.cbNationality.UseCustomForeColor = true;
-            //this.cbNationality.UseSelectable = true;
-            //this.cbNationality.UseStyleColors = true;
             // 
             // dpkDateOfBirth
             // 
@@ -307,11 +305,11 @@
             this.dpkDateOfBirth.ForeColor = System.Drawing.Color.White;
             this.dpkDateOfBirth.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dpkDateOfBirth.FormatCustom = null;
-            this.dpkDateOfBirth.Location = new System.Drawing.Point(240, 46);
+            this.dpkDateOfBirth.Location = new System.Drawing.Point(240, 45);
             this.dpkDateOfBirth.Margin = new System.Windows.Forms.Padding(14, 21, 14, 21);
             this.dpkDateOfBirth.Name = "dpkDateOfBirth";
             this.dpkDateOfBirth.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.dpkDateOfBirth.Size = new System.Drawing.Size(203, 29);
+            this.dpkDateOfBirth.Size = new System.Drawing.Size(202, 25);
             this.dpkDateOfBirth.TabIndex = 47;
             this.dpkDateOfBirth.Value = new System.DateTime(2018, 2, 23, 23, 29, 57, 962);
             // 
@@ -328,7 +326,7 @@
             // 
             // cbCustomerType
             // 
-            this.cbCustomerType.BackColor = System.Drawing.Color.White;
+            this.cbCustomerType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.cbCustomerType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbCustomerType.FormattingEnabled = true;
             this.cbCustomerType.ItemHeight = 23;
@@ -337,10 +335,6 @@
             this.cbCustomerType.Size = new System.Drawing.Size(203, 29);
             this.cbCustomerType.Style = MetroFramework.MetroColorStyle.Green;
             this.cbCustomerType.TabIndex = 42;
-            //this.cbCustomerType.UseCustomBackColor = true;
-            //this.cbCustomerType.UseCustomForeColor = true;
-            //this.cbCustomerType.UseSelectable = true;
-            //this.cbCustomerType.UseStyleColors = true;
             // 
             // label20
             // 
@@ -373,12 +367,14 @@
             this.txbAddress.BorderColorIdle = System.Drawing.Color.SeaGreen;
             this.txbAddress.BorderColorMouseHover = System.Drawing.Color.SeaGreen;
             this.txbAddress.BorderThickness = 1;
+            this.txbAddress.characterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txbAddress.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txbAddress.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.txbAddress.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txbAddress.isPassword = false;
             this.txbAddress.Location = new System.Drawing.Point(240, 101);
             this.txbAddress.Margin = new System.Windows.Forms.Padding(4);
+            this.txbAddress.MaxLength = 32767;
             this.txbAddress.Name = "txbAddress";
             this.txbAddress.Size = new System.Drawing.Size(203, 29);
             this.txbAddress.TabIndex = 25;
@@ -397,7 +393,7 @@
             // 
             // cbSex
             // 
-            this.cbSex.BackColor = System.Drawing.Color.White;
+            this.cbSex.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.cbSex.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbSex.FormattingEnabled = true;
             this.cbSex.ItemHeight = 23;
@@ -410,10 +406,6 @@
             this.cbSex.Size = new System.Drawing.Size(203, 29);
             this.cbSex.Style = MetroFramework.MetroColorStyle.Green;
             this.cbSex.TabIndex = 26;
-            //this.cbSex.UseCustomBackColor = true;
-            //this.cbSex.UseCustomForeColor = true;
-            //this.cbSex.UseSelectable = true;
-            //this.cbSex.UseStyleColors = true;
             // 
             // label12
             // 
@@ -443,12 +435,14 @@
             this.txbPhoneNumber.BorderColorIdle = System.Drawing.Color.SeaGreen;
             this.txbPhoneNumber.BorderColorMouseHover = System.Drawing.Color.SeaGreen;
             this.txbPhoneNumber.BorderThickness = 1;
+            this.txbPhoneNumber.characterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txbPhoneNumber.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txbPhoneNumber.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.txbPhoneNumber.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txbPhoneNumber.isPassword = false;
-            this.txbPhoneNumber.Location = new System.Drawing.Point(10, 207);
+            this.txbPhoneNumber.Location = new System.Drawing.Point(12, 207);
             this.txbPhoneNumber.Margin = new System.Windows.Forms.Padding(4);
+            this.txbPhoneNumber.MaxLength = 32767;
             this.txbPhoneNumber.Name = "txbPhoneNumber";
             this.txbPhoneNumber.Size = new System.Drawing.Size(203, 29);
             this.txbPhoneNumber.TabIndex = 24;
@@ -472,12 +466,14 @@
             this.txbIDCard.BorderColorIdle = System.Drawing.Color.SeaGreen;
             this.txbIDCard.BorderColorMouseHover = System.Drawing.Color.SeaGreen;
             this.txbIDCard.BorderThickness = 1;
+            this.txbIDCard.characterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txbIDCard.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txbIDCard.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.txbIDCard.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txbIDCard.isPassword = false;
             this.txbIDCard.Location = new System.Drawing.Point(10, 99);
             this.txbIDCard.Margin = new System.Windows.Forms.Padding(4);
+            this.txbIDCard.MaxLength = 32767;
             this.txbIDCard.Name = "txbIDCard";
             this.txbIDCard.Size = new System.Drawing.Size(203, 29);
             this.txbIDCard.TabIndex = 22;
@@ -501,12 +497,14 @@
             this.txbFullName.BorderColorIdle = System.Drawing.Color.SeaGreen;
             this.txbFullName.BorderColorMouseHover = System.Drawing.Color.SeaGreen;
             this.txbFullName.BorderThickness = 1;
+            this.txbFullName.characterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txbFullName.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txbFullName.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.txbFullName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txbFullName.isPassword = false;
             this.txbFullName.Location = new System.Drawing.Point(10, 46);
             this.txbFullName.Margin = new System.Windows.Forms.Padding(4);
+            this.txbFullName.MaxLength = 32767;
             this.txbFullName.Name = "txbFullName";
             this.txbFullName.Size = new System.Drawing.Size(203, 29);
             this.txbFullName.TabIndex = 21;
@@ -563,6 +561,7 @@
             this.txbPrice.BorderColorIdle = System.Drawing.Color.SeaGreen;
             this.txbPrice.BorderColorMouseHover = System.Drawing.Color.SeaGreen;
             this.txbPrice.BorderThickness = 1;
+            this.txbPrice.characterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txbPrice.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txbPrice.Enabled = false;
             this.txbPrice.Font = new System.Drawing.Font("Century Gothic", 9.75F);
@@ -570,6 +569,7 @@
             this.txbPrice.isPassword = false;
             this.txbPrice.Location = new System.Drawing.Point(26, 206);
             this.txbPrice.Margin = new System.Windows.Forms.Padding(4);
+            this.txbPrice.MaxLength = 32767;
             this.txbPrice.Name = "txbPrice";
             this.txbPrice.Size = new System.Drawing.Size(203, 29);
             this.txbPrice.TabIndex = 35;
@@ -592,6 +592,7 @@
             this.txbAmountPeople.BorderColorIdle = System.Drawing.Color.SeaGreen;
             this.txbAmountPeople.BorderColorMouseHover = System.Drawing.Color.SeaGreen;
             this.txbAmountPeople.BorderThickness = 1;
+            this.txbAmountPeople.characterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txbAmountPeople.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txbAmountPeople.Enabled = false;
             this.txbAmountPeople.Font = new System.Drawing.Font("Century Gothic", 9.75F);
@@ -599,6 +600,7 @@
             this.txbAmountPeople.isPassword = false;
             this.txbAmountPeople.Location = new System.Drawing.Point(26, 152);
             this.txbAmountPeople.Margin = new System.Windows.Forms.Padding(4);
+            this.txbAmountPeople.MaxLength = 32767;
             this.txbAmountPeople.Name = "txbAmountPeople";
             this.txbAmountPeople.Size = new System.Drawing.Size(203, 29);
             this.txbAmountPeople.TabIndex = 30;
@@ -621,6 +623,7 @@
             this.txbRoomTypeName.BorderColorIdle = System.Drawing.Color.SeaGreen;
             this.txbRoomTypeName.BorderColorMouseHover = System.Drawing.Color.SeaGreen;
             this.txbRoomTypeName.BorderThickness = 1;
+            this.txbRoomTypeName.characterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txbRoomTypeName.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txbRoomTypeName.Enabled = false;
             this.txbRoomTypeName.Font = new System.Drawing.Font("Century Gothic", 9.75F);
@@ -628,6 +631,7 @@
             this.txbRoomTypeName.isPassword = false;
             this.txbRoomTypeName.Location = new System.Drawing.Point(26, 99);
             this.txbRoomTypeName.Margin = new System.Windows.Forms.Padding(4);
+            this.txbRoomTypeName.MaxLength = 32767;
             this.txbRoomTypeName.Name = "txbRoomTypeName";
             this.txbRoomTypeName.Size = new System.Drawing.Size(203, 29);
             this.txbRoomTypeName.TabIndex = 23;
@@ -650,6 +654,7 @@
             this.txbRoomTypeID.BorderColorIdle = System.Drawing.Color.SeaGreen;
             this.txbRoomTypeID.BorderColorMouseHover = System.Drawing.Color.SeaGreen;
             this.txbRoomTypeID.BorderThickness = 1;
+            this.txbRoomTypeID.characterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txbRoomTypeID.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txbRoomTypeID.Enabled = false;
             this.txbRoomTypeID.Font = new System.Drawing.Font("Century Gothic", 9.75F);
@@ -657,6 +662,7 @@
             this.txbRoomTypeID.isPassword = false;
             this.txbRoomTypeID.Location = new System.Drawing.Point(26, 46);
             this.txbRoomTypeID.Margin = new System.Windows.Forms.Padding(4);
+            this.txbRoomTypeID.MaxLength = 32767;
             this.txbRoomTypeID.Name = "txbRoomTypeID";
             this.txbRoomTypeID.Size = new System.Drawing.Size(203, 29);
             this.txbRoomTypeID.TabIndex = 21;
@@ -679,7 +685,7 @@
             this.btnClose.BackColor = System.Drawing.Color.Transparent;
             this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
             this.btnClose.ImageActive = null;
-            this.btnClose.Location = new System.Drawing.Point(1162, 6);
+            this.btnClose.Location = new System.Drawing.Point(1245, 6);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(16, 16);
             this.btnClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -690,7 +696,7 @@
             // 
             // cbRoomType
             // 
-            this.cbRoomType.BackColor = System.Drawing.Color.White;
+            this.cbRoomType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.cbRoomType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbRoomType.FormattingEnabled = true;
             this.cbRoomType.ItemHeight = 23;
@@ -699,11 +705,8 @@
             this.cbRoomType.Size = new System.Drawing.Size(203, 29);
             this.cbRoomType.Style = MetroFramework.MetroColorStyle.Green;
             this.cbRoomType.TabIndex = 33;
-            //this.cbRoomType.UseCustomBackColor = true;
-            //this.cbRoomType.UseCustomForeColor = true;
-            //this.cbRoomType.UseSelectable = true;
-            //this.cbRoomType.UseStyleColors = true;
             this.cbRoomType.SelectedIndexChanged += new System.EventHandler(this.cbRoomType_SelectedIndexChanged);
+            this.cbRoomType.SelectedValueChanged += new System.EventHandler(this.cbRoomType_SelectedValueChanged);
             // 
             // label17
             // 
@@ -735,7 +738,7 @@
             this.groupBox4.ForeColor = System.Drawing.Color.SeaGreen;
             this.groupBox4.Location = new System.Drawing.Point(724, 53);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(453, 508);
+            this.groupBox4.Size = new System.Drawing.Size(537, 508);
             this.groupBox4.TabIndex = 28;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Danh sách đặt phòng trong ngày";
@@ -748,7 +751,7 @@
             this.panel2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel2.Location = new System.Drawing.Point(3, 25);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(447, 480);
+            this.panel2.Size = new System.Drawing.Size(531, 480);
             this.panel2.TabIndex = 39;
             // 
             // btnDetails
@@ -769,7 +772,7 @@
             this.btnDetails.IdleFillColor = System.Drawing.Color.White;
             this.btnDetails.IdleForecolor = System.Drawing.Color.SeaGreen;
             this.btnDetails.IdleLineColor = System.Drawing.Color.SeaGreen;
-            this.btnDetails.Location = new System.Drawing.Point(230, 431);
+            this.btnDetails.Location = new System.Drawing.Point(323, 431);
             this.btnDetails.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnDetails.Name = "btnDetails";
             this.btnDetails.Size = new System.Drawing.Size(203, 40);
@@ -831,7 +834,7 @@
             this.dataGridViewBookRoom.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.White;
             this.dataGridViewBookRoom.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dataGridViewBookRoom.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewBookRoom.Size = new System.Drawing.Size(447, 422);
+            this.dataGridViewBookRoom.Size = new System.Drawing.Size(527, 422);
             this.dataGridViewBookRoom.StandardTab = true;
             this.dataGridViewBookRoom.TabIndex = 7;
             // 
@@ -887,6 +890,7 @@
             this.txbDays.BorderColorIdle = System.Drawing.Color.SeaGreen;
             this.txbDays.BorderColorMouseHover = System.Drawing.Color.SeaGreen;
             this.txbDays.BorderThickness = 1;
+            this.txbDays.characterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txbDays.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txbDays.Enabled = false;
             this.txbDays.Font = new System.Drawing.Font("Century Gothic", 9.75F);
@@ -894,6 +898,7 @@
             this.txbDays.isPassword = false;
             this.txbDays.Location = new System.Drawing.Point(10, 103);
             this.txbDays.Margin = new System.Windows.Forms.Padding(4);
+            this.txbDays.MaxLength = 32767;
             this.txbDays.Name = "txbDays";
             this.txbDays.Size = new System.Drawing.Size(203, 29);
             this.txbDays.TabIndex = 39;
@@ -941,6 +946,7 @@
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.btnSearch);
+            this.groupBox3.Controls.Add(this.btnCancel2);
             this.groupBox3.Controls.Add(this.txbIDCardSearch);
             this.groupBox3.Controls.Add(this.label9);
             this.groupBox3.Font = new System.Drawing.Font("Segoe UI", 12F);
@@ -970,7 +976,7 @@
             this.btnSearch.IdleFillColor = System.Drawing.Color.White;
             this.btnSearch.IdleForecolor = System.Drawing.Color.SeaGreen;
             this.btnSearch.IdleLineColor = System.Drawing.Color.SeaGreen;
-            this.btnSearch.Location = new System.Drawing.Point(241, 42);
+            this.btnSearch.Location = new System.Drawing.Point(240, 43);
             this.btnSearch.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(203, 40);
@@ -978,18 +984,47 @@
             this.btnSearch.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
+            // btnCancel2
+            // 
+            this.btnCancel2.ActiveBorderThickness = 1;
+            this.btnCancel2.ActiveCornerRadius = 20;
+            this.btnCancel2.ActiveFillColor = System.Drawing.Color.Red;
+            this.btnCancel2.ActiveForecolor = System.Drawing.Color.White;
+            this.btnCancel2.ActiveLineColor = System.Drawing.Color.Red;
+            this.btnCancel2.BackColor = System.Drawing.Color.White;
+            this.btnCancel2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnCancel2.BackgroundImage")));
+            this.btnCancel2.ButtonText = "Huỷ Tìm";
+            this.btnCancel2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCancel2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel2.ForeColor = System.Drawing.Color.SeaGreen;
+            this.btnCancel2.IdleBorderThickness = 1;
+            this.btnCancel2.IdleCornerRadius = 20;
+            this.btnCancel2.IdleFillColor = System.Drawing.Color.White;
+            this.btnCancel2.IdleForecolor = System.Drawing.Color.Red;
+            this.btnCancel2.IdleLineColor = System.Drawing.Color.Red;
+            this.btnCancel2.Location = new System.Drawing.Point(241, 43);
+            this.btnCancel2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnCancel2.Name = "btnCancel2";
+            this.btnCancel2.Size = new System.Drawing.Size(202, 40);
+            this.btnCancel2.TabIndex = 51;
+            this.btnCancel2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnCancel2.Visible = false;
+            this.btnCancel2.Click += new System.EventHandler(this.btnCancel2_Click);
+            // 
             // txbIDCardSearch
             // 
             this.txbIDCardSearch.BorderColorFocused = System.Drawing.Color.SeaGreen;
             this.txbIDCardSearch.BorderColorIdle = System.Drawing.Color.SeaGreen;
             this.txbIDCardSearch.BorderColorMouseHover = System.Drawing.Color.SeaGreen;
             this.txbIDCardSearch.BorderThickness = 1;
+            this.txbIDCardSearch.characterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txbIDCardSearch.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txbIDCardSearch.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.txbIDCardSearch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txbIDCardSearch.isPassword = false;
             this.txbIDCardSearch.Location = new System.Drawing.Point(9, 49);
             this.txbIDCardSearch.Margin = new System.Windows.Forms.Padding(4);
+            this.txbIDCardSearch.MaxLength = 32767;
             this.txbIDCardSearch.Name = "txbIDCardSearch";
             this.txbIDCardSearch.Size = new System.Drawing.Size(203, 29);
             this.txbIDCardSearch.TabIndex = 27;
@@ -1007,12 +1042,23 @@
             this.label9.TabIndex = 28;
             this.label9.Text = "Thẻ căn cước/ CMND:";
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.White;
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(591, 277);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(0, 13);
+            this.label5.TabIndex = 57;
+            // 
             // fBookRoom
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1183, 566);
+            this.ClientSize = new System.Drawing.Size(1266, 566);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox6);
@@ -1028,6 +1074,7 @@
             this.Name = "fBookRoom";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "fSignUpRoom";
+            this.Load += new System.EventHandler(this.fBookRoom_Load);
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -1068,7 +1115,6 @@
         private System.Windows.Forms.Label label4;
         private Bunifu.Framework.UI.BunifuMetroTextbox txbRoomTypeID;
         private System.Windows.Forms.Label label3;
-        private MetroFramework.Controls.MetroComboBox cbSex;
         private Bunifu.Framework.UI.BunifuMetroTextbox txbAddress;
         private System.Windows.Forms.Label label11;
         private Bunifu.Framework.UI.BunifuMetroTextbox txbPrice;
@@ -1104,5 +1150,8 @@
         private Bunifu.Framework.UI.BunifuThinButton2 btnClose_;
         private MetroFramework.Controls.MetroComboBox cbNationality;
         private Bunifu.Framework.UI.BunifuThinButton2 btnDetails;
+        private MetroFramework.Controls.MetroComboBox cbSex;
+        private System.Windows.Forms.Label label5;
+        private Bunifu.Framework.UI.BunifuThinButton2 btnCancel2;
     }
 }

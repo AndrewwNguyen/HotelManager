@@ -52,10 +52,10 @@
             this.txbFullName = new Bunifu.Framework.UI.BunifuMetroTextbox();
             this.label16 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnClose = new Bunifu.Framework.UI.BunifuImageButton();
             this.btnClose_ = new Bunifu.Framework.UI.BunifuThinButton2();
             this.btnAddCustomer = new Bunifu.Framework.UI.BunifuThinButton2();
             this.bunifuThinButton21 = new Bunifu.Framework.UI.BunifuThinButton2();
+            this.btnClose = new Bunifu.Framework.UI.BunifuImageButton();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
@@ -122,7 +122,7 @@
             // 
             // cbNationality
             // 
-            this.cbNationality.BackColor = System.Drawing.Color.White;
+            this.cbNationality.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.cbNationality.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbNationality.FormattingEnabled = true;
             this.cbNationality.ItemHeight = 23;
@@ -148,10 +148,6 @@
             this.cbNationality.Size = new System.Drawing.Size(203, 29);
             this.cbNationality.Style = MetroFramework.MetroColorStyle.Green;
             this.cbNationality.TabIndex = 53;
-            //this.cbNationality.UseCustomBackColor = true;
-            //this.cbNationality.UseCustomForeColor = true;
-            //this.cbNationality.UseSelectable = true;
-            //this.cbNationality.UseStyleColors = true;
             // 
             // dpkDateOfBirth
             // 
@@ -181,7 +177,7 @@
             // 
             // cbCustomerType
             // 
-            this.cbCustomerType.BackColor = System.Drawing.Color.White;
+            this.cbCustomerType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.cbCustomerType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbCustomerType.FormattingEnabled = true;
             this.cbCustomerType.ItemHeight = 23;
@@ -189,10 +185,6 @@
             this.cbCustomerType.Name = "cbCustomerType";
             this.cbCustomerType.Size = new System.Drawing.Size(203, 29);
             this.cbCustomerType.TabIndex = 42;
-            //this.cbCustomerType.UseCustomBackColor = true;
-            //this.cbCustomerType.UseCustomForeColor = true;
-            //this.cbCustomerType.UseSelectable = true;
-            //this.cbCustomerType.UseStyleColors = true;
             // 
             // label20
             // 
@@ -225,12 +217,14 @@
             this.txbAddress.BorderColorIdle = System.Drawing.Color.SeaGreen;
             this.txbAddress.BorderColorMouseHover = System.Drawing.Color.SeaGreen;
             this.txbAddress.BorderThickness = 1;
+            this.txbAddress.characterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txbAddress.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txbAddress.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.txbAddress.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txbAddress.isPassword = false;
             this.txbAddress.Location = new System.Drawing.Point(240, 101);
             this.txbAddress.Margin = new System.Windows.Forms.Padding(4);
+            this.txbAddress.MaxLength = 32767;
             this.txbAddress.Name = "txbAddress";
             this.txbAddress.Size = new System.Drawing.Size(203, 29);
             this.txbAddress.TabIndex = 25;
@@ -249,7 +243,7 @@
             // 
             // cbSex
             // 
-            this.cbSex.BackColor = System.Drawing.Color.White;
+            this.cbSex.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.cbSex.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbSex.FormattingEnabled = true;
             this.cbSex.ItemHeight = 23;
@@ -262,10 +256,6 @@
             this.cbSex.Size = new System.Drawing.Size(203, 29);
             this.cbSex.Style = MetroFramework.MetroColorStyle.Green;
             this.cbSex.TabIndex = 26;
-            //this.cbSex.UseCustomBackColor = true;
-            //this.cbSex.UseCustomForeColor = true;
-            //this.cbSex.UseSelectable = true;
-            //this.cbSex.UseStyleColors = true;
             // 
             // label12
             // 
@@ -295,12 +285,14 @@
             this.txbPhoneNumber.BorderColorIdle = System.Drawing.Color.SeaGreen;
             this.txbPhoneNumber.BorderColorMouseHover = System.Drawing.Color.SeaGreen;
             this.txbPhoneNumber.BorderThickness = 1;
+            this.txbPhoneNumber.characterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txbPhoneNumber.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txbPhoneNumber.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.txbPhoneNumber.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txbPhoneNumber.isPassword = false;
             this.txbPhoneNumber.Location = new System.Drawing.Point(10, 207);
             this.txbPhoneNumber.Margin = new System.Windows.Forms.Padding(4);
+            this.txbPhoneNumber.MaxLength = 32767;
             this.txbPhoneNumber.Name = "txbPhoneNumber";
             this.txbPhoneNumber.Size = new System.Drawing.Size(203, 29);
             this.txbPhoneNumber.TabIndex = 24;
@@ -324,12 +316,15 @@
             this.txbIDCard.BorderColorIdle = System.Drawing.Color.SeaGreen;
             this.txbIDCard.BorderColorMouseHover = System.Drawing.Color.SeaGreen;
             this.txbIDCard.BorderThickness = 1;
+            this.txbIDCard.characterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txbIDCard.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txbIDCard.Enabled = false;
             this.txbIDCard.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.txbIDCard.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txbIDCard.isPassword = false;
             this.txbIDCard.Location = new System.Drawing.Point(10, 99);
             this.txbIDCard.Margin = new System.Windows.Forms.Padding(4);
+            this.txbIDCard.MaxLength = 32767;
             this.txbIDCard.Name = "txbIDCard";
             this.txbIDCard.Size = new System.Drawing.Size(203, 29);
             this.txbIDCard.TabIndex = 22;
@@ -352,12 +347,14 @@
             this.txbFullName.BorderColorIdle = System.Drawing.Color.SeaGreen;
             this.txbFullName.BorderColorMouseHover = System.Drawing.Color.SeaGreen;
             this.txbFullName.BorderThickness = 1;
+            this.txbFullName.characterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txbFullName.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txbFullName.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.txbFullName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txbFullName.isPassword = false;
             this.txbFullName.Location = new System.Drawing.Point(10, 46);
             this.txbFullName.Margin = new System.Windows.Forms.Padding(4);
+            this.txbFullName.MaxLength = 32767;
             this.txbFullName.Name = "txbFullName";
             this.txbFullName.Size = new System.Drawing.Size(203, 29);
             this.txbFullName.TabIndex = 21;
@@ -381,27 +378,13 @@
             this.groupBox1.Controls.Add(this.bunifuThinButton21);
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.groupBox1.ForeColor = System.Drawing.Color.SeaGreen;
-            this.groupBox1.Location = new System.Drawing.Point(8, 315);
+            this.groupBox1.Location = new System.Drawing.Point(8, 319);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(453, 124);
+            this.groupBox1.Size = new System.Drawing.Size(453, 120);
             this.groupBox1.TabIndex = 51;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Chức năng";
-            // 
-            // btnClose
-            // 
-            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClose.BackColor = System.Drawing.Color.Transparent;
-            this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
-            this.btnClose.ImageActive = null;
-            this.btnClose.Location = new System.Drawing.Point(445, 5);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(16, 16);
-            this.btnClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.btnClose.TabIndex = 53;
-            this.btnClose.TabStop = false;
-            this.btnClose.Zoom = 10;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // btnClose_
             // 
@@ -481,6 +464,21 @@
             this.bunifuThinButton21.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.bunifuThinButton21.Click += new System.EventHandler(this.bunifuThinButton21_Click);
             // 
+            // btnClose
+            // 
+            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClose.BackColor = System.Drawing.Color.Transparent;
+            this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
+            this.btnClose.ImageActive = null;
+            this.btnClose.Location = new System.Drawing.Point(445, 5);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(16, 16);
+            this.btnClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.btnClose.TabIndex = 53;
+            this.btnClose.TabStop = false;
+            this.btnClose.Zoom = 10;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
             // fUpdateCustomerInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -497,6 +495,7 @@
             this.Name = "fUpdateCustomerInfo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "fAddCustomerInfo";
+            this.Load += new System.EventHandler(this.fUpdateCustomerInfo_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);

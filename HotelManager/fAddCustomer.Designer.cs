@@ -121,7 +121,7 @@
             // 
             // txbNationality
             // 
-            this.txbNationality.BackColor = System.Drawing.Color.White;
+            this.txbNationality.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.txbNationality.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.txbNationality.FormattingEnabled = true;
             this.txbNationality.ItemHeight = 23;
@@ -148,10 +148,6 @@
             this.txbNationality.Size = new System.Drawing.Size(203, 29);
             this.txbNationality.Style = MetroFramework.MetroColorStyle.Green;
             this.txbNationality.TabIndex = 6;
-            //this.txbNationality.UseCustomBackColor = true;
-            //this.txbNationality.UseCustomForeColor = true;
-            //this.txbNationality.UseSelectable = true;
-            //this.txbNationality.UseStyleColors = true;
             // 
             // datepickerDateOfBirth
             // 
@@ -181,7 +177,7 @@
             // 
             // comboBoxCustomerType
             // 
-            this.comboBoxCustomerType.BackColor = System.Drawing.Color.White;
+            this.comboBoxCustomerType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.comboBoxCustomerType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboBoxCustomerType.FormattingEnabled = true;
             this.comboBoxCustomerType.ItemHeight = 23;
@@ -189,10 +185,6 @@
             this.comboBoxCustomerType.Name = "comboBoxCustomerType";
             this.comboBoxCustomerType.Size = new System.Drawing.Size(203, 29);
             this.comboBoxCustomerType.TabIndex = 2;
-            //this.comboBoxCustomerType.UseCustomBackColor = true;
-            //this.comboBoxCustomerType.UseCustomForeColor = true;
-            //this.comboBoxCustomerType.UseSelectable = true;
-            //this.comboBoxCustomerType.UseStyleColors = true;
             // 
             // label20
             // 
@@ -225,12 +217,14 @@
             this.txbAddress.BorderColorIdle = System.Drawing.Color.SeaGreen;
             this.txbAddress.BorderColorMouseHover = System.Drawing.Color.SeaGreen;
             this.txbAddress.BorderThickness = 1;
+            this.txbAddress.characterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txbAddress.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txbAddress.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.txbAddress.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txbAddress.isPassword = false;
             this.txbAddress.Location = new System.Drawing.Point(240, 101);
             this.txbAddress.Margin = new System.Windows.Forms.Padding(4);
+            this.txbAddress.MaxLength = 32767;
             this.txbAddress.Name = "txbAddress";
             this.txbAddress.Size = new System.Drawing.Size(203, 29);
             this.txbAddress.TabIndex = 4;
@@ -249,7 +243,7 @@
             // 
             // comboBoxSex
             // 
-            this.comboBoxSex.BackColor = System.Drawing.Color.White;
+            this.comboBoxSex.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.comboBoxSex.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboBoxSex.FormattingEnabled = true;
             this.comboBoxSex.ItemHeight = 23;
@@ -262,10 +256,6 @@
             this.comboBoxSex.Size = new System.Drawing.Size(203, 29);
             this.comboBoxSex.Style = MetroFramework.MetroColorStyle.Green;
             this.comboBoxSex.TabIndex = 5;
-            //this.comboBoxSex.UseCustomBackColor = true;
-            //this.comboBoxSex.UseCustomForeColor = true;
-            //this.comboBoxSex.UseSelectable = true;
-            //this.comboBoxSex.UseStyleColors = true;
             // 
             // label12
             // 
@@ -295,12 +285,14 @@
             this.txbPhoneNumber.BorderColorIdle = System.Drawing.Color.SeaGreen;
             this.txbPhoneNumber.BorderColorMouseHover = System.Drawing.Color.SeaGreen;
             this.txbPhoneNumber.BorderThickness = 1;
+            this.txbPhoneNumber.characterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txbPhoneNumber.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txbPhoneNumber.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.txbPhoneNumber.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txbPhoneNumber.isPassword = false;
             this.txbPhoneNumber.Location = new System.Drawing.Point(10, 207);
             this.txbPhoneNumber.Margin = new System.Windows.Forms.Padding(4);
+            this.txbPhoneNumber.MaxLength = 32767;
             this.txbPhoneNumber.Name = "txbPhoneNumber";
             this.txbPhoneNumber.Size = new System.Drawing.Size(203, 29);
             this.txbPhoneNumber.TabIndex = 3;
@@ -324,12 +316,14 @@
             this.txbIDCard.BorderColorIdle = System.Drawing.Color.SeaGreen;
             this.txbIDCard.BorderColorMouseHover = System.Drawing.Color.SeaGreen;
             this.txbIDCard.BorderThickness = 1;
+            this.txbIDCard.characterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txbIDCard.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txbIDCard.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.txbIDCard.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txbIDCard.isPassword = false;
             this.txbIDCard.Location = new System.Drawing.Point(10, 99);
             this.txbIDCard.Margin = new System.Windows.Forms.Padding(4);
+            this.txbIDCard.MaxLength = 32767;
             this.txbIDCard.Name = "txbIDCard";
             this.txbIDCard.Size = new System.Drawing.Size(203, 29);
             this.txbIDCard.TabIndex = 1;
@@ -352,12 +346,14 @@
             this.txbFullName.BorderColorIdle = System.Drawing.Color.SeaGreen;
             this.txbFullName.BorderColorMouseHover = System.Drawing.Color.SeaGreen;
             this.txbFullName.BorderThickness = 1;
+            this.txbFullName.characterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txbFullName.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txbFullName.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.txbFullName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txbFullName.isPassword = false;
             this.txbFullName.Location = new System.Drawing.Point(10, 46);
             this.txbFullName.Margin = new System.Windows.Forms.Padding(4);
+            this.txbFullName.MaxLength = 32767;
             this.txbFullName.Name = "txbFullName";
             this.txbFullName.Size = new System.Drawing.Size(203, 29);
             this.txbFullName.TabIndex = 0;
@@ -405,7 +401,7 @@
             this.btnClose_.IdleFillColor = System.Drawing.Color.White;
             this.btnClose_.IdleForecolor = System.Drawing.Color.SeaGreen;
             this.btnClose_.IdleLineColor = System.Drawing.Color.SeaGreen;
-            this.btnClose_.Location = new System.Drawing.Point(240, 24);
+            this.btnClose_.Location = new System.Drawing.Point(240, 23);
             this.btnClose_.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnClose_.Name = "btnClose_";
             this.btnClose_.Size = new System.Drawing.Size(203, 40);

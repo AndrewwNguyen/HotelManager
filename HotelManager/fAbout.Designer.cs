@@ -40,7 +40,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.bunifuThinButton25 = new Bunifu.Framework.UI.BunifuThinButton2();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
@@ -109,9 +108,9 @@
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label3.Location = new System.Drawing.Point(141, 133);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(186, 20);
+            this.label3.Size = new System.Drawing.Size(213, 20);
             this.label3.TabIndex = 69;
-            this.label3.Text = "GVHD: Nguyễn Thu Hường";
+            this.label3.Text = "Giáo Viên:  Nguyễn Thu Hường";
             // 
             // bunifuSeparator2
             // 
@@ -159,17 +158,6 @@
             this.label6.TabIndex = 73;
             this.label6.Text = "Đoàn Duy Anh - 191202340 ";
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label7.Location = new System.Drawing.Point(143, 297);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(214, 20);
-            this.label7.TabIndex = 74;
-            this.label7.Text = "Trương Minh Hiếu - 191202340";
-            // 
             // label9
             // 
             this.label9.AutoSize = true;
@@ -215,7 +203,6 @@
             this.ClientSize = new System.Drawing.Size(493, 412);
             this.Controls.Add(this.bunifuThinButton25);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label1);
@@ -243,7 +230,6 @@
         private Bunifu.Framework.UI.BunifuDragControl bunifuDragControl1;
         private Bunifu.Framework.UI.BunifuImageButton btnClose;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label1;

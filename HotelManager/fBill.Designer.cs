@@ -179,6 +179,7 @@
             // 
             this.bindingNavigatorPositionItem.AccessibleName = "Position";
             this.bindingNavigatorPositionItem.AutoSize = false;
+            this.bindingNavigatorPositionItem.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
             this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(40, 22);
             this.bindingNavigatorPositionItem.Text = "0";
@@ -329,6 +330,7 @@
             this.txbFinalPrice.BorderColorIdle = System.Drawing.Color.SeaGreen;
             this.txbFinalPrice.BorderColorMouseHover = System.Drawing.Color.SeaGreen;
             this.txbFinalPrice.BorderThickness = 1;
+            this.txbFinalPrice.characterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txbFinalPrice.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txbFinalPrice.Enabled = false;
             this.txbFinalPrice.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -336,6 +338,7 @@
             this.txbFinalPrice.isPassword = false;
             this.txbFinalPrice.Location = new System.Drawing.Point(210, 214);
             this.txbFinalPrice.Margin = new System.Windows.Forms.Padding(0);
+            this.txbFinalPrice.MaxLength = 32767;
             this.txbFinalPrice.Name = "txbFinalPrice";
             this.txbFinalPrice.Size = new System.Drawing.Size(175, 29);
             this.txbFinalPrice.TabIndex = 70;
@@ -358,13 +361,15 @@
             this.txbDiscount.BorderColorIdle = System.Drawing.Color.SeaGreen;
             this.txbDiscount.BorderColorMouseHover = System.Drawing.Color.SeaGreen;
             this.txbDiscount.BorderThickness = 1;
+            this.txbDiscount.characterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txbDiscount.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txbDiscount.Enabled = false;
             this.txbDiscount.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbDiscount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txbDiscount.isPassword = false;
-            this.txbDiscount.Location = new System.Drawing.Point(210, 160);
+            this.txbDiscount.Location = new System.Drawing.Point(210, 157);
             this.txbDiscount.Margin = new System.Windows.Forms.Padding(0);
+            this.txbDiscount.MaxLength = 32767;
             this.txbDiscount.Name = "txbDiscount";
             this.txbDiscount.Size = new System.Drawing.Size(175, 29);
             this.txbDiscount.TabIndex = 68;
@@ -387,6 +392,7 @@
             this.txbStatusRoom.BorderColorIdle = System.Drawing.Color.SeaGreen;
             this.txbStatusRoom.BorderColorMouseHover = System.Drawing.Color.SeaGreen;
             this.txbStatusRoom.BorderThickness = 1;
+            this.txbStatusRoom.characterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txbStatusRoom.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txbStatusRoom.Enabled = false;
             this.txbStatusRoom.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -394,6 +400,7 @@
             this.txbStatusRoom.isPassword = false;
             this.txbStatusRoom.Location = new System.Drawing.Point(210, 46);
             this.txbStatusRoom.Margin = new System.Windows.Forms.Padding(0);
+            this.txbStatusRoom.MaxLength = 32767;
             this.txbStatusRoom.Name = "txbStatusRoom";
             this.txbStatusRoom.Size = new System.Drawing.Size(175, 29);
             this.txbStatusRoom.TabIndex = 66;
@@ -416,6 +423,7 @@
             this.txbDateCreate.BorderColorIdle = System.Drawing.Color.SeaGreen;
             this.txbDateCreate.BorderColorMouseHover = System.Drawing.Color.SeaGreen;
             this.txbDateCreate.BorderThickness = 1;
+            this.txbDateCreate.characterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txbDateCreate.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txbDateCreate.Enabled = false;
             this.txbDateCreate.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -423,6 +431,7 @@
             this.txbDateCreate.isPassword = false;
             this.txbDateCreate.Location = new System.Drawing.Point(11, 214);
             this.txbDateCreate.Margin = new System.Windows.Forms.Padding(0);
+            this.txbDateCreate.MaxLength = 32767;
             this.txbDateCreate.Name = "txbDateCreate";
             this.txbDateCreate.Size = new System.Drawing.Size(175, 29);
             this.txbDateCreate.TabIndex = 64;
@@ -445,6 +454,7 @@
             this.txbUser.BorderColorIdle = System.Drawing.Color.SeaGreen;
             this.txbUser.BorderColorMouseHover = System.Drawing.Color.SeaGreen;
             this.txbUser.BorderThickness = 1;
+            this.txbUser.characterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txbUser.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txbUser.Enabled = false;
             this.txbUser.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -452,6 +462,7 @@
             this.txbUser.isPassword = false;
             this.txbUser.Location = new System.Drawing.Point(11, 160);
             this.txbUser.Margin = new System.Windows.Forms.Padding(0);
+            this.txbUser.MaxLength = 32767;
             this.txbUser.Name = "txbUser";
             this.txbUser.Size = new System.Drawing.Size(175, 29);
             this.txbUser.TabIndex = 61;
@@ -466,7 +477,6 @@
             this.comboboxID.Size = new System.Drawing.Size(175, 29);
             this.comboboxID.Style = MetroFramework.MetroColorStyle.Green;
             this.comboboxID.TabIndex = 60;
-            //this.comboboxID.UseSelectable = true;
             // 
             // txbName
             // 
@@ -474,6 +484,7 @@
             this.txbName.BorderColorIdle = System.Drawing.Color.SeaGreen;
             this.txbName.BorderColorMouseHover = System.Drawing.Color.SeaGreen;
             this.txbName.BorderThickness = 1;
+            this.txbName.characterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txbName.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txbName.Enabled = false;
             this.txbName.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -481,6 +492,7 @@
             this.txbName.isPassword = false;
             this.txbName.Location = new System.Drawing.Point(11, 103);
             this.txbName.Margin = new System.Windows.Forms.Padding(0);
+            this.txbName.MaxLength = 32767;
             this.txbName.Name = "txbName";
             this.txbName.Size = new System.Drawing.Size(175, 29);
             this.txbName.TabIndex = 1;
@@ -492,6 +504,7 @@
             this.txbPrice.BorderColorIdle = System.Drawing.Color.SeaGreen;
             this.txbPrice.BorderColorMouseHover = System.Drawing.Color.SeaGreen;
             this.txbPrice.BorderThickness = 1;
+            this.txbPrice.characterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txbPrice.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txbPrice.Enabled = false;
             this.txbPrice.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -499,6 +512,7 @@
             this.txbPrice.isPassword = false;
             this.txbPrice.Location = new System.Drawing.Point(210, 103);
             this.txbPrice.Margin = new System.Windows.Forms.Padding(0);
+            this.txbPrice.MaxLength = 32767;
             this.txbPrice.Name = "txbPrice";
             this.txbPrice.Size = new System.Drawing.Size(175, 29);
             this.txbPrice.TabIndex = 59;
@@ -566,7 +580,7 @@
             // 
             // cbBillSearch
             // 
-            this.cbBillSearch.BackColor = System.Drawing.Color.White;
+            this.cbBillSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.cbBillSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbBillSearch.FormattingEnabled = true;
             this.cbBillSearch.ItemHeight = 23;
@@ -580,10 +594,6 @@
             this.cbBillSearch.Size = new System.Drawing.Size(175, 29);
             this.cbBillSearch.Style = MetroFramework.MetroColorStyle.Green;
             this.cbBillSearch.TabIndex = 51;
-            //this.cbBillSearch.UseCustomBackColor = true;
-            //this.cbBillSearch.UseCustomForeColor = true;
-            //this.cbBillSearch.UseSelectable = true;
-            //this.cbBillSearch.UseStyleColors = true;
             // 
             // txbSearch
             // 
@@ -591,12 +601,14 @@
             this.txbSearch.BorderColorIdle = System.Drawing.Color.SeaGreen;
             this.txbSearch.BorderColorMouseHover = System.Drawing.Color.SeaGreen;
             this.txbSearch.BorderThickness = 1;
+            this.txbSearch.characterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txbSearch.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txbSearch.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbSearch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txbSearch.isPassword = false;
             this.txbSearch.Location = new System.Drawing.Point(210, 17);
             this.txbSearch.Margin = new System.Windows.Forms.Padding(0);
+            this.txbSearch.MaxLength = 32767;
             this.txbSearch.Name = "txbSearch";
             this.txbSearch.Size = new System.Drawing.Size(175, 29);
             this.txbSearch.TabIndex = 0;

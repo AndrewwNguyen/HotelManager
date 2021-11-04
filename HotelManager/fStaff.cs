@@ -8,10 +8,6 @@ namespace HotelManager
 {
     public partial class fStaff : Form
     {
-        #region Properties
-        public static readonly string HassPass = "e10adc3949ba59abbe56e057f20f883e"; // password default
-        #endregion
-
         #region Constructor
         internal fStaff()
         {
@@ -186,20 +182,6 @@ namespace HotelManager
         }
         private void ResetPassword()
         {
-            try
-            {
-                bool check = AccountDAO.Instance.ResetPassword(txbUserName.Text, HassPass );
-                if (check)
-                {
-                    MessageBox.Show( "Đặt lại mật khẩu thành công\nMật khẩu mặt định là: 123456", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                    MessageBox.Show( "Không thể đặt lại mật khẩu(Tên đăng nhập chưa tồn tại)", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-            }
-            catch
-            {
-                MessageBox.Show( "Lỗi không xác định", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
         }
         private void Search()
         {

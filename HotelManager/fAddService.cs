@@ -18,40 +18,10 @@ namespace HotelManager
         public fAddService()
         {
             InitializeComponent();
-            LoadFullServiceType();
             txbPrice.Text = IntToString("100000");
+
         }
-        private void LoadFullServiceType()
-        {
-            DataTable table = GetFullServiceType();
-            comboBoxServiceType.DataSource = table;
-            comboBoxServiceType.DisplayMember = "name";
-            ;
-            if (table.Rows.Count > 0)
-                comboBoxServiceType.SelectedIndex = 0;
-        }
-        private DataTable GetFullServiceType()
-        {
-            return ServiceTypeDAO.Instance.LoadFullServiceType();
-        }
-        private Service GetServiceNow()
-        {
-            Service service = new Service();
-            txbName.Text = txbName.Text.Trim();
-            service.Name = txbName.Text;
-            service.Price = int.Parse(StringToInt(txbPrice.Text));
-            int index = comboBoxServiceType.SelectedIndex;
-            service.IdServiceType = (int)((DataTable)comboBoxServiceType.DataSource).Rows[index]["id"];
-            return service;
-        }
-        private void ChangePrice(DataTable table)
-        {
-            table.Columns.Add("price_New", typeof(string));
-            for (int i = 0; i < table.Rows.Count; i++)
-            {
-                table.Rows[i]["price_New"] = ((int)table.Rows[i]["price"]).ToString("C0", CultureInfo.CreateSpecificCulture("vi-VN"));
-            }
-        }
+
         private string StringToInt(string text)
         {
             if (text.Contains(".") || text.Contains(" "))
@@ -96,35 +66,8 @@ namespace HotelManager
             txbPrice.Tag = txbPrice.Text;
             txbPrice.Text = StringToInt(txbPrice.Text);
         }
-        private void InsertService()
-        {
-            if (!fCustomer.CheckFillInText(new Control[] { txbName, comboBoxServiceType, txbPrice }))
-            {
-                DialogResult result = MessageBox.Show("Không được để trống", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            try
-            {
-                Service serviceNow = GetServiceNow();
-                if (ServiceDAO.Instance.InsertService(serviceNow))
-                {
-                    MessageBox.Show("Thành Công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    txbName.Text = string.Empty;
-                    txbPrice.Text = IntToString("100000");                
-                }
-                else
-                    MessageBox.Show("Dịch vụ đã tồn tại", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-            }
-            catch
-            {
-                MessageBox.Show("Lỗi", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
         private void btnAddCustomer_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Bạn có muốn thêm mới dịch vụ?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
-            if (result == DialogResult.OK)
-                InsertService();
             
         }
 

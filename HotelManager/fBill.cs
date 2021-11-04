@@ -1,4 +1,4 @@
-﻿using HotelManager.DAO;
+﻿
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,50 +14,15 @@ namespace HotelManager
 {
     public partial class fBill : Form
     {
-        #region Constructor & Properties
         private readonly fPrintBill fPrintBill = new fPrintBill();
 
         public fBill()
         {
             InitializeComponent();
             dataGridViewBill.Font = new Font("Segoe UI", 9.75F);
-            LoadFullBill(GetFullBill());
             comboboxID.DisplayMember = "ID";
             cbBillSearch.SelectedIndex = 0;
         }
-
-        #endregion
-
-        #region Load
-        private void LoadFullBill(DataTable table)
-        {
-            BindingSource source = new BindingSource();
-            ChangePrice(table);
-            source.DataSource = table;
-            dataGridViewBill.DataSource = source;
-            bindingBill.BindingSource = source;
-            comboboxID.DataSource = source;
-
-            txbDateCreate.DataBindings.Clear();
-            txbName.DataBindings.Clear();
-            txbPrice.DataBindings.Clear();
-            txbStatusRoom.DataBindings.Clear();
-            txbUser.DataBindings.Clear();
-            txbDiscount.DataBindings.Clear();
-            txbFinalPrice.DataBindings.Clear();
-
-            txbDateCreate.DataBindings.Add("Text", source, "DateOfCreate");
-            txbName.DataBindings.Add("Text", source, "roomName");
-            txbPrice.DataBindings.Add("Text", source, "totalPrice");
-            txbStatusRoom.DataBindings.Add("Text", source, "Name");
-            txbUser.DataBindings.Add("Text", source, "StaffSetUp");
-            txbDiscount.DataBindings.Add("Text", source, "discount");
-            txbFinalPrice.DataBindings.Add("Text", source, "finalprice");
-        }
-
-        #endregion
-
-        #region Change Text
         private void ChangePrice(DataTable table)
         {
             table.Columns.Add("totalPrice_New", typeof(string));
@@ -75,18 +40,8 @@ namespace HotelManager
         }
         private void BtnSeenBill_Click(object sender, EventArgs e)
         {
-            if (comboboxID.Text != string.Empty)
-            {
-                if (!txbStatusRoom.Text.Contains("Ch"))
-                {
-                    fPrintBill.SetPrintBill(int.Parse(comboboxID.Text), txbDateCreate.Text);
-                    fPrintBill.ShowDialog();
-                }
-                else
-                    MessageBox.Show("Hoá đơn chưa thanh toán\nBạn không có quyền truy cập", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+           
         }
-        #endregion
 
         #region Click
         private void BtnClose_Click(object sender, EventArgs e)
@@ -106,36 +61,15 @@ namespace HotelManager
 
                 btnSearch.Visible = false;
                 btnCancel.Visible = true;
-                Search();
+  
             }
         }
         private void BtnCancel_Click(object sender, EventArgs e)
         {
-            LoadFullBill(GetFullBill());
+
             btnCancel.Visible = false;
             btnSearch.Visible = true;
         }
-        #endregion
-
-        #region Method
-
-        private void Search()
-        {
-            LoadFullBill(GetSearchBill(txbSearch.Text, cbBillSearch.SelectedIndex));
-        }
-        #endregion
-
-        #region Get Data
-        private DataTable GetFullBill()
-        {
-            return BillDAO.Instance.LoaddFullBill();
-        }
-        private DataTable GetSearchBill(string text, int mode)
-        {
-            return BillDAO.Instance.SearchBill(text, mode);
-        }
-
-
 
         #endregion
 

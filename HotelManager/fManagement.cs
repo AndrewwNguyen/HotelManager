@@ -81,10 +81,11 @@ namespace HotelManager
         {
             if (CheckAccess("fReceiveRoom"))
             {
-                this.Hide();
+                Hide();
                 fReceiveRoom f = new fReceiveRoom();
                 f.ShowDialog();
-                this.Show();
+
+                Show();
             }
             else MessageBox.Show("Bạn không quyền truy cập.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
@@ -215,6 +216,11 @@ namespace HotelManager
         }
 
         private void btnHelp_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panelLeft_Paint(object sender, PaintEventArgs e)
         {
 
         }
