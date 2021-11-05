@@ -15,8 +15,12 @@ namespace HotelManager
 {
     public partial class fPrintBill : Form
     {
-        public fPrintBill()
+        int idroom;
+        int idbill;
+        public fPrintBill(int _idRoom, int _idBill)
         {
+            idbill = _idBill;
+            idroom = _idRoom;
             InitializeComponent();
         }
         private void btnClose_Click(object sender, EventArgs e)
@@ -44,6 +48,16 @@ namespace HotelManager
             bitmap = new Bitmap(Application.StartupPath + @"\Bill.Png");
             if (printDialog1.ShowDialog() == DialogResult.OK)
                 printDocument1.Print();
+        }
+
+        private void groupBox6_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void fPrintBill_Load(object sender, EventArgs e)
+        {
+            string sql = "";
         }
     }
 }

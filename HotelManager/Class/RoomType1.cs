@@ -7,21 +7,21 @@ using System.Threading.Tasks;
 
 namespace HotelManager.Class
 {
-    class RoomType
+    class RoomType1
     {
         private int id;
         private string name;
         private int price;
         private int limitPerson;
-        public RoomType() { }
-        public RoomType(int id, string name, int price, int limitPerson)
+        public RoomType1() { }
+        public RoomType1(int id, string name, int price, int limitPerson)
         {
             this.Id = id;
             this.Name = name;
             this.Price = price;
             this.LimitPerson = limitPerson;
         }
-        public RoomType(DataRow row)
+        public RoomType1(DataRow row)
         {
             this.Id = (int)row["id"];
             this.Name = row["name"].ToString();

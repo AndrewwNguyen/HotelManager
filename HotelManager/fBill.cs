@@ -14,7 +14,7 @@ namespace HotelManager
 {
     public partial class fBill : Form
     {
-        private readonly fPrintBill fPrintBill = new fPrintBill();
+        //private readonly fPrintBill fPrintBill = new fPrintBill();
 
         public fBill()
         {

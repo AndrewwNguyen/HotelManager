@@ -171,7 +171,7 @@
   <ItemGroup>
     <Compile Include="Class\Functions.cs" />
     <Compile Include="Class\Room1.cs" />
-    <Compile Include="Class\RoomType.cs" />
+    <Compile Include="Class\RoomType1.cs" />
     <Compile Include="DAO\AccessDAO.cs" />
     <Compile Include="DAO\AccountDAO.cs" />
     <Compile Include="DAO\AccountTypeDAO.cs" />
