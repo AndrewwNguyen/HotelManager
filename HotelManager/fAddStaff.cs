@@ -1,4 +1,5 @@
 ﻿
+using HotelManager.Class;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,19 +14,41 @@ namespace HotelManager
 {
     public partial class fAddStaff : Form
     {
+        Class.Functions dtBase = new Class.Functions();
         public fAddStaff()
         {
             InitializeComponent();
         }
-
         private void btnAddCustomer_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Bạn có muốn thêm nhân viên mới không?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
             if (result == DialogResult.OK)
             {
-
-                if (CheckDate())
+                if(txbName.Text !=string.Empty && txbFullName.Text != string.Empty && txbIDcard.Text != string.Empty && txbAddress.Text != string.Empty && txbPhoneNumber.Text != string.Empty)
                 {
+                    if (!Functions.ktra("Select * From Staff where UserName = '" + txbName.Text + "'"))
+                    {
+                        if (!Functions.ktra("Select * From Staff where IDCard = '" + txbIDcard.Text + "'"))
+                        {
+                            if (CheckDate())
+                            {
+                                Functions.Chaysql("INSERT INTO Staff (UserName, DisplayName, PassWord, IDStaffType, IDCard,DateOfBirth,Sex, PhoneNumber,StartDay,Address) VALUES('" + txbName.Text + "',N'" + txbFullName.Text + "','" + Functions.HashPass("123456") + "','" + comboBoxStaffType.SelectedValue.ToString() + "','" + txbIDcard.Text + "','" + datepickerDateOfBirth.Value + "',N'" + comboBoxSex.Text + "','" + txbPhoneNumber.Text + "','" + datePickerStartDay.Value + "',N'" + txbAddress.Text + "')");
+                                MessageBox.Show("Thêm Nhân Viên '"+txbFullName.Text+"' Thành Công Mật Khẩu Mặc Định : 123456 ", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Căn cước/CMND đã tồn tại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Tên tài khoản đã tồn tại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Không được để trống", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 }
             }
@@ -73,8 +96,12 @@ namespace HotelManager
 
         private void fAddStaff_Load(object sender, EventArgs e)
         {
+            comboBoxStaffType.DataSource = dtBase.DataReader("SELECT Name,ID FROM StaffType");
+            comboBoxStaffType.DisplayMember = "Name";
+            comboBoxStaffType.ValueMember = "ID";
+            comboBoxStaffType.SelectedIndex = 0;
             datePickerStartDay.Value = DateTime.Now;
-            comboBoxSex.SelectedIndex = 1;
+            comboBoxSex.SelectedIndex = 0;
         }
     }
 

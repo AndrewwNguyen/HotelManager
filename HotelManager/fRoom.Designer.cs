@@ -54,14 +54,6 @@
             this.comboBoxRoomType = new MetroFramework.Controls.MetroComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridViewRoom = new System.Windows.Forms.DataGridView();
-            this.colIDRoom = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colNameRoomType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colLimitPerson = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colIdRoomType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colIdStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bindingRoom = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
@@ -156,12 +148,14 @@
             this.txbSearch.BorderColorIdle = System.Drawing.Color.SeaGreen;
             this.txbSearch.BorderColorMouseHover = System.Drawing.Color.SeaGreen;
             this.txbSearch.BorderThickness = 1;
+            this.txbSearch.characterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txbSearch.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txbSearch.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.txbSearch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txbSearch.isPassword = false;
             this.txbSearch.Location = new System.Drawing.Point(22, 44);
             this.txbSearch.Margin = new System.Windows.Forms.Padding(4);
+            this.txbSearch.MaxLength = 32767;
             this.txbSearch.Name = "txbSearch";
             this.txbSearch.Size = new System.Drawing.Size(175, 29);
             this.txbSearch.TabIndex = 27;
@@ -228,7 +222,7 @@
             this.comboboxID.Size = new System.Drawing.Size(175, 29);
             this.comboboxID.Style = MetroFramework.MetroColorStyle.Green;
             this.comboboxID.TabIndex = 46;
-            //this.comboboxID.UseSelectable = true;
+            this.comboboxID.SelectedIndexChanged += new System.EventHandler(this.comboboxID_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -270,6 +264,7 @@
             this.txbLimitPerson.BorderColorIdle = System.Drawing.Color.SeaGreen;
             this.txbLimitPerson.BorderColorMouseHover = System.Drawing.Color.SeaGreen;
             this.txbLimitPerson.BorderThickness = 1;
+            this.txbLimitPerson.characterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txbLimitPerson.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txbLimitPerson.Enabled = false;
             this.txbLimitPerson.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -277,6 +272,7 @@
             this.txbLimitPerson.isPassword = false;
             this.txbLimitPerson.Location = new System.Drawing.Point(247, 156);
             this.txbLimitPerson.Margin = new System.Windows.Forms.Padding(0);
+            this.txbLimitPerson.MaxLength = 32767;
             this.txbLimitPerson.Name = "txbLimitPerson";
             this.txbLimitPerson.Size = new System.Drawing.Size(175, 29);
             this.txbLimitPerson.TabIndex = 44;
@@ -317,7 +313,7 @@
             // 
             // comboBoxStatusRoom
             // 
-            this.comboBoxStatusRoom.BackColor = System.Drawing.Color.White;
+            this.comboBoxStatusRoom.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.comboBoxStatusRoom.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboBoxStatusRoom.ForeColor = System.Drawing.Color.SeaGreen;
             this.comboBoxStatusRoom.FormattingEnabled = true;
@@ -327,10 +323,6 @@
             this.comboBoxStatusRoom.Size = new System.Drawing.Size(175, 29);
             this.comboBoxStatusRoom.Style = MetroFramework.MetroColorStyle.Green;
             this.comboBoxStatusRoom.TabIndex = 4;
-            //this.comboBoxStatusRoom.UseCustomBackColor = true;
-            //this.comboBoxStatusRoom.UseCustomForeColor = true;
-            //this.comboBoxStatusRoom.UseSelectable = true;
-            //this.comboBoxStatusRoom.UseStyleColors = true;
             // 
             // txbNameRoom
             // 
@@ -338,12 +330,14 @@
             this.txbNameRoom.BorderColorIdle = System.Drawing.Color.SeaGreen;
             this.txbNameRoom.BorderColorMouseHover = System.Drawing.Color.SeaGreen;
             this.txbNameRoom.BorderThickness = 1;
+            this.txbNameRoom.characterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txbNameRoom.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txbNameRoom.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbNameRoom.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txbNameRoom.isPassword = false;
             this.txbNameRoom.Location = new System.Drawing.Point(22, 100);
             this.txbNameRoom.Margin = new System.Windows.Forms.Padding(0);
+            this.txbNameRoom.MaxLength = 32767;
             this.txbNameRoom.Name = "txbNameRoom";
             this.txbNameRoom.Size = new System.Drawing.Size(175, 29);
             this.txbNameRoom.TabIndex = 1;
@@ -358,6 +352,7 @@
             this.txbPrice.BorderColorIdle = System.Drawing.Color.SeaGreen;
             this.txbPrice.BorderColorMouseHover = System.Drawing.Color.SeaGreen;
             this.txbPrice.BorderThickness = 1;
+            this.txbPrice.characterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txbPrice.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txbPrice.Enabled = false;
             this.txbPrice.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -365,6 +360,7 @@
             this.txbPrice.isPassword = false;
             this.txbPrice.Location = new System.Drawing.Point(247, 100);
             this.txbPrice.Margin = new System.Windows.Forms.Padding(0);
+            this.txbPrice.MaxLength = 32767;
             this.txbPrice.Name = "txbPrice";
             this.txbPrice.Size = new System.Drawing.Size(175, 29);
             this.txbPrice.TabIndex = 42;
@@ -372,7 +368,7 @@
             // 
             // comboBoxRoomType
             // 
-            this.comboBoxRoomType.BackColor = System.Drawing.Color.White;
+            this.comboBoxRoomType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.comboBoxRoomType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboBoxRoomType.ForeColor = System.Drawing.Color.SeaGreen;
             this.comboBoxRoomType.FormattingEnabled = true;
@@ -382,10 +378,6 @@
             this.comboBoxRoomType.Size = new System.Drawing.Size(175, 29);
             this.comboBoxRoomType.Style = MetroFramework.MetroColorStyle.Green;
             this.comboBoxRoomType.TabIndex = 2;
-            //this.comboBoxRoomType.UseCustomBackColor = true;
-            //this.comboBoxRoomType.UseCustomForeColor = true;
-            //this.comboBoxRoomType.UseSelectable = true;
-            //this.comboBoxRoomType.UseStyleColors = true;
             this.comboBoxRoomType.SelectedIndexChanged += new System.EventHandler(this.ComboBoxRoomType_SelectedIndexChanged);
             // 
             // groupBox1
@@ -418,15 +410,6 @@
             this.dataGridViewRoom.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewRoom.ColumnHeadersHeight = 29;
             this.dataGridViewRoom.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dataGridViewRoom.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.colIDRoom,
-            this.colName,
-            this.colNameRoomType,
-            this.colPrice,
-            this.colLimitPerson,
-            this.colStatus,
-            this.colIdRoomType,
-            this.colIdStatus});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 12F);
@@ -455,76 +438,7 @@
             this.dataGridViewRoom.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewRoom.Size = new System.Drawing.Size(646, 364);
             this.dataGridViewRoom.TabIndex = 28;
-            // 
-            // colIDRoom
-            // 
-            this.colIDRoom.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.colIDRoom.DataPropertyName = "id";
-            this.colIDRoom.FillWeight = 90F;
-            this.colIDRoom.HeaderText = "Mã";
-            this.colIDRoom.Name = "colIDRoom";
-            this.colIDRoom.ReadOnly = true;
-            this.colIDRoom.Width = 57;
-            // 
-            // colName
-            // 
-            this.colName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.colName.DataPropertyName = "name";
-            this.colName.HeaderText = "Tên";
-            this.colName.Name = "colName";
-            this.colName.ReadOnly = true;
-            this.colName.Width = 58;
-            // 
-            // colNameRoomType
-            // 
-            this.colNameRoomType.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.colNameRoomType.DataPropertyName = "nameRoomType";
-            this.colNameRoomType.HeaderText = "Loại Phòng";
-            this.colNameRoomType.Name = "colNameRoomType";
-            this.colNameRoomType.ReadOnly = true;
-            this.colNameRoomType.Width = 113;
-            // 
-            // colPrice
-            // 
-            this.colPrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.colPrice.DataPropertyName = "price_New";
-            this.colPrice.HeaderText = "Giá";
-            this.colPrice.Name = "colPrice";
-            this.colPrice.ReadOnly = true;
-            this.colPrice.Width = 58;
-            // 
-            // colLimitPerson
-            // 
-            this.colLimitPerson.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.colLimitPerson.DataPropertyName = "limitPerson";
-            this.colLimitPerson.HeaderText = "Số người tối đa";
-            this.colLimitPerson.Name = "colLimitPerson";
-            this.colLimitPerson.ReadOnly = true;
-            this.colLimitPerson.Width = 141;
-            // 
-            // colStatus
-            // 
-            this.colStatus.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colStatus.DataPropertyName = "nameStatusRoom";
-            this.colStatus.HeaderText = "Trạng Thái";
-            this.colStatus.Name = "colStatus";
-            this.colStatus.ReadOnly = true;
-            // 
-            // colIdRoomType
-            // 
-            this.colIdRoomType.DataPropertyName = "idRoomType";
-            this.colIdRoomType.HeaderText = "";
-            this.colIdRoomType.Name = "colIdRoomType";
-            this.colIdRoomType.ReadOnly = true;
-            this.colIdRoomType.Visible = false;
-            // 
-            // colIdStatus
-            // 
-            this.colIdStatus.DataPropertyName = "idStatusRoom";
-            this.colIdStatus.HeaderText = "";
-            this.colIdStatus.Name = "colIdStatus";
-            this.colIdStatus.ReadOnly = true;
-            this.colIdStatus.Visible = false;
+            this.dataGridViewRoom.SelectionChanged += new System.EventHandler(this.dataGridViewRoom_SelectionChanged_1);
             // 
             // bindingRoom
             // 
@@ -593,6 +507,7 @@
             // 
             this.bindingNavigatorPositionItem.AccessibleName = "Position";
             this.bindingNavigatorPositionItem.AutoSize = false;
+            this.bindingNavigatorPositionItem.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
             this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 25);
             this.bindingNavigatorPositionItem.Text = "0";
@@ -820,6 +735,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "fRoom";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FRoom_FormClosing);
+            this.Load += new System.EventHandler(this.fRoom_Load);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FRoom_KeyPress);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
@@ -879,13 +795,5 @@
         private MetroFramework.Controls.MetroComboBox comboboxID;
         private Bunifu.Framework.UI.BunifuThinButton2 btnCancel;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colIDRoom;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colNameRoomType;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colPrice;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colLimitPerson;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colStatus;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colIdRoomType;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colIdStatus;
     }
 }

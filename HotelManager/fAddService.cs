@@ -1,4 +1,5 @@
-﻿using HotelManager.DAO;
+﻿using HotelManager.Class;
+using HotelManager.DAO;
 using HotelManager.DTO;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,7 @@ namespace HotelManager
 {
     public partial class fAddService : Form
     {
+        Class.Functions dtBase = new Class.Functions();
         public fAddService()
         {
             InitializeComponent();
@@ -68,12 +70,37 @@ namespace HotelManager
         }
         private void btnAddCustomer_Click(object sender, EventArgs e)
         {
-            
+            if(txbName.Text==string.Empty &&txbPrice.Text ==string.Empty)
+            {
+                MessageBox.Show("Không được để trống", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            else
+            {
+                string sql = "select Name from Service where Name = '"+txbName.Text+"'";
+                if (!Functions.ktra(sql))
+                {
+                    Functions.Chaysql("insert Service(ID,Name,IDServiceType,Price) VALUES('"+Functions.key()+"',N'"+txbName.Text+"','"+comboBoxServiceType.SelectedIndex.ToString()+"','"+ StringToInt(txbPrice.Text) + "')");
+                    MessageBox.Show("Thêm dịch vụ thành công", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information); 
+                    txbName.Text = string.Empty;
+                    txbPrice.Text = IntToString("100000");
+                }
+                else
+                {
+                    MessageBox.Show("Tên dịch vụ đã có", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                }
+            }    
         }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void fAddService_Load(object sender, EventArgs e)
+        {
+            comboBoxServiceType.DataSource = dtBase.DataReader("SELECT Name,ID FROM ServiceType");
+            comboBoxServiceType.DisplayMember = "Name";
+            comboBoxServiceType.ValueMember = "ID";
         }
     }
 }

@@ -55,16 +55,6 @@
             this.txbIDCard = new Bunifu.Framework.UI.BunifuMetroTextbox();
             this.label16 = new System.Windows.Forms.Label();
             this.dataGridViewCustomer = new System.Windows.Forms.DataGridView();
-            this.colID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colNameCustomer = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colIDCard = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colNameCustomerType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colSex = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colDateOfBirth = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colPhone = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colNationality = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colIdCustomerType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.bindingCustomer = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
@@ -139,7 +129,7 @@
             // 
             // txbNationality
             // 
-            this.txbNationality.BackColor = System.Drawing.Color.White;
+            this.txbNationality.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.txbNationality.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.txbNationality.FormattingEnabled = true;
             this.txbNationality.ItemHeight = 23;
@@ -163,14 +153,10 @@
             "Khác"});
             this.txbNationality.Location = new System.Drawing.Point(216, 211);
             this.txbNationality.Name = "txbNationality";
-            this.txbNationality.Size = new System.Drawing.Size(179, 29);
+            this.txbNationality.Size = new System.Drawing.Size(175, 29);
             this.txbNationality.Style = MetroFramework.MetroColorStyle.Green;
             this.txbNationality.TabIndex = 58;
-            //this.txbNationality.UseCustomBackColor = true;
-            //this.txbNationality.UseCustomForeColor = true;
-            //this.txbNationality.UseSelectable = true;
-            //this.txbNationality.UseStyleColors = true;
-            //// 
+            // 
             // label14
             // 
             this.label14.AutoSize = true;
@@ -188,12 +174,14 @@
             this.txbAddress.BorderColorIdle = System.Drawing.Color.SeaGreen;
             this.txbAddress.BorderColorMouseHover = System.Drawing.Color.SeaGreen;
             this.txbAddress.BorderThickness = 1;
+            this.txbAddress.characterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txbAddress.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txbAddress.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbAddress.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txbAddress.isPassword = false;
             this.txbAddress.Location = new System.Drawing.Point(216, 155);
             this.txbAddress.Margin = new System.Windows.Forms.Padding(0);
+            this.txbAddress.MaxLength = 32767;
             this.txbAddress.Name = "txbAddress";
             this.txbAddress.Size = new System.Drawing.Size(175, 29);
             this.txbAddress.TabIndex = 53;
@@ -205,12 +193,14 @@
             this.txbPhoneNumber.BorderColorIdle = System.Drawing.Color.SeaGreen;
             this.txbPhoneNumber.BorderColorMouseHover = System.Drawing.Color.SeaGreen;
             this.txbPhoneNumber.BorderThickness = 1;
+            this.txbPhoneNumber.characterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txbPhoneNumber.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txbPhoneNumber.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbPhoneNumber.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txbPhoneNumber.isPassword = false;
             this.txbPhoneNumber.Location = new System.Drawing.Point(216, 99);
             this.txbPhoneNumber.Margin = new System.Windows.Forms.Padding(0);
+            this.txbPhoneNumber.MaxLength = 32767;
             this.txbPhoneNumber.Name = "txbPhoneNumber";
             this.txbPhoneNumber.Size = new System.Drawing.Size(175, 29);
             this.txbPhoneNumber.TabIndex = 52;
@@ -241,7 +231,7 @@
             // 
             // comboBoxSex
             // 
-            this.comboBoxSex.BackColor = System.Drawing.Color.White;
+            this.comboBoxSex.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.comboBoxSex.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboBoxSex.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.comboBoxSex.FormattingEnabled = true;
@@ -255,14 +245,10 @@
             this.comboBoxSex.Size = new System.Drawing.Size(175, 29);
             this.comboBoxSex.Style = MetroFramework.MetroColorStyle.Green;
             this.comboBoxSex.TabIndex = 4;
-            //this.comboBoxSex.UseCustomBackColor = true;
-            //this.comboBoxSex.UseCustomForeColor = true;
-            //this.comboBoxSex.UseSelectable = true;
-            //this.comboBoxSex.UseStyleColors = true;
             // 
             // comboBoxCustomerType
             // 
-            this.comboBoxCustomerType.BackColor = System.Drawing.Color.White;
+            this.comboBoxCustomerType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.comboBoxCustomerType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboBoxCustomerType.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.comboBoxCustomerType.FormattingEnabled = true;
@@ -272,10 +258,6 @@
             this.comboBoxCustomerType.Size = new System.Drawing.Size(175, 29);
             this.comboBoxCustomerType.Style = MetroFramework.MetroColorStyle.Green;
             this.comboBoxCustomerType.TabIndex = 3;
-            //this.comboBoxCustomerType.UseCustomBackColor = true;
-            //this.comboBoxCustomerType.UseCustomForeColor = true;
-            //this.comboBoxCustomerType.UseSelectable = true;
-            //this.comboBoxCustomerType.UseStyleColors = true;
             // 
             // comboboxID
             // 
@@ -286,8 +268,7 @@
             this.comboboxID.Size = new System.Drawing.Size(175, 29);
             this.comboboxID.Style = MetroFramework.MetroColorStyle.Green;
             this.comboboxID.TabIndex = 0;
-            //this.comboboxID.UseSelectable = true;
-            //// 
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -305,12 +286,14 @@
             this.txbFullName.BorderColorIdle = System.Drawing.Color.SeaGreen;
             this.txbFullName.BorderColorMouseHover = System.Drawing.Color.SeaGreen;
             this.txbFullName.BorderThickness = 1;
+            this.txbFullName.characterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txbFullName.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txbFullName.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbFullName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txbFullName.isPassword = false;
             this.txbFullName.Location = new System.Drawing.Point(12, 99);
             this.txbFullName.Margin = new System.Windows.Forms.Padding(0);
+            this.txbFullName.MaxLength = 32767;
             this.txbFullName.Name = "txbFullName";
             this.txbFullName.Size = new System.Drawing.Size(175, 29);
             this.txbFullName.TabIndex = 1;
@@ -383,12 +366,15 @@
             this.txbIDCard.BorderColorIdle = System.Drawing.Color.SeaGreen;
             this.txbIDCard.BorderColorMouseHover = System.Drawing.Color.SeaGreen;
             this.txbIDCard.BorderThickness = 1;
+            this.txbIDCard.characterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txbIDCard.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txbIDCard.Enabled = false;
             this.txbIDCard.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbIDCard.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txbIDCard.isPassword = false;
             this.txbIDCard.Location = new System.Drawing.Point(12, 155);
             this.txbIDCard.Margin = new System.Windows.Forms.Padding(0);
+            this.txbIDCard.MaxLength = 32767;
             this.txbIDCard.Name = "txbIDCard";
             this.txbIDCard.Size = new System.Drawing.Size(175, 29);
             this.txbIDCard.TabIndex = 2;
@@ -428,17 +414,6 @@
             this.dataGridViewCustomer.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewCustomer.ColumnHeadersHeight = 25;
             this.dataGridViewCustomer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dataGridViewCustomer.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.colID,
-            this.colNameCustomer,
-            this.colIDCard,
-            this.colNameCustomerType,
-            this.colSex,
-            this.colDateOfBirth,
-            this.colPhone,
-            this.colAddress,
-            this.colNationality,
-            this.colIdCustomerType});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 12F);
@@ -467,94 +442,6 @@
             this.dataGridViewCustomer.Size = new System.Drawing.Size(653, 484);
             this.dataGridViewCustomer.TabIndex = 3;
             this.dataGridViewCustomer.SelectionChanged += new System.EventHandler(this.DataGridViewCustomer_SelectionChanged);
-            // 
-            // colID
-            // 
-            this.colID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.colID.DataPropertyName = "id";
-            this.colID.HeaderText = "Mã";
-            this.colID.Name = "colID";
-            this.colID.ReadOnly = true;
-            this.colID.Width = 57;
-            // 
-            // colNameCustomer
-            // 
-            this.colNameCustomer.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.colNameCustomer.DataPropertyName = "Name";
-            this.colNameCustomer.HeaderText = "Tên";
-            this.colNameCustomer.Name = "colNameCustomer";
-            this.colNameCustomer.ReadOnly = true;
-            this.colNameCustomer.Width = 58;
-            // 
-            // colIDCard
-            // 
-            this.colIDCard.DataPropertyName = "idcard";
-            this.colIDCard.FillWeight = 90F;
-            this.colIDCard.HeaderText = "Số CMND";
-            this.colIDCard.Name = "colIDCard";
-            this.colIDCard.ReadOnly = true;
-            this.colIDCard.Width = 90;
-            // 
-            // colNameCustomerType
-            // 
-            this.colNameCustomerType.DataPropertyName = "NameCustomerType";
-            this.colNameCustomerType.FillWeight = 70F;
-            this.colNameCustomerType.HeaderText = "Loại";
-            this.colNameCustomerType.Name = "colNameCustomerType";
-            this.colNameCustomerType.ReadOnly = true;
-            this.colNameCustomerType.Width = 70;
-            // 
-            // colSex
-            // 
-            this.colSex.DataPropertyName = "sex";
-            this.colSex.FillWeight = 85F;
-            this.colSex.HeaderText = "Giới Tính";
-            this.colSex.Name = "colSex";
-            this.colSex.ReadOnly = true;
-            this.colSex.Visible = false;
-            this.colSex.Width = 85;
-            // 
-            // colDateOfBirth
-            // 
-            this.colDateOfBirth.DataPropertyName = "dateofbirth";
-            this.colDateOfBirth.FillWeight = 90F;
-            this.colDateOfBirth.HeaderText = "Ngày Sinh";
-            this.colDateOfBirth.Name = "colDateOfBirth";
-            this.colDateOfBirth.ReadOnly = true;
-            this.colDateOfBirth.Visible = false;
-            this.colDateOfBirth.Width = 90;
-            // 
-            // colPhone
-            // 
-            this.colPhone.DataPropertyName = "phoneNumber";
-            this.colPhone.HeaderText = "SĐT";
-            this.colPhone.Name = "colPhone";
-            this.colPhone.ReadOnly = true;
-            // 
-            // colAddress
-            // 
-            this.colAddress.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colAddress.DataPropertyName = "address";
-            this.colAddress.HeaderText = "Địa Chỉ";
-            this.colAddress.Name = "colAddress";
-            this.colAddress.ReadOnly = true;
-            // 
-            // colNationality
-            // 
-            this.colNationality.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.colNationality.DataPropertyName = "nationality";
-            this.colNationality.HeaderText = "Quốc Tịch";
-            this.colNationality.Name = "colNationality";
-            this.colNationality.ReadOnly = true;
-            this.colNationality.Width = 104;
-            // 
-            // colIdCustomerType
-            // 
-            this.colIdCustomerType.DataPropertyName = "idCustomerType";
-            this.colIdCustomerType.HeaderText = "";
-            this.colIdCustomerType.Name = "colIdCustomerType";
-            this.colIdCustomerType.ReadOnly = true;
-            this.colIdCustomerType.Visible = false;
             // 
             // groupBox1
             // 
@@ -638,6 +525,7 @@
             // 
             this.bindingNavigatorPositionItem.AccessibleName = "Position";
             this.bindingNavigatorPositionItem.AutoSize = false;
+            this.bindingNavigatorPositionItem.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
             this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 25);
             this.bindingNavigatorPositionItem.Text = "0";
@@ -696,7 +584,7 @@
             // 
             // cbCustomerSearch
             // 
-            this.cbCustomerSearch.BackColor = System.Drawing.Color.White;
+            this.cbCustomerSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.cbCustomerSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbCustomerSearch.FormattingEnabled = true;
             this.cbCustomerSearch.ItemHeight = 23;
@@ -710,10 +598,6 @@
             this.cbCustomerSearch.Size = new System.Drawing.Size(175, 29);
             this.cbCustomerSearch.Style = MetroFramework.MetroColorStyle.Green;
             this.cbCustomerSearch.TabIndex = 50;
-            //this.cbCustomerSearch.UseCustomBackColor = true;
-            //this.cbCustomerSearch.UseCustomForeColor = true;
-            //this.cbCustomerSearch.UseSelectable = true;
-            //this.cbCustomerSearch.UseStyleColors = true;
             // 
             // txbSearch
             // 
@@ -721,12 +605,14 @@
             this.txbSearch.BorderColorIdle = System.Drawing.Color.SeaGreen;
             this.txbSearch.BorderColorMouseHover = System.Drawing.Color.SeaGreen;
             this.txbSearch.BorderThickness = 1;
+            this.txbSearch.characterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txbSearch.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txbSearch.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbSearch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txbSearch.isPassword = false;
             this.txbSearch.Location = new System.Drawing.Point(220, 26);
             this.txbSearch.Margin = new System.Windows.Forms.Padding(4);
+            this.txbSearch.MaxLength = 32767;
             this.txbSearch.Name = "txbSearch";
             this.txbSearch.Size = new System.Drawing.Size(175, 29);
             this.txbSearch.TabIndex = 0;
@@ -958,6 +844,7 @@
             this.Name = "fCustomer";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "fCustomer";
+            this.Load += new System.EventHandler(this.fCustomer_Load);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FCustomer_KeyPress);
             this.groupCustomer.ResumeLayout(false);
             this.groupCustomer.PerformLayout();
@@ -1022,15 +909,5 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
         private MetroFramework.Controls.MetroComboBox txbNationality;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colNameCustomer;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colIDCard;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colNameCustomerType;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colSex;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colDateOfBirth;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colPhone;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colAddress;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colNationality;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colIdCustomerType;
     }
 }

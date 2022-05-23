@@ -18,33 +18,43 @@ namespace HotelManager
     {
         Class.Functions dtBase = new Class.Functions();
         int IDBookRoom = -1;
-        public fReceiveRoom(int idBookRoom)
+        string staffSetUp;
+        public fReceiveRoom( string userName)
         {
-            IDBookRoom = idBookRoom;
+            staffSetUp = userName;
             InitializeComponent();
         }
         public void LoadInfoIdRoom()
         {
             string str;
             str = "SELECT Customer.Name from Customer join BookRoom on Customer.ID = BookRoom.IDCustomer where BookRoom.ID = '" + txbIDBookRoom.Text + "'";
-            txbFullName.Text = Functions.laygiatri(str);
+            txbFullName.Text = Functions.Laygiatri(str);
             str = "SELECT Customer.IDCard from Customer join BookRoom on Customer.ID = BookRoom.IDCustomer where BookRoom.ID = '" + txbIDBookRoom.Text + "'";
-            txbIDCard.Text = Functions.laygiatri(str);
+            txbIDCard.Text = Functions.Laygiatri(str);
             str = "SELECT Room.Name from BookRoom join RoomType on BookRoom.IDRoomType = RoomType.ID join Room on Room.IDRoomType= RoomType.ID where BookRoom.ID = '" + txbIDBookRoom.Text + "'";
-            txbRoomName.Text = Functions.laygiatri(str);
+            txbRoomName.Text = Functions.Laygiatri(str);
             str = "SELECT RoomType.Name from Customer join BookRoom on Customer.ID = BookRoom.IDCustomer Join RoomType on BookRoom.IDRoomType=RoomType.ID where BookRoom.ID = '" + txbIDBookRoom.Text + "'";
-            txbRoomTypeName.Text = Functions.laygiatri(str);
+            txbRoomTypeName.Text = Functions.Laygiatri(str);
             str = "SELECT DateCheckIn from Customer join BookRoom on Customer.ID = BookRoom.IDCustomer where BookRoom.ID = '" + txbIDBookRoom.Text + "'";
-            txbDateCheckIn.Text = Functions.laygiatri(str);
+            txbDateCheckIn.Text = Functions.Laygiatri(str);
             str = "SELECT DateCheckOut from Customer join BookRoom on Customer.ID = BookRoom.IDCustomer where BookRoom.ID = '" + txbIDBookRoom.Text + "'";
-            txbDateCheckOut.Text = Functions.laygiatri(str);
+            txbDateCheckOut.Text = Functions.Laygiatri(str);
             str = "SELECT RoomType.LimitPerson from Customer join BookRoom on Customer.ID = BookRoom.IDCustomer Join RoomType on BookRoom.IDRoomType=RoomType.ID where BookRoom.ID = '" + txbIDBookRoom.Text + "'";
-            txbAmountPeople.Text = Functions.laygiatri(str);
+            txbAmountPeople.Text = Functions.Laygiatri(str);
             str = "SELECT Price from Customer join BookRoom on Customer.ID = BookRoom.IDCustomer Join RoomType on BookRoom.IDRoomType=RoomType.ID where BookRoom.ID = '" + txbIDBookRoom.Text + "'";
-            txbPrice.Text = Functions.laygiatri(str);
+            txbPrice.Text = IntToString(Functions.Laygiatri(str));
             cbRoomType.Text = txbRoomTypeName.Text;
             cbRoom.Text = txbRoomName.Text;
 
+        }
+        private string IntToString(string text)
+        {
+            if (text == string.Empty)
+                return 0.ToString("C0", CultureInfo.CreateSpecificCulture("vi-VN"));
+            if (text.Contains(".") || text.Contains(" "))
+                return text;
+            else
+                return (int.Parse(text).ToString("C0", CultureInfo.CreateSpecificCulture("vi-VN")));
         }
         public void ReLoad()
         {
@@ -83,7 +93,7 @@ namespace HotelManager
         private void btnSearch_Click(object sender, EventArgs e)
         {
             string sql = "select Checked from BookRoom where ID = '" + txbIDBookRoom.Text + "'";
-            if (Functions.laygiatri(sql) != "Đã Nhận Phòng")
+            if (Functions.Laygiatri(sql) != "Đã Nhận Phòng")
             {
                 LoadInfoIdRoom();
             }
@@ -110,7 +120,7 @@ namespace HotelManager
         private void btnReceiveRoom_Click(object sender, EventArgs e)
         {
             string sql5 = "select Checked from BookRoom where ID = '"+txbIDBookRoom.Text+"'";
-            if(Functions.laygiatri(sql5)!="Đã Nhận Phòng")
+            if(Functions.Laygiatri(sql5)!="Đã Nhận Phòng")
             {
                 if (MessageBox.Show("Bạn có muốn nhận phòng không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
@@ -123,10 +133,13 @@ namespace HotelManager
                     sql = "INSERT ReceiveRoom(ID, IDBookRoom, IDRoom)VALUES('" + a + "','" + txbIDBookRoom.Text + "','" + cbRoom.SelectedValue.ToString() + "')";
                     Functions.Chaysql(sql);
                     string sql4 = "SELECT Customer.ID FROM  Customer join BookRoom on BookRoom.IDCustomer = Customer.ID join ReceiveRoom on ReceiveRoom.IDBookRoom = BookRoom.ID Where ReceiveRoom.ID = '" + a + "'";
-                    string b = Functions.laygiatri(sql4);
+                    string b = Functions.Laygiatri(sql4);
                     sql3 = "INSERT ReceiveRoomDetails(IDReceiveRoom,IDCustomerOther) VALUES ('" + a + "','" + b + "')";
                     Functions.Chaysql(sql2);
                     Functions.Chaysql(sql3);
+                    int Totals = Int32.Parse(Functions.Laygiatri("select RoomType.Price from RoomType join Room on Room.IDRoomType = RoomType.ID join ReceiveRoom on ReceiveRoom.IDRoom = Room.ID where ReceiveRoom.ID = '" + a + "'"))+2500000;
+                    sql2 = "INSERT [Bill] ([ID], [IDReceiveRoom], [StaffSetUp], [DateOfCreate], [RoomPrice], [ServicePrice], [TotalPrice], [Discount], [IDStatusBill], [Surcharge]) VALUES ('" + Functions.key() + "', '" + a + "',N'" + staffSetUp + "', '" + DateTime.Now + "','" + Int32.Parse(Functions.Laygiatri("select RoomType.Price from RoomType join Room on Room.IDRoomType = RoomType.ID join ReceiveRoom on ReceiveRoom.IDRoom = Room.ID where ReceiveRoom.ID = '" + a + "'")) + "', 0, '" + Totals+ "', 0, 1, 2500000)";
+                    Functions.Chaysql(sql2);
                     MessageBox.Show("Nhận Phòng thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     LoaddataGridViewReceiveRoom();
                     ReLoad();

@@ -34,6 +34,7 @@
             this.btnClose = new Bunifu.Framework.UI.BunifuImageButton();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.lblFinalPrice = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.lblDiscount = new System.Windows.Forms.Label();
@@ -94,7 +95,7 @@
             this.btnClose_ = new Bunifu.Framework.UI.BunifuThinButton2();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.label23 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
             this.groupBox6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -135,6 +136,7 @@
             // 
             // groupBox6
             // 
+            this.groupBox6.Controls.Add(this.label23);
             this.groupBox6.Controls.Add(this.pictureBox2);
             this.groupBox6.Controls.Add(this.lblFinalPrice);
             this.groupBox6.Controls.Add(this.label24);
@@ -195,6 +197,17 @@
             this.groupBox6.TabIndex = 36;
             this.groupBox6.TabStop = false;
             this.groupBox6.Enter += new System.EventHandler(this.groupBox6_Enter);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(18, 15);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(172, 143);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 114;
+            this.pictureBox2.TabStop = false;
             // 
             // lblFinalPrice
             // 
@@ -339,7 +352,7 @@
             this.bunifuSeparator3.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.bunifuSeparator3.BackColor = System.Drawing.Color.Transparent;
             this.bunifuSeparator3.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.bunifuSeparator3.LineThickness = 3;
+            this.bunifuSeparator3.LineThickness = 8;
             this.bunifuSeparator3.Location = new System.Drawing.Point(18, 573);
             this.bunifuSeparator3.Margin = new System.Windows.Forms.Padding(9, 13, 9, 13);
             this.bunifuSeparator3.Name = "bunifuSeparator3";
@@ -398,7 +411,7 @@
             // 
             this.bunifuSeparator2.BackColor = System.Drawing.Color.Transparent;
             this.bunifuSeparator2.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.bunifuSeparator2.LineThickness = 3;
+            this.bunifuSeparator2.LineThickness = 8;
             this.bunifuSeparator2.Location = new System.Drawing.Point(18, 355);
             this.bunifuSeparator2.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.bunifuSeparator2.Name = "bunifuSeparator2";
@@ -663,7 +676,7 @@
             // 
             this.bunifuSeparator1.BackColor = System.Drawing.Color.Transparent;
             this.bunifuSeparator1.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.bunifuSeparator1.LineThickness = 3;
+            this.bunifuSeparator1.LineThickness = 8;
             this.bunifuSeparator1.Location = new System.Drawing.Point(18, 177);
             this.bunifuSeparator1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.bunifuSeparator1.Name = "bunifuSeparator1";
@@ -754,7 +767,7 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(288, 23);
             this.label4.TabIndex = 66;
-            this.label4.Text = "▶ Website: https://www.thereveriesaigon.com";
+            this.label4.Text = "▶ Website: https://www.baosonhotel.com";
             // 
             // label3
             // 
@@ -850,16 +863,14 @@
             this.printDialog1.Document = this.printDocument1;
             this.printDialog1.UseEXDialog = true;
             // 
-            // pictureBox2
+            // label23
             // 
-            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(18, 15);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(172, 143);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 114;
-            this.pictureBox2.TabStop = false;
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(555, 81);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(61, 21);
+            this.label23.TabIndex = 115;
+            this.label23.Text = "label23";
             // 
             // fPrintBill
             // 
@@ -954,5 +965,6 @@
         private System.Drawing.Printing.PrintDocument printDocument1;
         private System.Windows.Forms.PrintDialog printDialog1;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Label label23;
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -57,7 +58,6 @@ namespace HotelManager
         public class Nationality
         {
             public string name { get; set; }
-
         }
         public void LoadData()
         {
@@ -75,21 +75,20 @@ namespace HotelManager
             if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
                 e.Handled = true;
         }
+        public void LoadRoomType()
+        {
+            string sql = "Select ID from RoomType where Name = N'" + cbRoomType.Text + "'";
+            txbRoomTypeID.Text = Functions.Laygiatri(sql);
+            sql = "Select Name from RoomType where Name = N'" + cbRoomType.Text + "'";
+            txbRoomTypeName.Text = Functions.Laygiatri(sql);
+            sql = "Select LimitPerson from RoomType where Name = N'" + cbRoomType.Text + "'";
+            txbAmountPeople.Text = Functions.Laygiatri(sql);
+            sql = "Select Price from RoomType where Name = N'" + cbRoomType.Text + "'";
+            txbPrice.Text = IntToString(Functions.Laygiatri(sql));
+        }
         private void cbRoomType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string str/*str1,str2,str3*/;
-            str = "Select ID from RoomType where Name =N'" + cbRoomType.SelectedValue + "'";
-            //str1 = "Select Name from RoomType where Name =N'" + cbRoomType.SelectedValue + "'";
-            //str2 = "Select LimitPerson from RoomType where Name =N'" + cbRoomType.SelectedValue + "'";
-            //str3 = "Select Price from RoomType where Name =N'" + cbRoomType.SelectedValue + "'";
-            txbRoomTypeID.Text = Functions.laygiatri(str);
-            str = "Select Name from RoomType where Name =N'" + cbRoomType.SelectedValue + "'";
-            txbRoomTypeName.Text = Functions.laygiatri(str);
-            str = "Select LimitPerson from RoomType where Name =N'" + cbRoomType.SelectedValue + "'";
-            txbAmountPeople.Text = Functions.laygiatri(str);
-            str = "Select Price from RoomType where Name =N'" + cbRoomType.SelectedValue + "'";
-            txbPrice.Text = Functions.laygiatri(str);
-
+            LoadRoomType();
         }
         string b = "Chưa nhận phòng";
         public void BookRoom()
@@ -134,7 +133,15 @@ namespace HotelManager
         {
 
         }
-
+        private string IntToString(string text)
+        {
+            if (text == string.Empty)
+                return 0.ToString("C0", CultureInfo.CreateSpecificCulture("vi-VN"));
+            if (text.Contains(".") || text.Contains(" "))
+                return text;
+            else
+                return (int.Parse(text).ToString("C0", CultureInfo.CreateSpecificCulture("vi-VN")));
+        }
         private void btnSearch_Click(object sender, EventArgs e)
         {
             string sql = "SELECT IDCard FROM Customer WHERE IDCard = '" + txbIDCardSearch.Text + "'";
@@ -145,7 +152,7 @@ namespace HotelManager
             else
             {
                 LoadInfoIdcard();
-                label5.Text = Functions.laygiatri("SELECT ID FROM Customer WHERE IDcard = '" + txbIDCardSearch.Text + "'");
+                label5.Text = Functions.Laygiatri("SELECT ID FROM Customer WHERE IDcard = '" + txbIDCardSearch.Text + "'");
                 btnSearch.Visible = false;
                 btnCancel2.Visible = true;
                 HideText();
@@ -179,7 +186,7 @@ namespace HotelManager
                         if (label5.Text != String.Empty)
                         {
                             string sql2;
-                            sql2 = "INSERT [dbo].[BookRoom] ([ID], [IDCustomer], [IDRoomType], [DateBookRoom], [DateCheckIn], [DateCheckOut],[Days],[Checked]) VALUES ('" + Functions.key() + "','" + label5.Text + "','" + cbCustomerType.SelectedValue.ToString() + "','" + dpkDateCheckIn.Value + "','" + dpkDateCheckIn.Value + "','" + dpkDateCheckOut.Value + "','" + txbDays.Text + "','" + b + "')";
+                            sql2 = "INSERT [dbo].[BookRoom] ([ID], [IDCustomer], [IDRoomType], [DateBookRoom], [DateCheckIn], [DateCheckOut],[Days],[Checked]) VALUES ('" + Functions.key() + "','" + label5.Text + "','" + txbRoomTypeID.Text + "','" + dpkDateCheckIn.Value + "','" + dpkDateCheckIn.Value + "','" + dpkDateCheckOut.Value + "','" + txbDays.Text + "','" + b + "')";
                             Functions.Chaysql(sql2);
                             MessageBox.Show("Đặt phòng thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             LoaddataGridViewBookRoom();
@@ -210,7 +217,7 @@ namespace HotelManager
         private void btnDetails_Click(object sender, EventArgs e)
         {
             int idBookRoom = (int)dataGridViewBookRoom.SelectedRows[0].Cells[0].Value;
-            string idCard = Functions.laygiatri("SELECT ID FROM Customer WHERE IDCard = '" + dataGridViewBookRoom.SelectedRows[0].Cells[2].Value.ToString() + "'");
+            string idCard = Functions.Laygiatri("SELECT ID FROM Customer WHERE IDCard = '" + dataGridViewBookRoom.SelectedRows[0].Cells[2].Value.ToString() + "'");
             fBookRoomDetails f = new fBookRoomDetails(idBookRoom, idCard);
             f.ShowDialog();
             LoaddataGridViewBookRoom();
@@ -223,14 +230,14 @@ namespace HotelManager
 
         private void fBookRoom_Load(object sender, EventArgs e)
         {
-            cbRoomType.DataSource = dtBase.DataReader("SELECT Name,ID FROM Roomtype");
+            cbRoomType.DataSource = dtBase.DataReader("SELECT Name,ID FROM Roomtype ");
             cbRoomType.DisplayMember = "Name";
             cbRoomType.ValueMember = "ID";
-            cbRoomType.SelectedIndex = -1;
+            cbRoomType.SelectedIndex = 0;
             cbCustomerType.DataSource = dtBase.DataReader("SELECT Name,ID FROM  CustomerType");
             cbCustomerType.DisplayMember = "Name";
             cbCustomerType.ValueMember = "ID";
-            cbCustomerType.SelectedIndex = -1;
+            cbCustomerType.SelectedIndex = 0;
             LoaddataGridViewBookRoom();
         }
         public void LoadDate()
@@ -252,21 +259,21 @@ namespace HotelManager
         {
             string str;
             str = "SELECT DateOfBirth FROM Customer WHERE IDCard = N'" + txbIDCardSearch.Text + "'";
-            dpkDateOfBirth.Value = DateTime.Parse(Functions.laygiatri(str));
+            dpkDateOfBirth.Value = DateTime.Parse(Functions.Laygiatri(str));
             str = "SELECT Name FROM Customer WHERE IDCard = N'" + txbIDCardSearch.Text + "'";
-            txbFullName.Text = Functions.laygiatri(str);
+            txbFullName.Text = Functions.Laygiatri(str);
             str = "SELECT CustomerType.Name FROM Customer join CustomerType on Customer.IDCustomerType = CustomerType.ID WHERE IDCard = N'" + txbIDCardSearch.Text + "'";
-            cbCustomerType.Text = Functions.laygiatri(str);
+            cbCustomerType.Text = Functions.Laygiatri(str);
             str = "SELECT PhoneNumber FROM Customer WHERE IDCard = N'" + txbIDCardSearch.Text + "'";
-            txbPhoneNumber.Text = Functions.laygiatri(str);
+            txbPhoneNumber.Text = Functions.Laygiatri(str);
             str = "SELECT IDCard FROM Customer WHERE IDCard = N'" + txbIDCardSearch.Text + "'";
-            txbIDCard.Text = Functions.laygiatri(str);
+            txbIDCard.Text = Functions.Laygiatri(str);
             str = "SELECT Address FROM Customer WHERE IDCard = N'" + txbIDCardSearch.Text + "'";
-            txbAddress.Text = Functions.laygiatri(str);
+            txbAddress.Text = Functions.Laygiatri(str);
             str = "SELECT Sex FROM Customer WHERE IDCard = N'" + txbIDCardSearch.Text + "'";
-            cbSex.Text = Functions.laygiatri(str);
+            cbSex.Text = Functions.Laygiatri(str);
             str = "SELECT Nationality FROM Customer WHERE IDCard = N'" + txbIDCardSearch.Text + "'";
-            cbNationality.Text = Functions.laygiatri(str);
+            cbNationality.Text = Functions.Laygiatri(str);
         }
 
         private void btnCancel2_Click(object sender, EventArgs e)

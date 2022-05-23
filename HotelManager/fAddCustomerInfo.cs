@@ -67,7 +67,7 @@ namespace HotelManager
             {
                   MessageBox.Show("Thẻ căn cước/CMND không tồn tại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            sql = "INSERT ReceiveRoomDetails(IDReceiveRoom,IDCustomerOther) VALUES ('"+idReceiveRoomdetails+"','"+Functions.laygiatri(sql2)+"')";
+            sql = "INSERT ReceiveRoomDetails(IDReceiveRoom,IDCustomerOther) VALUES ('"+idReceiveRoomdetails+"','"+Functions.Laygiatri(sql2)+"')";
             Functions.Chaysql(sql);
             MessageBox.Show("Thêm khách hàng vào phòng thành công !.", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
@@ -145,21 +145,21 @@ namespace HotelManager
         {
             string str;
             str = "SELECT DateOfBirth FROM Customer WHERE IDCard = N'" + txbIDCardSearch.Text + "'";
-            dpkDateOfBirth.Value = DateTime.Parse(Functions.laygiatri(str));
+            dpkDateOfBirth.Value = DateTime.Parse(Functions.Laygiatri(str));
             str = "SELECT Name FROM Customer WHERE IDCard = N'" + txbIDCardSearch.Text + "'";
-            txbFullName.Text = Functions.laygiatri(str);
+            txbFullName.Text = Functions.Laygiatri(str);
             str = "SELECT CustomerType.Name FROM Customer join CustomerType on Customer.IDCustomerType = CustomerType.ID WHERE IDCard = N'" + txbIDCardSearch.Text + "'";
-            cbCustomerType.Text = Functions.laygiatri(str);
+            cbCustomerType.Text = Functions.Laygiatri(str);
             str = "SELECT PhoneNumber FROM Customer WHERE IDCard = N'" + txbIDCardSearch.Text + "'";
-            txbPhoneNumber.Text = Functions.laygiatri(str);
+            txbPhoneNumber.Text = Functions.Laygiatri(str);
             str = "SELECT IDCard FROM Customer WHERE IDCard = N'" + txbIDCardSearch.Text + "'";
-            txbIDCard.Text = Functions.laygiatri(str);
+            txbIDCard.Text = Functions.Laygiatri(str);
             str = "SELECT Address FROM Customer WHERE IDCard = N'" + txbIDCardSearch.Text + "'";
-            txbAddress.Text = Functions.laygiatri(str);
+            txbAddress.Text = Functions.Laygiatri(str);
             str = "SELECT Sex FROM Customer WHERE IDCard = N'" + txbIDCardSearch.Text + "'";
-            cbSex.Text = Functions.laygiatri(str);
+            cbSex.Text = Functions.Laygiatri(str);
             str = "SELECT Nationality FROM Customer WHERE IDCard = N'" + txbIDCardSearch.Text + "'";
-            cbNationality.Text = Functions.laygiatri(str);
+            cbNationality.Text = Functions.Laygiatri(str);
         }
         private void txbIDCardSearch_KeyPress(object sender, KeyPressEventArgs e)
         {

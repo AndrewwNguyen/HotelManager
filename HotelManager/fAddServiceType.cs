@@ -1,4 +1,5 @@
 ﻿
+using HotelManager.Class;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,10 +20,27 @@ namespace HotelManager
         }
         private void btnAddCustomer_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Bạn có muốn thêm mới loại dịch vụ không?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
-            if (result == DialogResult.OK)
+            if(txbName.Text != string.Empty)
             {
-
+                DialogResult result = MessageBox.Show("Bạn có muốn thêm mới loại dịch vụ không?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
+                if (result == DialogResult.OK)
+                {
+                    if(Functions.ktra("select Name from ServiceType where Name = '"+txbName.Text+"'"))
+                    {
+                        MessageBox.Show("Loại dịch vụ này đã có", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        Functions.Chaysql("Insert ServiceType (ID,Name) VALUES('" + Functions.key() + "',N'" + txbName.Text + "')");
+                        MessageBox.Show("Thêm thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txbName.Text = string.Empty;
+                        MessageBox.Show("Loại dịch vụ này đã có", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("không được để trống", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
                 
         }

@@ -52,12 +52,6 @@
             this.btnCancel = new Bunifu.Framework.UI.BunifuThinButton2();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridViewService = new System.Windows.Forms.DataGridView();
-            this.colID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colNameServiceType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colIdServiceType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bindingService = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
@@ -75,6 +69,12 @@
             this.label6 = new System.Windows.Forms.Label();
             this.bunifuSeparator1 = new Bunifu.Framework.UI.BunifuSeparator();
             this.saveService = new System.Windows.Forms.SaveFileDialog();
+            this.kS6DataSet = new HotelManager.KS6DataSet();
+            this.kS6DataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.serviceTypeBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.serviceTypeTableAdapter = new HotelManager.KS6DataSetTableAdapters.ServiceTypeTableAdapter();
+            this.fKServiceIDServi5629CD9CBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.serviceTableAdapter = new HotelManager.KS6DataSetTableAdapters.ServiceTableAdapter();
             this.groupService.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -83,6 +83,10 @@
             this.bindingService.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kS6DataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kS6DataSetBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.serviceTypeBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fKServiceIDServi5629CD9CBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // bunifuDragControl1
@@ -121,11 +125,12 @@
             this.comboboxID.Size = new System.Drawing.Size(175, 29);
             this.comboboxID.Style = MetroFramework.MetroColorStyle.Green;
             this.comboboxID.TabIndex = 60;
-            //this.comboboxID.UseSelectable = true;
+            this.comboboxID.SelectedIndexChanged += new System.EventHandler(this.comboboxID_SelectedIndexChanged);
+            this.comboboxID.SelectedValueChanged += new System.EventHandler(this.comboboxID_SelectedValueChanged);
             // 
             // comboBoxServiceType
             // 
-            this.comboBoxServiceType.BackColor = System.Drawing.Color.White;
+            this.comboBoxServiceType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.comboBoxServiceType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboBoxServiceType.ForeColor = System.Drawing.Color.SeaGreen;
             this.comboBoxServiceType.FormattingEnabled = true;
@@ -135,23 +140,21 @@
             this.comboBoxServiceType.Size = new System.Drawing.Size(175, 29);
             this.comboBoxServiceType.Style = MetroFramework.MetroColorStyle.Green;
             this.comboBoxServiceType.TabIndex = 56;
-            //this.comboBoxServiceType.UseCustomBackColor = true;
-            //this.comboBoxServiceType.UseCustomForeColor = true;
-            //this.comboBoxServiceType.UseSelectable = true;
-            //this.comboBoxServiceType.UseStyleColors = true;
-            //// 
+            // 
             // txbName
             // 
             this.txbName.BorderColorFocused = System.Drawing.Color.SeaGreen;
             this.txbName.BorderColorIdle = System.Drawing.Color.SeaGreen;
             this.txbName.BorderColorMouseHover = System.Drawing.Color.SeaGreen;
             this.txbName.BorderThickness = 1;
+            this.txbName.characterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txbName.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txbName.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txbName.isPassword = false;
             this.txbName.Location = new System.Drawing.Point(15, 99);
             this.txbName.Margin = new System.Windows.Forms.Padding(0);
+            this.txbName.MaxLength = 32767;
             this.txbName.Name = "txbName";
             this.txbName.Size = new System.Drawing.Size(175, 29);
             this.txbName.TabIndex = 1;
@@ -165,12 +168,14 @@
             this.txbPrice.BorderColorIdle = System.Drawing.Color.SeaGreen;
             this.txbPrice.BorderColorMouseHover = System.Drawing.Color.SeaGreen;
             this.txbPrice.BorderThickness = 1;
+            this.txbPrice.characterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txbPrice.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txbPrice.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbPrice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txbPrice.isPassword = false;
             this.txbPrice.Location = new System.Drawing.Point(15, 209);
             this.txbPrice.Margin = new System.Windows.Forms.Padding(0);
+            this.txbPrice.MaxLength = 32767;
             this.txbPrice.Name = "txbPrice";
             this.txbPrice.Size = new System.Drawing.Size(175, 29);
             this.txbPrice.TabIndex = 59;
@@ -298,12 +303,14 @@
             this.txbSearch.BorderColorIdle = System.Drawing.Color.SeaGreen;
             this.txbSearch.BorderColorMouseHover = System.Drawing.Color.SeaGreen;
             this.txbSearch.BorderThickness = 1;
+            this.txbSearch.characterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txbSearch.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txbSearch.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbSearch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txbSearch.isPassword = false;
             this.txbSearch.Location = new System.Drawing.Point(19, 44);
             this.txbSearch.Margin = new System.Windows.Forms.Padding(0);
+            this.txbSearch.MaxLength = 32767;
             this.txbSearch.Name = "txbSearch";
             this.txbSearch.Size = new System.Drawing.Size(175, 29);
             this.txbSearch.TabIndex = 27;
@@ -338,7 +345,7 @@
             this.btnSearch.IdleFillColor = System.Drawing.Color.White;
             this.btnSearch.IdleForecolor = System.Drawing.Color.SeaGreen;
             this.btnSearch.IdleLineColor = System.Drawing.Color.SeaGreen;
-            this.btnSearch.Location = new System.Drawing.Point(235, 38);
+            this.btnSearch.Location = new System.Drawing.Point(235, 37);
             this.btnSearch.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(175, 40);
@@ -371,6 +378,7 @@
             this.btnCancel.TabIndex = 47;
             this.btnCancel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnCancel.Visible = false;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click_1);
             // 
             // groupBox1
             // 
@@ -389,9 +397,11 @@
             // 
             this.dataGridViewService.AllowUserToAddRows = false;
             this.dataGridViewService.AllowUserToDeleteRows = false;
+            this.dataGridViewService.AllowUserToResizeColumns = false;
             this.dataGridViewService.AllowUserToResizeRows = false;
             this.dataGridViewService.BackgroundColor = System.Drawing.Color.White;
             this.dataGridViewService.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridViewService.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 12F);
@@ -402,13 +412,6 @@
             this.dataGridViewService.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewService.ColumnHeadersHeight = 29;
             this.dataGridViewService.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dataGridViewService.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.colID,
-            this.colName,
-            this.colPrice,
-            this.col,
-            this.colNameServiceType,
-            this.colIdServiceType});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 12F);
@@ -431,69 +434,14 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewService.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewService.RowHeadersVisible = false;
+            this.dataGridViewService.RowHeadersWidth = 1000;
             this.dataGridViewService.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.dataGridViewService.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.dataGridViewService.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.dataGridViewService.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewService.Size = new System.Drawing.Size(524, 276);
-            this.dataGridViewService.TabIndex = 28;
-            this.dataGridViewService.SelectionChanged += new System.EventHandler(this.DataGridViewService_SelectionChanged);
-            // 
-            // colID
-            // 
-            this.colID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.colID.DataPropertyName = "id";
-            this.colID.FillWeight = 30F;
-            this.colID.HeaderText = "Mã";
-            this.colID.Name = "colID";
-            this.colID.ReadOnly = true;
-            this.colID.Width = 57;
-            // 
-            // colName
-            // 
-            this.colName.DataPropertyName = "name";
-            this.colName.FillWeight = 30F;
-            this.colName.HeaderText = "Tên";
-            this.colName.Name = "colName";
-            this.colName.ReadOnly = true;
-            this.colName.Width = 250;
-            // 
-            // colPrice
-            // 
-            this.colPrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.colPrice.DataPropertyName = "price_new";
-            this.colPrice.FillWeight = 30F;
-            this.colPrice.HeaderText = "Giá";
-            this.colPrice.Name = "colPrice";
-            this.colPrice.ReadOnly = true;
-            this.colPrice.Width = 58;
-            // 
-            // col
-            // 
-            this.col.DataPropertyName = "price";
-            this.col.FillWeight = 30F;
-            this.col.HeaderText = "price";
-            this.col.Name = "col";
-            this.col.ReadOnly = true;
-            this.col.Visible = false;
-            // 
-            // colNameServiceType
-            // 
-            this.colNameServiceType.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colNameServiceType.DataPropertyName = "nameServiceType";
-            this.colNameServiceType.FillWeight = 30F;
-            this.colNameServiceType.HeaderText = "Loại dịch vụ";
-            this.colNameServiceType.Name = "colNameServiceType";
-            this.colNameServiceType.ReadOnly = true;
-            // 
-            // colIdServiceType
-            // 
-            this.colIdServiceType.DataPropertyName = "idServiceType";
-            this.colIdServiceType.FillWeight = 30F;
-            this.colIdServiceType.HeaderText = "";
-            this.colIdServiceType.Name = "colIdServiceType";
-            this.colIdServiceType.ReadOnly = true;
-            this.colIdServiceType.Visible = false;
+            this.dataGridViewService.TabIndex = 30;
+            this.dataGridViewService.SelectionChanged += new System.EventHandler(this.dataGridViewService_SelectionChanged_1);
             // 
             // bindingService
             // 
@@ -562,6 +510,7 @@
             // 
             this.bindingNavigatorPositionItem.AccessibleName = "Position";
             this.bindingNavigatorPositionItem.AutoSize = false;
+            this.bindingNavigatorPositionItem.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
             this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(40, 22);
             this.bindingNavigatorPositionItem.Text = "0";
@@ -714,6 +663,34 @@
             this.saveService.FileName = "Danh sách dịch vụ";
             this.saveService.Filter = "Excel File(*.xls)|*.xls|Excel File (*.xlsx) |.xlsx|PDF File(*.pdf)|*.pdf";
             // 
+            // kS6DataSet
+            // 
+            this.kS6DataSet.DataSetName = "KS6DataSet";
+            this.kS6DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // kS6DataSetBindingSource
+            // 
+            this.kS6DataSetBindingSource.DataSource = this.kS6DataSet;
+            this.kS6DataSetBindingSource.Position = 0;
+            // 
+            // serviceTypeBindingSource
+            // 
+            this.serviceTypeBindingSource.DataMember = "ServiceType";
+            this.serviceTypeBindingSource.DataSource = this.kS6DataSetBindingSource;
+            // 
+            // serviceTypeTableAdapter
+            // 
+            this.serviceTypeTableAdapter.ClearBeforeFill = true;
+            // 
+            // fKServiceIDServi5629CD9CBindingSource
+            // 
+            this.fKServiceIDServi5629CD9CBindingSource.DataMember = "FK__Service__IDServi__5629CD9C";
+            this.fKServiceIDServi5629CD9CBindingSource.DataSource = this.serviceTypeBindingSource;
+            // 
+            // serviceTableAdapter
+            // 
+            this.serviceTableAdapter.ClearBeforeFill = true;
+            // 
             // fService
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -738,6 +715,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "fService";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FService_FormClosing);
+            this.Load += new System.EventHandler(this.fService_Load);
             this.groupService.ResumeLayout(false);
             this.groupService.PerformLayout();
             this.groupBox3.ResumeLayout(false);
@@ -749,6 +727,10 @@
             this.bindingService.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).EndInit();
             this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.kS6DataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kS6DataSetBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.serviceTypeBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fKServiceIDServi5629CD9CBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -768,7 +750,6 @@
         private Bunifu.Framework.UI.BunifuMetroTextbox txbSearch;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.DataGridView dataGridViewService;
         private System.Windows.Forms.BindingNavigator bindingService;
         private System.Windows.Forms.ToolStripLabel bindingNavigatorCountItem;
         private System.Windows.Forms.ToolStripButton bindingNavigatorMoveFirstItem;
@@ -792,11 +773,12 @@
         private System.Windows.Forms.SaveFileDialog saveService;
         private MetroFramework.Controls.MetroComboBox comboboxID;
         private Bunifu.Framework.UI.BunifuThinButton2 btnCancel;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colPrice;
-        private System.Windows.Forms.DataGridViewTextBoxColumn col;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colNameServiceType;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colIdServiceType;
+        private System.Windows.Forms.BindingSource kS6DataSetBindingSource;
+        private KS6DataSet kS6DataSet;
+        private System.Windows.Forms.BindingSource serviceTypeBindingSource;
+        private KS6DataSetTableAdapters.ServiceTypeTableAdapter serviceTypeTableAdapter;
+        private System.Windows.Forms.BindingSource fKServiceIDServi5629CD9CBindingSource;
+        private KS6DataSetTableAdapters.ServiceTableAdapter serviceTableAdapter;
+        private System.Windows.Forms.DataGridView dataGridViewService;
     }
 }

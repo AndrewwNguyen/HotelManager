@@ -80,11 +80,11 @@ namespace HotelManager
             txbIDReceiveRoom.Text = idReceiveRoom.ToString();
             string str;
             str = "SELECT Room.Name from ReceiveRoom join Room on ReceiveRoom.IDRoom = Room.ID where ReceiveRoom.ID ='" + txbIDReceiveRoom.Text+ "'";
-            txbRoomName.Text = Functions.laygiatri(str);
+            txbRoomName.Text = Functions.Laygiatri(str);
             str = "SELECT DateCheckIn from ReceiveRoom join BookRoom on ReceiveRoom.IDBookRoom = BookRoom.ID where ReceiveRoom.ID='" + txbIDReceiveRoom.Text + "'";
-            txbDateCheckIn.Text = Functions.laygiatri(str);
+            txbDateCheckIn.Text = Functions.Laygiatri(str);
             str = "SELECT DateCheckOut from ReceiveRoom join BookRoom on ReceiveRoom.IDBookRoom = BookRoom.ID where ReceiveRoom.ID='" + txbIDReceiveRoom.Text + "'";
-            txbDateCheckOut.Text = Functions.laygiatri(str);
+            txbDateCheckOut.Text = Functions.Laygiatri(str);
             LoadReceiveRoomDetails();
         }
         public void LoadReceiveRoomDetails()

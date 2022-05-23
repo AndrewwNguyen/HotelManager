@@ -23,6 +23,7 @@ namespace HotelManager
             staffSetUp = userName;
             InitializeComponent();
             LoadData();
+            ShowSurcharge();
         }
         private void LoadData()
         {
@@ -78,7 +79,7 @@ namespace HotelManager
         }
         public void DrawControl(Room1 room, Bunifu.Framework.UI.BunifuTileButton button)
         {
-            int idRoomTypeName = Int32.Parse(Functions.laygiatri("	select B.* from Room A, RoomType B where A.IDRoomType = B.ID and A.ID ='" + room.Id + "'"));
+            int idRoomTypeName = Int32.Parse(Functions.Laygiatri("	select B.* from Room A, RoomType B where A.IDRoomType = B.ID and A.ID ='" + room.Id + "'"));
             switch (idRoomTypeName)
             {
                 case 1:
@@ -172,12 +173,14 @@ namespace HotelManager
             }
             Room1 room = button.Tag as Room1;
             ShowBill(room.Id);
-            string sql = "select * from Bill A, ReceiveRoom B where A.IDStatusBill = 1 and A.IDReceiveRoom = B.ID and B.IDRoom = '"+room.Id+"'";
+            string sql = "select * from Bill A, ReceiveRoom B,BookRoom C where A.IDStatusBill = 1 and   A.IDReceiveRoom = B.ID and C.ID = B.IDBookRoom and B.IDRoom = '"+room.Id+"' and DateCheckOut >'"+DateTime.Now+"' ";
+            string idbill = Functions.Laygiatri("select * from Bill A, ReceiveRoom B,BookRoom C where A.IDStatusBill = 1 and   A.IDReceiveRoom = B.ID and C.ID = B.IDBookRoom and B.IDRoom = '" + room.Id + "' and DateCheckOut >'" + DateTime.Now + "' ");
+            Functions.Laygiatri(sql);
             if(!Functions.ktra(sql))
             {
                 int a = Functions.key();
-                int idReceiveRoom =Int32.Parse( Functions.laygiatri("select *from ReceiveRoom where IDRoom = '"+room.Id+"' order by ID desc")) ;
-                int price = Int32.Parse(Functions.laygiatri("select Price from Room join RoomType on Room.IDRoomType = RoomType.ID where Room.ID ='"+room.Id+"'"));
+                int idReceiveRoom =Int32.Parse( Functions.Laygiatri("select *from ReceiveRoom where IDRoom = '"+room.Id+"' order by ID desc")) ;
+                int price = Int32.Parse(Functions.Laygiatri("select Price from Room join RoomType on Room.IDRoomType = RoomType.ID where Room.ID ='"+room.Id+"'"));
                 string sql2;
                 sql2 = "INSERT [Bill] ([ID], [IDReceiveRoom], [StaffSetUp], [DateOfCreate], [RoomPrice], [ServicePrice], [TotalPrice], [Discount], [IDStatusBill], [Surcharge]) VALUES ('"+a+"', '"+idReceiveRoom+"',N'"+staffSetUp+"', '"+DateTime.Now+"','"+price+"', 0, '"+ (price+2500000) + "', 0, 1, 2500000)";
                 Functions.Chaysql(sql2);
@@ -190,7 +193,8 @@ namespace HotelManager
         {
             CultureInfo cultureInfo = new CultureInfo("vi-vn");
             listViewBillRoom.Items.Clear();
-            DataTable data = dtBase.DataReader("select A.Name [Tên phòng],D.Price[Đơn giá] ,C.DateCheckIn [Ngày nhận],C.DateCheckOut[Ngày trả] ,E.RoomPrice[Tiền phòng],E.Surcharge[Phụ thu] from Room A, ReceiveRoom B, BookRoom C, RoomType D, Bill E where E.IDReceiveRoom = B.ID and IDStatusRoom = 2 and A.ID = B.IDRoom and B.IDBookRoom = C.ID and A.IDRoomType = D.ID and C.DateCheckOut >= '"+DateTime.Now +"' and B.IDRoom = '"+idRoom+"' and E.IDStatusBill = 1");
+            string sql = "select A.Name [Tên phòng],D.Price[Đơn giá] ,C.DateCheckIn [Ngày nhận],C.DateCheckOut[Ngày trả] ,E.RoomPrice[Tiền phòng],E.Surcharge[Phụ thu] from Room A, ReceiveRoom B, BookRoom C, RoomType D, Bill E where E.IDReceiveRoom = B.ID and IDStatusRoom = 2 and A.ID = B.IDRoom and B.IDBookRoom = C.ID and A.IDRoomType = D.ID and B.IDRoom = '" + idRoom + "' and E.IDStatusBill = 1";
+            DataTable data = dtBase.DataReader(sql);
             foreach (DataRow item in data.Rows)
             {
                 ListViewItem listViewItem = new ListViewItem(item["Tên Phòng"].ToString());
@@ -277,32 +281,36 @@ namespace HotelManager
         {
             this.Close();
         }
-        private void cbService_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            string sql = "Select Price From Service Where ID = '"+cbService.SelectedIndex.ToString()+"'";
-            txbPrice.Text = Functions.laygiatri(sql);
-        }
         private void btnAdd_Click(object sender, EventArgs e)
         {
             Room1 room = flowLayoutRooms.Tag as Room1;
             string sql1 = "select Bill.ID from Bill join ReceiveRoom on Bill.IDReceiveRoom = ReceiveRoom.ID join Room on Room.ID = ReceiveRoom.IDRoom where IDStatusBill=1 and Room.ID = '" + room.Id+"'";
-            int price = Int32.Parse(Functions.laygiatri("select Price from Service where ID ='" + cbService.SelectedValue.ToString() +"' ")) ;
+            Functions.Laygiatri(sql1);
+            int price = Int32.Parse(Functions.Laygiatri("select Price from Service where ID ='" + cbService.SelectedValue.ToString() +"' ")) ;
             string sql2 = "	select * from Bill A,BillDetails B, ReceiveRoom C where A.ID = B.IDBill and A.IDStatusBill=1 and C.ID = A.IDReceiveRoom and C.IDRoom = '" + room.Id+"' and B.IDService = '"+cbService.SelectedValue.ToString()+"'";
-            if(!Functions.ktra(sql2))
+            if(numericUpDownCount.Value>=1)
             {
-                string sql = "INSERT BillDetails(IDBill,IDService,Count,TotalPrice)VALUES('" + Functions.laygiatri(sql1) + "','" + cbService.SelectedValue.ToString() + "','" + numericUpDownCount.Value + "','" + price* numericUpDownCount.Value + "')";
-                Functions.Chaysql(sql);
-                txbTotalPrice.Text = totalPrice.ToString("c0", new CultureInfo("vi-vn"));
-                ShowBill(room.Id);
+                if (!Functions.ktra(sql2))
+                {
+                    string sql = "INSERT BillDetails(IDBill,IDService,Count,TotalPrice)VALUES('" + Functions.Laygiatri(sql1) + "','" + cbService.SelectedValue.ToString() + "','" + numericUpDownCount.Value + "','" + price * numericUpDownCount.Value + "')";
+                    Functions.Chaysql(sql);
+                    txbTotalPrice.Text = totalPrice.ToString("c0", new CultureInfo("vi-vn"));
+                    ShowBill(room.Id);
 
+                }
+                else
+                {
+                    string sql10 = "select Count from Bill A,BillDetails B, ReceiveRoom C where A.IDStatusBill = 1 and A.ID = B.IDBill and C.ID = A.IDReceiveRoom and C.IDRoom = '" + room.Id + "' and B.IDService = '" + cbService.SelectedValue.ToString() + "'";
+                    string sql = "UPDATE BillDetails SET Count ='" + numericUpDownCount.Value + Int32.Parse(Functions.Laygiatri(sql10)) + "',TotalPrice = '" + price * (numericUpDownCount.Value + Int32.Parse(Functions.Laygiatri(sql10))) + "' where IDService = '" + Functions.Laygiatri(sql1) + "'";
+                    Functions.Chaysql(sql);
+                    txbTotalPrice.Text = totalPrice.ToString("c0", new CultureInfo("vi-vn"));
+                    ShowBill(room.Id);
+                }
             }
             else
             {
-                string sql10 = "	select Count from Bill A,BillDetails B, ReceiveRoom C where A.IDStatusBill = 1 and A.ID = B.IDBill and C.ID = A.IDReceiveRoom and C.IDRoom = '" + room.Id + "' and B.IDService = '" + cbService.SelectedValue.ToString() + "'";
-                string sql = "UPDATE BillDetails SET Count ='" + numericUpDownCount.Value + Int32.Parse(Functions.laygiatri(sql10)) + "',TotalPrice = '" + price * (numericUpDownCount.Value + Int32.Parse(Functions.laygiatri(sql10))) + "' where IDService = '" + Functions.laygiatri(sql1) + "'";
-                Functions.Chaysql(sql);
-                txbTotalPrice.Text = totalPrice.ToString("c0", new CultureInfo("vi-vn"));
-                ShowBill(room.Id);
+                MessageBox.Show("Số lượng phải lớn hơn 0 !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
             }
         }
 
@@ -317,24 +325,25 @@ namespace HotelManager
             if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
                 e.Handled = true;
         }
-        public void Pay(int idBill, int discount)
-        {
-            BillDAO.Instance.UpdateRoomPrice(idBill);
-            BillDAO.Instance.UpdateServicePrice(idBill);
-            BillDAO.Instance.UpdateOther(idBill, discount);
-
-        }
         private void btnAddCustomer_Click(object sender, EventArgs e)
         {
             Room1 room = flowLayoutRooms.Tag as Room1;
             if (MessageBox.Show("Bạn có chắc chắn thanh toán cho " + room.Name + " không?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
             {
                 string sql = "select Bill.ID from Bill join ReceiveRoom on Bill.IDReceiveRoom = ReceiveRoom.ID join Room on Room.ID = ReceiveRoom.IDRoom where Room.ID = '"+room.Id+"'";
-                int idBill = Int32.Parse(Functions.laygiatri(sql));
-                //int a = Int32.Parse(numericUpDown1.Value);
-                int a = Int32.Parse(Functions.laygiatri("select SUM(TotalPrice) from BillDetails where IDBill = '"+idBill+"'"));
-                sql = "UPDATE Bill SET DateOfCreate ='"+DateTime.Now+"' , Discount ='"+numericUpDown1.Value+ "' ,TotalPrice =TotalPrice -(TotalPrice*" +(numericUpDown1.Value/100)+ ")+"+a+",IDStatusBill = 2,ServicePrice = '"+a+"' where Bill.ID = '" + idBill+"'";
-                Functions.Chaysql(sql);
+                int idBill = Int32.Parse(Functions.Laygiatri(sql));
+                string roomprice = Functions.Laygiatri("select RoomType.Price from Bill join ReceiveRoom on Bill.IDReceiveRoom = ReceiveRoom.ID join Room on Room.ID = ReceiveRoom.IDRoom join RoomType on Room.IDRoomType = RoomType.ID  where Room.ID = '" + room.Id + "'");
+                string ServicePrice= Functions.Laygiatri("select SUM(TotalPrice) from BillDetails where IDBill = '"+idBill+"'");
+                if (ServicePrice == "")
+                {
+                    Functions.Chaysql("UPDATE Bill SET DateOfCreate ='" + DateTime.Now + "' , Discount ='" + numericUpDown1.Value + "' ,TotalPrice =('"+ Int32.Parse(roomprice) + "') -('"+ Int32.Parse(roomprice)+ "'*" + (numericUpDown1.Value / 100) + "),IDStatusBill = '2',ServicePrice = 0 where Bill.ID = '" + idBill + "'");
+                }
+                else
+                {
+                    int totalprice = Int32.Parse(roomprice) + Int32.Parse(ServicePrice);
+                    string c="UPDATE Bill SET DateOfCreate ='" + DateTime.Now + "' , Discount ='" + numericUpDown1.Value + "' ,TotalPrice =('" + totalprice + "')-('" + totalprice + "'*" +"("+numericUpDown1.Value  +"/100)" + "),IDStatusBill = '2',ServicePrice = '" + Int32.Parse(ServicePrice) + "' where Bill.ID = '" + idBill + "'";
+                    Functions.Chaysql(c);
+                }
                 sql = "UPDATE Room SET IDStatusRoom = 1 where ID = '"+room.Id+"'";
                 Functions.Chaysql(sql);
                 //ReportDAO.Instance.InsertReport(idBill);
@@ -348,26 +357,41 @@ namespace HotelManager
                 listViewUseService.Items.Clear();
             }
         }
-
+        private string IntToString(string text)
+        {
+            if (text == string.Empty)
+                return 0.ToString("C0", CultureInfo.CreateSpecificCulture("vi-VN"));
+            if (text.Contains(".") || text.Contains(" "))
+                return text;
+            else
+                return (int.Parse(text).ToString("C0", CultureInfo.CreateSpecificCulture("vi-VN")));
+        }
         private void fUseService_Load(object sender, EventArgs e)
         {
-            cbService.DataSource = dtBase.DataReader("SELECT Name,ID FROM Service");
-            cbService.DisplayMember = "Name";
-            cbService.ValueMember = "ID";
             cbServiceType.DataSource = dtBase.DataReader("SELECT Name,ID FROM ServiceType");
             cbServiceType.DisplayMember = "Name";
             cbServiceType.ValueMember = "ID";
+            cbServiceType.SelectedIndex = 0;
+            LoadService();
         }
-        private void cbService_DropDown(object sender, EventArgs e)
+        public void LoadService()
         {
-            cbService.DataSource = dtBase.DataReader("select Service.ID,Service.Name from Service join ServiceType on ServiceType.ID= Service.IDServiceType where ServiceType.ID= '" + cbServiceType.SelectedValue + "'");
-            cbService.DisplayMember = "Service.Name";
-            cbService.ValueMember = "Service.ID";
+            cbService.DataSource = dtBase.DataReader("SELECT Service.Name,Service.ID FROM Service join ServiceType on ServiceType.ID = Service.IDServiceType where ServiceType.Name = N'" + cbServiceType.Text + "'");
+            cbService.DisplayMember = "Name";
+            cbService.ValueMember = "ID";
         }
-
-        private void txbTotalPrice_OnValueChanged(object sender, EventArgs e)
+        private void cbServiceType_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            LoadService();
+        }
+        private void cbService_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadPrice();
+        }
+        public void LoadPrice()
+        {
+            string sql = "Select Price from Service where Name = N'" + cbService.Text + "'";
+            txbPrice.Text = IntToString(Functions.Laygiatri(sql));
         }
     }
 }

@@ -120,21 +120,21 @@ namespace HotelManager
         {
             string str;
             str = "SELECT DateOfBirth FROM Customer WHERE IDCard = N'" +idCard+ "'";
-            dpkDateOfBirth.Value = DateTime.Parse(Functions.laygiatri(str));
+            dpkDateOfBirth.Value = DateTime.Parse(Functions.Laygiatri(str));
             str = "SELECT Name FROM Customer WHERE IDCard = N'" + idCard + "'";
-            txbFullName.Text = Functions.laygiatri(str);
+            txbFullName.Text = Functions.Laygiatri(str);
             str = "SELECT CustomerType.Name FROM Customer join CustomerType on Customer.IDCustomerType = CustomerType.ID WHERE IDCard = N'" + idCard + "'";
-            cbCustomerType.Text = Functions.laygiatri(str);
+            cbCustomerType.Text = Functions.Laygiatri(str);
             str = "SELECT PhoneNumber FROM Customer WHERE IDCard = N'" + idCard + "'";
-            txbPhoneNumber.Text = Functions.laygiatri(str);
+            txbPhoneNumber.Text = Functions.Laygiatri(str);
             str = "SELECT IDCard FROM Customer WHERE IDCard = N'" + idCard + "'";
-            txbIDCard.Text = Functions.laygiatri(str);
+            txbIDCard.Text = Functions.Laygiatri(str);
             str = "SELECT Address FROM Customer WHERE IDCard = N'" + idCard + "'";
-            txbAddress.Text = Functions.laygiatri(str);
+            txbAddress.Text = Functions.Laygiatri(str);
             str = "SELECT Sex FROM Customer WHERE IDCard = N'" + idCard + "'";
-            cbSex.Text = Functions.laygiatri(str);
+            cbSex.Text = Functions.Laygiatri(str);
             str = "SELECT Nationality FROM Customer WHERE IDCard = N'" + idCard + "'";
-            cbNationality.Text = Functions.laygiatri(str);
+            cbNationality.Text = Functions.Laygiatri(str);
         }
     }
 }

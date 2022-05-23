@@ -1,4 +1,5 @@
 ﻿
+using HotelManager.Class;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,8 +14,10 @@ namespace HotelManager
 {
     public partial class fProfile : Form
     {
-        public fProfile(string userName)
+        string user;
+        public fProfile(string _userName)
         {
+            user = _userName;
             InitializeComponent();
         }
         private void btnClose_Click(object sender, EventArgs e)
@@ -46,6 +49,16 @@ namespace HotelManager
         private void btnClose__Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void FProfile_Load(object sender, EventArgs e)
+        {
+        }
+
+        private void fProfile_Load(object sender, EventArgs e)
+        {
+            cbSex.SelectedIndex = 0;
+            //txbStaffType.Text = Functions.Laygiatri("select StaffType.Name from staff join StaffType on Staff.IDStaffType = StaffType.ID where UserName = 'Admin '");
         }
     }
 }

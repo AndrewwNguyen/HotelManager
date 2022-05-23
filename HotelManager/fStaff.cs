@@ -1,4 +1,5 @@
-﻿using HotelManager.DAO;
+﻿using HotelManager.Class;
+using HotelManager.DAO;
 using HotelManager.DTO;
 using System;
 using System.Data;
@@ -8,15 +9,15 @@ namespace HotelManager
 {
     public partial class fStaff : Form
     {
+        Class.Functions dtBase = new Class.Functions();
         #region Constructor
         internal fStaff()
         {
             InitializeComponent();
-            LoadFullStaffType();
-            LoadFullStaff(GetFullStaff());
             txbSearch.KeyPress += TxbSearch_KeyPress;
             KeyPress += FStaff_KeyPress;
             dataGridStaff.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            LoaddataGridStaff("SELECT UserName,DisplayName,StaffType.Name,IDCard,PhoneNumber,Address from Staff join StaffType on Staff.IDStaffType = StaffType.ID");
         }
 
 
@@ -31,7 +32,10 @@ namespace HotelManager
         {
             new fAddStaff().ShowDialog();
             if (btnCancel.Visible == false)
-                LoadFullStaff(GetFullStaff());
+            {
+                LoaddataGridStaff("SELECT UserName,DisplayName,StaffType.Name,IDCard,PhoneNumber,Address from Staff join StaffType on Staff.IDStaffType = StaffType.ID");
+            }
+
             else
                 BtnCancel_Click(null, null);
         }
@@ -40,9 +44,18 @@ namespace HotelManager
             DialogResult result = MessageBox.Show( "Bạn có muốn cập nhật nhân viên này không?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
             if (result == DialogResult.OK)
             {
-                if (CheckDate())
+                if(txbName.Text !=string.Empty && txbIDcard.Text != string.Empty && txbPhoneNumber.Text != string.Empty && txbAddress.Text != string.Empty)
                 {
-                    UpdateStaff();
+                    if (CheckDate())
+                    {
+                        Functions.Chaysql("UPDATE Staff SET DisplayName = N'"+txbName.Text+"',Sex = N'"+comboBoxSex.Text+"',PhoneNumber = '"+txbPhoneNumber.Text+"',IDStaffType = '"+comboBoxStaffType.SelectedValue.ToString()+"',Address = '"+txbAddress.Text+"',StartDay = '"+datePickerStartDay.Value+"',DateOfBirth = '"+datepickerDateOfBirth.Value+"' where UserName = '"+txbUserName.Text+"'");
+                        MessageBox.Show("Cập nhập nhân viên thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        LoaddataGridStaff("SELECT UserName,DisplayName,StaffType.Name,IDCard,PhoneNumber,Address from Staff join StaffType on Staff.IDStaffType = StaffType.ID");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Không được để trống", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -54,7 +67,8 @@ namespace HotelManager
                     MessageBoxButtons.OKCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
                 if (result == DialogResult.OK)
                 {
-                    ResetPassword();
+                    Functions.Chaysql("UPDATE Staff SET PassWord  = '"+Functions.HashPass("123456")+"'");
+                    MessageBox.Show("Đặt lại mật khẩu thành công. Mật khẩu mặc định là : 123456 ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             else
@@ -115,116 +129,26 @@ namespace HotelManager
 
                 btnSearch.Visible = false;
                 btnCancel.Visible = true;
+                txbSearch.Enabled = false;
                 Search();
             }
         }
-        private void BtnCancel_Click(object sender, EventArgs e)
+        public void Search()
         {
-            LoadFullStaff(GetFullStaff());
+            LoaddataGridStaff("SELECT UserName,DisplayName,StaffType.Name,IDCard,PhoneNumber,Address from Staff join StaffType on Staff.IDStaffType = StaffType.ID where IDCard like '%"+txbSearch.Text+"%' or PhoneNumber like '%"+txbSearch.Text+"%'");
+        }
+        private void BtnCancel_Click(object sender, EventArgs e)
+        { 
             btnCancel.Visible = false;
             btnSearch.Visible = true;
+            txbSearch.Enabled = true;
+            LoaddataGridStaff("SELECT UserName,DisplayName,StaffType.Name,IDCard,PhoneNumber,Address from Staff join StaffType on Staff.IDStaffType = StaffType.ID");
+
         }
         #endregion
 
         #region Method
-        
-        private void UpdateStaff()
-        {
-            bool isFill = fCustomer.CheckFillInText(new Control[] { txbUserName, comboBoxStaffType, txbName ,
-                                                            txbIDcard , comboBoxSex , txbPhoneNumber, txbAddress});
-            if (!isFill)
-            {
-                MessageBox.Show( "Không được để trống", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            else
-            {
-                Account accountPre = groupStaff.Tag as Account;
-                try
-                {
-                    Account accountnow = GetStaffNow();
-                    if (accountnow.Equals(accountPre))
-                    {
-                        MessageBox.Show( "Bạn chưa thay đổi dữ liệu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
-                    else
-                    {
-                        bool check = AccountDAO.Instance.UpdateAccount(accountnow);
-                        if (check)
-                        {
-                            MessageBox.Show( "Cập nhật thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            groupStaff.Tag = accountnow;
-                            if (btnCancel.Visible == false)
-                            {
-                                int index = dataGridStaff.SelectedRows[0].Index;
-                                LoadFullStaff(GetFullStaff());
-                                dataGridStaff.SelectedRows[0].Selected = false;
-                                dataGridStaff.Rows[index].Selected = true;
-                            }
-                            else
-                                BtnCancel_Click(null, null);
-                        }
-                        else
-                        {
-                            if(accountnow.UserName == accountPre.UserName)
-                                MessageBox.Show( "Không thể cập nhật(Trùng số chứng minh nhân dân)", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                            else
-                                MessageBox.Show( "Không thể cập nhật(Tài khoản chưa tồn tại)", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                        }
-                    }
-                }
-                catch
-                {
-                    MessageBox.Show( "Lỗi không xác định", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
 
-        }
-        private void ResetPassword()
-        {
-        }
-        private void Search()
-        {
-            LoadFullStaff(GetSearchStaff());
-        }
-        private void ChangeText(DataGridViewRow row)
-        {
-            if (row.IsNewRow)
-            {
-                txbUserName.Text = string.Empty;
-                txbName.Text = string.Empty;
-                txbIDcard.Text = string.Empty;
-                txbPhoneNumber.Text = string.Empty;
-                txbAddress.Text = string.Empty;
-            }
-            else
-            {
-                txbUserName.Text = row.Cells[colUserName.Name].Value as string;
-                txbAddress.Text = row.Cells[colAddress.Name].Value as string;
-                txbName.Text = row.Cells[colname.Name].Value as string;
-                txbPhoneNumber.Text = row.Cells[colPhone.Name].Value.ToString();
-                txbIDcard.Text = row.Cells[colIDCard.Name].Value as string;
-                datepickerDateOfBirth.Text = row.Cells[colDateOfBirth.Name].Value as string;
-                datePickerStartDay.Text = row.Cells[colStartDay.Name].Value as string;
-                comboBoxSex.Text = row.Cells[colSex.Name].Value as string;
-                comboBoxStaffType.SelectedIndex = (int)row.Cells[colIDStaffType.Name].Value - 1;
-
-
-                Account staff = new Account();
-                staff.UserName = txbUserName.Text;
-                staff.Address = txbAddress.Text;
-                staff.DisplayName = txbName.Text;
-                staff.PhoneNumber = int.Parse(txbPhoneNumber.Text);
-                staff.IdCard = txbIDcard.Text;
-                staff.DateOfBirth = datepickerDateOfBirth.Value;
-                staff.StartDay = datePickerStartDay.Value;
-                staff.Sex = comboBoxSex.Text;
-                staff.IdStaffType = (int)row.Cells[colIDStaffType.Name].Value;
-                groupStaff.Tag = staff;
-                //bindingNavigatorMoveFirstItem.Enabled = true;
-                //bindingNavigatorMovePreviousItem.Enabled = true;
-            }
-        }
         internal static void Trim(Bunifu.Framework.UI.BunifuMetroTextbox[] textboxes)
         {
             for (int i = 0; i < textboxes.Length; i++)
@@ -232,66 +156,6 @@ namespace HotelManager
                 textboxes[i].Text = textboxes[i].Text.Trim();
             }
         }
-        #endregion
-
-        #region Load data
-        private void LoadFullStaff(DataTable table)
-        {
-            BindingSource source = new BindingSource();
-            source.DataSource = table;
-            dataGridStaff.DataSource = source;
-            bindingStaff.BindingSource = source;
-        }
-        private void LoadFullStaffType()
-        {
-            comboBoxSex.SelectedIndex = 0;
-            DataTable table = GetFullStaffType();
-            comboBoxStaffType.DataSource = table;
-            comboBoxStaffType.DisplayMember = "Name";
-            if (table.Rows.Count > 0)
-                comboBoxStaffType.SelectedIndex = 0;
-        }
-        #endregion
-
-        #region GetData
-        private DataTable GetFullStaff()
-        {
-            return AccountDAO.Instance.LoadFullStaff();
-        }
-        private DataTable GetFullStaffType()
-        {
-            return AccountTypeDAO.Instance.LoadFullStaffType();
-        }
-        private Account GetStaffNow()
-        {
-            Account account = new Account();
-
-            #region Format
-            Trim(new Bunifu.Framework.UI.BunifuMetroTextbox[] { txbName, txbIDcard, txbAddress });
-            #endregion
-
-            account.UserName = txbUserName.Text.ToLower();
-            int index = comboBoxStaffType.SelectedIndex;
-            account.IdStaffType = (int)((DataTable)comboBoxStaffType.DataSource).Rows[index]["id"];
-            account.DisplayName = txbName.Text;
-            account.IdCard = txbIDcard.Text;
-            account.Sex = comboBoxSex.Text;
-            account.DateOfBirth = datepickerDateOfBirth.Value;
-            account.PhoneNumber = int.Parse(txbPhoneNumber.Text);
-            account.Address = txbAddress.Text;
-            account.StartDay = datePickerStartDay.Value;
-            return account;
-        }
-        private DataTable GetSearchStaff()
-        {
-            if (int.TryParse(txbSearch.Text, out int phoneNumber))
-                return AccountDAO.Instance.Search(txbSearch.Text, phoneNumber);
-            else
-                return AccountDAO.Instance.Search(txbSearch.Text, -1);
-        }
-        #endregion
-
-        #region Check isDigit
         private void TxbPhoneNumber_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!Char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
@@ -329,13 +193,17 @@ namespace HotelManager
         #endregion
 
         #region ChangeText
-        private void DataGridStaffType_SelectionChanged(object sender, EventArgs e)
+        public void LoadStaff()
         {
-            if (dataGridStaff.SelectedRows.Count > 0)
-            {
-                DataGridViewRow row = dataGridStaff.SelectedRows[0];
-                ChangeText(row);
-            }
+            txbUserName.Text = dataGridStaff.CurrentRow.Cells[0].Value.ToString();
+            txbName.Text = dataGridStaff.CurrentRow.Cells[1].Value.ToString();
+            comboBoxStaffType.Text = dataGridStaff.CurrentRow.Cells[2].Value.ToString();
+            txbIDcard.Text = dataGridStaff.CurrentRow.Cells[3].Value.ToString();
+            txbPhoneNumber.Text = dataGridStaff.CurrentRow.Cells[4].Value.ToString();
+            txbAddress.Text = dataGridStaff.CurrentRow.Cells[5].Value.ToString();
+            comboBoxSex.Text = Functions.Laygiatri("select Sex From Staff where UserName = '"+ dataGridStaff.CurrentRow.Cells[0].Value.ToString() + "'");
+            datepickerDateOfBirth.Value = DateTime.Parse(Functions.Laygiatri("select DateOfBirth From Staff where UserName = '" + dataGridStaff.CurrentRow.Cells[0].Value.ToString() + "'"));
+            datePickerStartDay.Value = DateTime.Parse(Functions.Laygiatri("select StartDay From Staff where UserName = '" + dataGridStaff.CurrentRow.Cells[0].Value.ToString() + "'"));
         }
         #endregion
 
@@ -380,13 +248,50 @@ namespace HotelManager
 
         private void bunifuThinButton21_Click(object sender, EventArgs e)
         {
-            fAccess f = new fAccess();
+            string name = dataGridStaff.SelectedRows[0].Cells[0].Value.ToString();
+            fAccess f = new fAccess(name);
             f.ShowDialog();
-            LoadFullStaffType();
-            if (btnCancel.Visible == false)
-                LoadFullStaff(GetFullStaff());
-            else
-                BtnCancel_Click(null, null);
+            LoaddataGridStaff("SELECT UserName,DisplayName,StaffType.Name,IDCard,PhoneNumber,Address from Staff join StaffType on Staff.IDStaffType = StaffType.ID");
+        }
+        public void LoaddataGridStaff(string sql)
+        {
+            dataGridStaff.DataSource = dtBase.DataReader(sql);
+            dataGridStaff.Columns[0].HeaderText = "Tên Đăng Nhập";
+            dataGridStaff.Columns[1].HeaderText = "Tên";
+            dataGridStaff.Columns[2].HeaderText = "Loại";
+            dataGridStaff.Columns[3].HeaderText = "CMND";
+            dataGridStaff.Columns[4].HeaderText = "SĐT";
+            dataGridStaff.Columns[5].HeaderText = "Địa Chỉ";
+            dataGridStaff.Columns[1].Width = 200;
+            dataGridStaff.Columns[5].Width = 130;
+            BindingSource source = new BindingSource();
+            source.DataSource = dtBase.DataReader(sql);
+            dataGridStaff.DataSource = source;
+            bindingStaff.BindingSource = source;
+        }
+        private void fStaff_Load(object sender, EventArgs e)
+        {
+            LoadStaff();
+            comboBoxSex.SelectedIndex = 0;
+            comboBoxStaffType.DataSource = dtBase.DataReader("SELECT Name,ID FROM StaffType");
+            comboBoxStaffType.DisplayMember = "Name";
+            comboBoxStaffType.ValueMember = "ID";
+            comboBoxStaffType.SelectedIndex = 0;
+        }
+
+        private void dataGridStaff_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dataGridStaff_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void DataGridStaff_SelectionChanged(object sender, EventArgs e)
+        {
+            LoadStaff();
         }
     }
 }

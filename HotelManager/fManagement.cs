@@ -66,8 +66,8 @@ namespace HotelManager
         private void btnAccountProfile_Click(object sender, EventArgs e)
         {
             this.Hide();
-            fProfile fProfile = new fProfile(userName);
-            fProfile.ShowDialog();
+            fChangeRoom f = new fChangeRoom(userName);
+            f.ShowDialog();
             this.Show();
         }
         private void btnIntroduce_Click(object sender, EventArgs e)
@@ -82,7 +82,7 @@ namespace HotelManager
             if (CheckAccess("fReceiveRoom"))
             {
                 Hide();
-                fReceiveRoom f = new fReceiveRoom();
+                fReceiveRoom f = new fReceiveRoom(userName);
                 f.ShowDialog();
 
                 Show();

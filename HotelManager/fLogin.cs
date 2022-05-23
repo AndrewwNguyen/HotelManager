@@ -48,25 +48,23 @@ namespace HotelManager
 
         private void txbPassWord_Click(object sender, EventArgs e)
         {
-            txbPassWord.Clear();
             txbPassWord.PasswordChar = '*';
             panel2.BackColor = Color.FromArgb(128, 64, 64);
             txbPassWord.ForeColor = Color.FromArgb(128, 64, 64);
 
-            panel1.BackColor = Color.WhiteSmoke; ;
-            txbUserName.ForeColor = Color.WhiteSmoke;
+            panel1.BackColor = Color.Black; ;
+            txbUserName.ForeColor = Color.Black;
         }
 
         private void txbUserName_Click(object sender, EventArgs e)
         {
-            txbUserName.Clear();
-            panel1.BackColor = Color.FromArgb(128, 64, 64);
-            txbUserName.ForeColor = Color.FromArgb(128, 64, 64);
-            panel2.BackColor = Color.WhiteSmoke; ;
-            txbPassWord.ForeColor = Color.WhiteSmoke;
+            //panel1.BackColor = Color.FromArgb(128, 64, 64);
+            //txbUserName.ForeColor = Color.FromArgb(128, 64, 64);
+            //panel2.BackColor = Color.WhiteSmoke; ;
+            //txbPassWord.ForeColor = Color.WhiteSmoke;
 
-            panel2.BackColor = Color.WhiteSmoke; ;
-            txbPassWord.ForeColor = Color.WhiteSmoke;
+            //panel2.BackColor = Color.WhiteSmoke; ;
+            //txbPassWord.ForeColor = Color.WhiteSmoke;
         }
 
         private void label3_Click(object sender, EventArgs e)
@@ -75,6 +73,11 @@ namespace HotelManager
         }
 
         private void fLogin_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
         {
 
         }

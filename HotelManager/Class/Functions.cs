@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -16,7 +17,7 @@ namespace HotelManager.Class
         public static void Connect()
         {
             Con = new SqlConnection();
-            Con.ConnectionString = @"Data Source=DESKTOP-V56RKEE;Initial Catalog=KS6;Integrated Security=True";
+            Con.ConnectionString = @"Data Source=DESKTOP-V56RKEE;Initial Catalog=KS7;Integrated Security=True";
             Con.Open();
         }
         public static void Disconnect()
@@ -38,7 +39,7 @@ namespace HotelManager.Class
             Disconnect();
             sqlcomand.Dispose();
         }
-        public static string laygiatri(string sql)
+        public static string Laygiatri(string sql)
         {
             string ma = "";
             SqlCommand cmd = new SqlCommand(sql, Con);
@@ -86,6 +87,18 @@ namespace HotelManager.Class
             if (table.Rows.Count > 0)
                 return true;
             else return false;
+        }
+        public static string HashPass(string text)
+        {
+            MD5 md5 = MD5.Create();
+            byte[] temp = Encoding.ASCII.GetBytes(text);
+            byte[] hashData = md5.ComputeHash(temp);
+            string hashPass = "";
+            foreach (var item in hashData)
+            {
+                hashPass += item.ToString("x2");
+            }
+            return hashPass;
         }
     }
 }

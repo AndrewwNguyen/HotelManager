@@ -164,7 +164,7 @@
             // 
             // comboBoxServiceType
             // 
-            this.comboBoxServiceType.BackColor = System.Drawing.Color.White;
+            this.comboBoxServiceType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.comboBoxServiceType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboBoxServiceType.ForeColor = System.Drawing.Color.SeaGreen;
             this.comboBoxServiceType.FormattingEnabled = true;
@@ -174,10 +174,6 @@
             this.comboBoxServiceType.Size = new System.Drawing.Size(198, 29);
             this.comboBoxServiceType.Style = MetroFramework.MetroColorStyle.Green;
             this.comboBoxServiceType.TabIndex = 2;
-            //this.comboBoxServiceType.UseCustomBackColor = true;
-            //this.comboBoxServiceType.UseCustomForeColor = true;
-            //this.comboBoxServiceType.UseSelectable = true;
-            //this.comboBoxServiceType.UseStyleColors = true;
             // 
             // txbName
             // 
@@ -185,12 +181,14 @@
             this.txbName.BorderColorIdle = System.Drawing.Color.SeaGreen;
             this.txbName.BorderColorMouseHover = System.Drawing.Color.SeaGreen;
             this.txbName.BorderThickness = 1;
+            this.txbName.characterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txbName.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txbName.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txbName.isPassword = false;
             this.txbName.Location = new System.Drawing.Point(12, 43);
             this.txbName.Margin = new System.Windows.Forms.Padding(0);
+            this.txbName.MaxLength = 32767;
             this.txbName.Name = "txbName";
             this.txbName.Size = new System.Drawing.Size(198, 29);
             this.txbName.TabIndex = 0;
@@ -202,12 +200,14 @@
             this.txbPrice.BorderColorIdle = System.Drawing.Color.SeaGreen;
             this.txbPrice.BorderColorMouseHover = System.Drawing.Color.SeaGreen;
             this.txbPrice.BorderThickness = 1;
+            this.txbPrice.characterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txbPrice.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txbPrice.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbPrice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txbPrice.isPassword = false;
             this.txbPrice.Location = new System.Drawing.Point(240, 43);
             this.txbPrice.Margin = new System.Windows.Forms.Padding(0);
+            this.txbPrice.MaxLength = 32767;
             this.txbPrice.Name = "txbPrice";
             this.txbPrice.Size = new System.Drawing.Size(203, 29);
             this.txbPrice.TabIndex = 1;
@@ -280,6 +280,7 @@
             this.Name = "fAddService";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "fAddCustomerInfo";
+            this.Load += new System.EventHandler(this.fAddService_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupService.ResumeLayout(false);
             this.groupService.PerformLayout();

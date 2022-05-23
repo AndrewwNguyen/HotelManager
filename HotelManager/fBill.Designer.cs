@@ -74,15 +74,6 @@
             this.btnCancel = new Bunifu.Framework.UI.BunifuThinButton2();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridViewBill = new System.Windows.Forms.DataGridView();
-            this.colID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colIdReciveRoom = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colCustomerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colStaffsetUp = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.coldDateOfCreate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnClose = new Bunifu.Framework.UI.BunifuImageButton();
             ((System.ComponentModel.ISupportInitialize)(this.bindingBill)).BeginInit();
             this.bindingBill.SuspendLayout();
@@ -477,6 +468,7 @@
             this.comboboxID.Size = new System.Drawing.Size(175, 29);
             this.comboboxID.Style = MetroFramework.MetroColorStyle.Green;
             this.comboboxID.TabIndex = 60;
+            this.comboboxID.SelectedIndexChanged += new System.EventHandler(this.comboboxID_SelectedIndexChanged);
             // 
             // txbName
             // 
@@ -588,7 +580,9 @@
             "Mã hoá đơn",
             "Tên khách hàng",
             "Số CMND",
-            "Số điện thoại"});
+            "Số điện thoại",
+            "Hóa đơn chưa thanh toán",
+            "Hóa đơn đã thanh toán"});
             this.cbBillSearch.Location = new System.Drawing.Point(11, 57);
             this.cbBillSearch.Name = "cbBillSearch";
             this.cbBillSearch.Size = new System.Drawing.Size(175, 29);
@@ -709,16 +703,6 @@
             this.dataGridViewBill.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewBill.ColumnHeadersHeight = 29;
             this.dataGridViewBill.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dataGridViewBill.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.colID,
-            this.colIdReciveRoom,
-            this.colCustomerName,
-            this.colStaffsetUp,
-            this.coldDateOfCreate,
-            this.colStatus,
-            this.colPrice,
-            this.Column1,
-            this.Column2});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 12F);
@@ -747,89 +731,7 @@
             this.dataGridViewBill.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewBill.Size = new System.Drawing.Size(769, 390);
             this.dataGridViewBill.TabIndex = 28;
-            // 
-            // colID
-            // 
-            this.colID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.colID.DataPropertyName = "id";
-            this.colID.FillWeight = 30F;
-            this.colID.HeaderText = "Mã hóa đơn";
-            this.colID.Name = "colID";
-            this.colID.ReadOnly = true;
-            this.colID.Width = 119;
-            // 
-            // colIdReciveRoom
-            // 
-            this.colIdReciveRoom.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.colIdReciveRoom.DataPropertyName = "roomName";
-            this.colIdReciveRoom.FillWeight = 30F;
-            this.colIdReciveRoom.HeaderText = "Tên phòng";
-            this.colIdReciveRoom.Name = "colIdReciveRoom";
-            this.colIdReciveRoom.ReadOnly = true;
-            this.colIdReciveRoom.Width = 107;
-            // 
-            // colCustomerName
-            // 
-            this.colCustomerName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.colCustomerName.DataPropertyName = "customername";
-            this.colCustomerName.HeaderText = "Tên khách hàng";
-            this.colCustomerName.Name = "colCustomerName";
-            this.colCustomerName.ReadOnly = true;
-            this.colCustomerName.Width = 142;
-            // 
-            // colStaffsetUp
-            // 
-            this.colStaffsetUp.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.colStaffsetUp.DataPropertyName = "StaffSetUp";
-            this.colStaffsetUp.FillWeight = 30F;
-            this.colStaffsetUp.HeaderText = "Nhân viên tạo";
-            this.colStaffsetUp.Name = "colStaffsetUp";
-            this.colStaffsetUp.ReadOnly = true;
-            this.colStaffsetUp.Visible = false;
-            this.colStaffsetUp.Width = 132;
-            // 
-            // coldDateOfCreate
-            // 
-            this.coldDateOfCreate.DataPropertyName = "DateOfCreate";
-            this.coldDateOfCreate.FillWeight = 30F;
-            this.coldDateOfCreate.HeaderText = "Ngày tạo";
-            this.coldDateOfCreate.Name = "coldDateOfCreate";
-            this.coldDateOfCreate.ReadOnly = true;
-            // 
-            // colStatus
-            // 
-            this.colStatus.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.colStatus.DataPropertyName = "name";
-            this.colStatus.HeaderText = "Trạng thái";
-            this.colStatus.Name = "colStatus";
-            this.colStatus.ReadOnly = true;
-            this.colStatus.Width = 104;
-            // 
-            // colPrice
-            // 
-            this.colPrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.colPrice.DataPropertyName = "TotalPrice";
-            this.colPrice.FillWeight = 30F;
-            this.colPrice.HeaderText = "Đơn giá";
-            this.colPrice.Name = "colPrice";
-            this.colPrice.ReadOnly = true;
-            this.colPrice.Width = 90;
-            // 
-            // Column1
-            // 
-            this.Column1.DataPropertyName = "discount";
-            this.Column1.HeaderText = "Giảm giá";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Width = 50;
-            // 
-            // Column2
-            // 
-            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column2.DataPropertyName = "finalPrice";
-            this.Column2.HeaderText = "Thành tiền";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
+            this.dataGridViewBill.SelectionChanged += new System.EventHandler(this.dataGridViewBill_SelectionChanged);
             // 
             // btnClose
             // 
@@ -865,6 +767,7 @@
             this.Name = "fBill";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "fBill";
+            this.Load += new System.EventHandler(this.fBill_Load);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FBill_KeyPress);
             ((System.ComponentModel.ISupportInitialize)(this.bindingBill)).EndInit();
             this.bindingBill.ResumeLayout(false);
@@ -926,14 +829,5 @@
         private Bunifu.Framework.UI.BunifuMetroTextbox txbDiscount;
         private System.Windows.Forms.Label label2;
         private MetroFramework.Controls.MetroComboBox cbBillSearch;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colIdReciveRoom;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colCustomerName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colStaffsetUp;
-        private System.Windows.Forms.DataGridViewTextBoxColumn coldDateOfCreate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colStatus;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colPrice;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
     }
 }

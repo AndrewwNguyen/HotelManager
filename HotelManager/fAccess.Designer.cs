@@ -40,12 +40,8 @@
             this.label6 = new System.Windows.Forms.Label();
             this.groupService = new System.Windows.Forms.GroupBox();
             this.dataGridViewAccessNow = new System.Windows.Forms.DataGridView();
-            this.colAccessNow = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colIdNow = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridViewAccessRest = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colIdRest = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bunifuDragControl1 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.bunifuThinButton25 = new Bunifu.Framework.UI.BunifuThinButton2();
@@ -123,9 +119,6 @@
             this.dataGridViewAccessNow.ColumnHeadersHeight = 29;
             this.dataGridViewAccessNow.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridViewAccessNow.ColumnHeadersVisible = false;
-            this.dataGridViewAccessNow.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.colAccessNow,
-            this.colIdNow});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 12F);
@@ -154,22 +147,6 @@
             this.dataGridViewAccessNow.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewAccessNow.Size = new System.Drawing.Size(244, 309);
             this.dataGridViewAccessNow.TabIndex = 29;
-            // 
-            // colAccessNow
-            // 
-            this.colAccessNow.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colAccessNow.DataPropertyName = "name";
-            this.colAccessNow.HeaderText = "Column1";
-            this.colAccessNow.Name = "colAccessNow";
-            this.colAccessNow.ReadOnly = true;
-            // 
-            // colIdNow
-            // 
-            this.colIdNow.DataPropertyName = "id";
-            this.colIdNow.HeaderText = "Column2";
-            this.colIdNow.Name = "colIdNow";
-            this.colIdNow.ReadOnly = true;
-            this.colIdNow.Visible = false;
             // 
             // groupBox1
             // 
@@ -202,9 +179,6 @@
             this.dataGridViewAccessRest.ColumnHeadersHeight = 29;
             this.dataGridViewAccessRest.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridViewAccessRest.ColumnHeadersVisible = false;
-            this.dataGridViewAccessRest.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.colIdRest});
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 12F);
@@ -233,23 +207,6 @@
             this.dataGridViewAccessRest.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewAccessRest.Size = new System.Drawing.Size(244, 309);
             this.dataGridViewAccessRest.TabIndex = 30;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "Name";
-            this.dataGridViewTextBoxColumn1.HeaderText = "Column1";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // colIdRest
-            // 
-            this.colIdRest.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.colIdRest.DataPropertyName = "Id";
-            this.colIdRest.HeaderText = "Column1";
-            this.colIdRest.Name = "colIdRest";
-            this.colIdRest.ReadOnly = true;
-            this.colIdRest.Visible = false;
             // 
             // bunifuDragControl1
             // 
@@ -355,7 +312,7 @@
             // 
             // cbbStaffType
             // 
-            this.cbbStaffType.BackColor = System.Drawing.Color.White;
+            this.cbbStaffType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.cbbStaffType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbbStaffType.FormattingEnabled = true;
             this.cbbStaffType.ItemHeight = 23;
@@ -364,10 +321,6 @@
             this.cbbStaffType.Size = new System.Drawing.Size(175, 29);
             this.cbbStaffType.Style = MetroFramework.MetroColorStyle.Green;
             this.cbbStaffType.TabIndex = 51;
-            //this.cbbStaffType.UseCustomBackColor = true;
-            //this.cbbStaffType.UseCustomForeColor = true;
-            //this.cbbStaffType.UseSelectable = true;
-            //this.cbbStaffType.UseStyleColors = true;
             this.cbbStaffType.SelectedIndexChanged += new System.EventHandler(this.cbbStaffType_SelectedIndexChanged);
             // 
             // label5
@@ -549,6 +502,7 @@
             this.Name = "fAccess";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Access";
+            this.Load += new System.EventHandler(this.fAccess_Load);
             this.groupService.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAccessNow)).EndInit();
             this.groupBox1.ResumeLayout(false);
@@ -578,10 +532,6 @@
         private Bunifu.Framework.UI.BunifuThinButton2 bunifuThinButton23;
         private Bunifu.Framework.UI.BunifuThinButton2 bunifuThinButton21;
         private Bunifu.Framework.UI.BunifuThinButton2 btnSearch;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colAccessNow;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colIdNow;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colIdRest;
         private Bunifu.Framework.UI.BunifuThinButton2 bunifuThinButton25;
         private Bunifu.Framework.UI.BunifuThinButton2 btnInsertStaffType;
         private Bunifu.Framework.UI.BunifuThinButton2 btnUpdate;

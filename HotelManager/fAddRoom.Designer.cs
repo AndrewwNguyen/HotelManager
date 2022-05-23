@@ -283,6 +283,7 @@
             this.comboBoxRoomType.Size = new System.Drawing.Size(175, 29);
             this.comboBoxRoomType.Style = MetroFramework.MetroColorStyle.Green;
             this.comboBoxRoomType.TabIndex = 1;
+            this.comboBoxRoomType.SelectedIndexChanged += new System.EventHandler(this.comboBoxRoomType_SelectedIndexChanged);
             this.comboBoxRoomType.SelectedValueChanged += new System.EventHandler(this.comboBoxRoomType_SelectedValueChanged);
             // 
             // btnClose

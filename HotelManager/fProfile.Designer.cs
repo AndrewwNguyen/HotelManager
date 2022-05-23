@@ -42,6 +42,8 @@
             this.bunifuCheckbox2 = new Bunifu.Framework.UI.BunifuCheckbox();
             this.lblDisplayName = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.cbSex = new MetroFramework.Controls.MetroComboBox();
+            this.dpkDateOfBirth = new Bunifu.Framework.UI.BunifuDatepicker();
             this.txbIDCard = new Bunifu.Framework.UI.BunifuMetroTextbox();
             this.label10 = new System.Windows.Forms.Label();
             this.bunifuThinButton21 = new Bunifu.Framework.UI.BunifuThinButton2();
@@ -69,8 +71,6 @@
             this.bunifuSeparator1 = new Bunifu.Framework.UI.BunifuSeparator();
             this.label2 = new System.Windows.Forms.Label();
             this.btnClose_ = new Bunifu.Framework.UI.BunifuThinButton2();
-            this.dpkDateOfBirth = new Bunifu.Framework.UI.BunifuDatepicker();
-            this.cbSex = new MetroFramework.Controls.MetroComboBox();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -137,12 +137,14 @@
             this.txbReNewPass.BorderColorIdle = System.Drawing.Color.SeaGreen;
             this.txbReNewPass.BorderColorMouseHover = System.Drawing.Color.SeaGreen;
             this.txbReNewPass.BorderThickness = 1;
+            this.txbReNewPass.characterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txbReNewPass.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txbReNewPass.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.txbReNewPass.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txbReNewPass.isPassword = true;
             this.txbReNewPass.Location = new System.Drawing.Point(27, 170);
             this.txbReNewPass.Margin = new System.Windows.Forms.Padding(4);
+            this.txbReNewPass.MaxLength = 32767;
             this.txbReNewPass.Name = "txbReNewPass";
             this.txbReNewPass.Size = new System.Drawing.Size(203, 29);
             this.txbReNewPass.TabIndex = 66;
@@ -165,12 +167,14 @@
             this.txbNewPass.BorderColorIdle = System.Drawing.Color.SeaGreen;
             this.txbNewPass.BorderColorMouseHover = System.Drawing.Color.SeaGreen;
             this.txbNewPass.BorderThickness = 1;
+            this.txbNewPass.characterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txbNewPass.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txbNewPass.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.txbNewPass.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txbNewPass.isPassword = true;
             this.txbNewPass.Location = new System.Drawing.Point(27, 111);
             this.txbNewPass.Margin = new System.Windows.Forms.Padding(4);
+            this.txbNewPass.MaxLength = 32767;
             this.txbNewPass.Name = "txbNewPass";
             this.txbNewPass.Size = new System.Drawing.Size(203, 29);
             this.txbNewPass.TabIndex = 64;
@@ -193,12 +197,14 @@
             this.txbPass.BorderColorIdle = System.Drawing.Color.SeaGreen;
             this.txbPass.BorderColorMouseHover = System.Drawing.Color.SeaGreen;
             this.txbPass.BorderThickness = 1;
+            this.txbPass.characterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txbPass.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txbPass.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.txbPass.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txbPass.isPassword = true;
             this.txbPass.Location = new System.Drawing.Point(25, 53);
             this.txbPass.Margin = new System.Windows.Forms.Padding(4);
+            this.txbPass.MaxLength = 32767;
             this.txbPass.Name = "txbPass";
             this.txbPass.Size = new System.Drawing.Size(203, 29);
             this.txbPass.TabIndex = 62;
@@ -236,7 +242,7 @@
             this.lblDisplayName.Name = "lblDisplayName";
             this.lblDisplayName.Size = new System.Drawing.Size(195, 20);
             this.lblDisplayName.TabIndex = 57;
-            this.lblDisplayName.Text = "Nguyen Duy Cuong";
+            this.lblDisplayName.Text = "Name";
             this.lblDisplayName.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // groupBox2
@@ -265,18 +271,51 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Thông tin cơ bản";
             // 
+            // cbSex
+            // 
+            this.cbSex.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.cbSex.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbSex.FormattingEnabled = true;
+            this.cbSex.ItemHeight = 23;
+            this.cbSex.Items.AddRange(new object[] {
+            "Nam",
+            "Nữ",
+            "Khác"});
+            this.cbSex.Location = new System.Drawing.Point(494, 54);
+            this.cbSex.Name = "cbSex";
+            this.cbSex.Size = new System.Drawing.Size(203, 29);
+            this.cbSex.Style = MetroFramework.MetroColorStyle.Green;
+            this.cbSex.TabIndex = 75;
+            // 
+            // dpkDateOfBirth
+            // 
+            this.dpkDateOfBirth.BackColor = System.Drawing.Color.SeaGreen;
+            this.dpkDateOfBirth.BorderRadius = 0;
+            this.dpkDateOfBirth.ForeColor = System.Drawing.Color.White;
+            this.dpkDateOfBirth.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dpkDateOfBirth.FormatCustom = null;
+            this.dpkDateOfBirth.Location = new System.Drawing.Point(267, 111);
+            this.dpkDateOfBirth.Margin = new System.Windows.Forms.Padding(21, 34, 21, 34);
+            this.dpkDateOfBirth.Name = "dpkDateOfBirth";
+            this.dpkDateOfBirth.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.dpkDateOfBirth.Size = new System.Drawing.Size(202, 29);
+            this.dpkDateOfBirth.TabIndex = 74;
+            this.dpkDateOfBirth.Value = new System.DateTime(2018, 2, 23, 23, 29, 57, 962);
+            // 
             // txbIDCard
             // 
             this.txbIDCard.BorderColorFocused = System.Drawing.Color.SeaGreen;
             this.txbIDCard.BorderColorIdle = System.Drawing.Color.SeaGreen;
             this.txbIDCard.BorderColorMouseHover = System.Drawing.Color.SeaGreen;
             this.txbIDCard.BorderThickness = 1;
+            this.txbIDCard.characterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txbIDCard.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txbIDCard.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.txbIDCard.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txbIDCard.isPassword = false;
             this.txbIDCard.Location = new System.Drawing.Point(30, 52);
             this.txbIDCard.Margin = new System.Windows.Forms.Padding(4);
+            this.txbIDCard.MaxLength = 32767;
             this.txbIDCard.Name = "txbIDCard";
             this.txbIDCard.Size = new System.Drawing.Size(203, 29);
             this.txbIDCard.TabIndex = 70;
@@ -325,6 +364,7 @@
             this.txbStartDay.BorderColorIdle = System.Drawing.Color.SeaGreen;
             this.txbStartDay.BorderColorMouseHover = System.Drawing.Color.SeaGreen;
             this.txbStartDay.BorderThickness = 1;
+            this.txbStartDay.characterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txbStartDay.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txbStartDay.Enabled = false;
             this.txbStartDay.Font = new System.Drawing.Font("Century Gothic", 9.75F);
@@ -332,6 +372,7 @@
             this.txbStartDay.isPassword = false;
             this.txbStartDay.Location = new System.Drawing.Point(494, 111);
             this.txbStartDay.Margin = new System.Windows.Forms.Padding(4);
+            this.txbStartDay.MaxLength = 32767;
             this.txbStartDay.Name = "txbStartDay";
             this.txbStartDay.Size = new System.Drawing.Size(203, 29);
             this.txbStartDay.TabIndex = 60;
@@ -376,12 +417,14 @@
             this.txbAddress.BorderColorIdle = System.Drawing.Color.SeaGreen;
             this.txbAddress.BorderColorMouseHover = System.Drawing.Color.SeaGreen;
             this.txbAddress.BorderThickness = 1;
+            this.txbAddress.characterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txbAddress.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txbAddress.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.txbAddress.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txbAddress.isPassword = false;
             this.txbAddress.Location = new System.Drawing.Point(30, 111);
             this.txbAddress.Margin = new System.Windows.Forms.Padding(4);
+            this.txbAddress.MaxLength = 32767;
             this.txbAddress.Name = "txbAddress";
             this.txbAddress.Size = new System.Drawing.Size(203, 29);
             this.txbAddress.TabIndex = 54;
@@ -404,12 +447,14 @@
             this.txbPhoneNumber.BorderColorIdle = System.Drawing.Color.SeaGreen;
             this.txbPhoneNumber.BorderColorMouseHover = System.Drawing.Color.SeaGreen;
             this.txbPhoneNumber.BorderThickness = 1;
+            this.txbPhoneNumber.characterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txbPhoneNumber.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txbPhoneNumber.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.txbPhoneNumber.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txbPhoneNumber.isPassword = false;
             this.txbPhoneNumber.Location = new System.Drawing.Point(264, 52);
             this.txbPhoneNumber.Margin = new System.Windows.Forms.Padding(4);
+            this.txbPhoneNumber.MaxLength = 32767;
             this.txbPhoneNumber.Name = "txbPhoneNumber";
             this.txbPhoneNumber.Size = new System.Drawing.Size(203, 29);
             this.txbPhoneNumber.TabIndex = 52;
@@ -465,6 +510,7 @@
             this.txbStaffType.BorderColorIdle = System.Drawing.Color.SeaGreen;
             this.txbStaffType.BorderColorMouseHover = System.Drawing.Color.SeaGreen;
             this.txbStaffType.BorderThickness = 1;
+            this.txbStaffType.characterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txbStaffType.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txbStaffType.Enabled = false;
             this.txbStaffType.Font = new System.Drawing.Font("Century Gothic", 9.75F);
@@ -472,6 +518,7 @@
             this.txbStaffType.isPassword = false;
             this.txbStaffType.Location = new System.Drawing.Point(25, 52);
             this.txbStaffType.Margin = new System.Windows.Forms.Padding(4);
+            this.txbStaffType.MaxLength = 32767;
             this.txbStaffType.Name = "txbStaffType";
             this.txbStaffType.Size = new System.Drawing.Size(203, 29);
             this.txbStaffType.TabIndex = 69;
@@ -520,12 +567,14 @@
             this.txbDisplayName.BorderColorIdle = System.Drawing.Color.SeaGreen;
             this.txbDisplayName.BorderColorMouseHover = System.Drawing.Color.SeaGreen;
             this.txbDisplayName.BorderThickness = 1;
+            this.txbDisplayName.characterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txbDisplayName.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txbDisplayName.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.txbDisplayName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txbDisplayName.isPassword = false;
             this.txbDisplayName.Location = new System.Drawing.Point(25, 170);
             this.txbDisplayName.Margin = new System.Windows.Forms.Padding(4);
+            this.txbDisplayName.MaxLength = 32767;
             this.txbDisplayName.Name = "txbDisplayName";
             this.txbDisplayName.Size = new System.Drawing.Size(203, 29);
             this.txbDisplayName.TabIndex = 50;
@@ -548,6 +597,7 @@
             this.txbUserName.BorderColorIdle = System.Drawing.Color.SeaGreen;
             this.txbUserName.BorderColorMouseHover = System.Drawing.Color.SeaGreen;
             this.txbUserName.BorderThickness = 1;
+            this.txbUserName.characterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txbUserName.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txbUserName.Enabled = false;
             this.txbUserName.Font = new System.Drawing.Font("Century Gothic", 9.75F);
@@ -555,6 +605,7 @@
             this.txbUserName.isPassword = false;
             this.txbUserName.Location = new System.Drawing.Point(25, 111);
             this.txbUserName.Margin = new System.Windows.Forms.Padding(4);
+            this.txbUserName.MaxLength = 32767;
             this.txbUserName.Name = "txbUserName";
             this.txbUserName.Size = new System.Drawing.Size(203, 29);
             this.txbUserName.TabIndex = 48;
@@ -669,41 +720,6 @@
             this.btnClose_.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnClose_.Click += new System.EventHandler(this.btnClose__Click);
             // 
-            // dpkDateOfBirth
-            // 
-            this.dpkDateOfBirth.BackColor = System.Drawing.Color.SeaGreen;
-            this.dpkDateOfBirth.BorderRadius = 0;
-            this.dpkDateOfBirth.ForeColor = System.Drawing.Color.White;
-            this.dpkDateOfBirth.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dpkDateOfBirth.FormatCustom = null;
-            this.dpkDateOfBirth.Location = new System.Drawing.Point(267, 111);
-            this.dpkDateOfBirth.Margin = new System.Windows.Forms.Padding(21, 34, 21, 34);
-            this.dpkDateOfBirth.Name = "dpkDateOfBirth";
-            this.dpkDateOfBirth.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.dpkDateOfBirth.Size = new System.Drawing.Size(202, 29);
-            this.dpkDateOfBirth.TabIndex = 74;
-            this.dpkDateOfBirth.Value = new System.DateTime(2018, 2, 23, 23, 29, 57, 962);
-            // 
-            // cbSex
-            // 
-            this.cbSex.BackColor = System.Drawing.Color.White;
-            this.cbSex.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cbSex.FormattingEnabled = true;
-            this.cbSex.ItemHeight = 23;
-            this.cbSex.Items.AddRange(new object[] {
-            "Nam",
-            "Nữ",
-            "Khác"});
-            this.cbSex.Location = new System.Drawing.Point(494, 54);
-            this.cbSex.Name = "cbSex";
-            this.cbSex.Size = new System.Drawing.Size(203, 29);
-            this.cbSex.Style = MetroFramework.MetroColorStyle.Green;
-            this.cbSex.TabIndex = 75;
-            //this.cbSex.UseCustomBackColor = true;
-            //this.cbSex.UseCustomForeColor = true;
-            //this.cbSex.UseSelectable = true;
-            //this.cbSex.UseStyleColors = true;
-            // 
             // fProfile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -725,6 +741,7 @@
             this.Name = "fProfile";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "fProfile";
+            this.Load += new System.EventHandler(this.fProfile_Load);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
